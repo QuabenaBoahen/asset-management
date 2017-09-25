@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: asset-management
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Quabena
+Built-By: ADM-KJO
 Implementation-Vendor-Id: com.gh.gov.ns
 Build-Jdk: 1.8.0_92
 Implementation-URL: http://projects.spring.io/spring-boot/asset-manage

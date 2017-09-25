@@ -24,6 +24,28 @@ public class InstitutionController {
 		model.addAttribute("institutions", institutions);
 		return "institutions";
 	}
+	@GetMapping("/add_institution")
+	public String addInstitutions(Model model){
+		model.addAttribute("institution", new Institution());
+		List<Institution> institutions=institutionRepository.findAll();	
+		model.addAttribute("institutions", institutions);
+		return "add_institution";
+	}
+	
+	@GetMapping("/suppliers")
+	public String suppliers(Model model){
+		model.addAttribute("institution", new Institution());
+		List<Institution> institutions=institutionRepository.findAll();	
+		model.addAttribute("institutions", institutions);
+		return "suppliers";
+	}
+	@GetMapping("/add_suppliers")
+	public String addSuppliers(Model model){
+		model.addAttribute("institution", new Institution());
+		List<Institution> institutions=institutionRepository.findAll();	
+		model.addAttribute("institutions", institutions);
+		return "add_suppliers";
+	}
 	
 	@PostMapping("/institutions")
 	public String allInstitutions(Institution institution){

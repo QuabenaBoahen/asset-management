@@ -13,7 +13,7 @@ public class IndexController {
 		return "login";
 	}
 	
-	@GetMapping({"/","/dashboard"})
+	@GetMapping("/dashboard")
 	public String dashboard(){
 		return "dashboard";
 	}
