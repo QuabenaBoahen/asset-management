@@ -1,0 +1,11 @@
+com\gh\gov\ns\model\Memo.class
+com\gh\gov\ns\repository\LettersRepository.class
+com\gh\gov\ns\model\Attachment.class
+com\gh\gov\ns\model\Letters.class
+com\gh\gov\ns\web\Memo.class
+com\gh\gov\ns\web\Reports.class
+com\gh\gov\ns\web\Entries.class
+com\gh\gov\ns\repository\MemoRepository.class
+com\gh\gov\ns\repository\AttachmentRepository.class
+com\gh\gov\ns\web\Letters.class
+com\gh\gov\ns\web\InstitutionProfileController.class

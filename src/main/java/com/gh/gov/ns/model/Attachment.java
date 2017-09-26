@@ -33,8 +33,8 @@ public class Attachment implements Serializable{
 	private LocalDate date;
 	private String topOfficialContact;
 	private String topOfficialContactInfo;
-	@OneToMany(mappedBy="institution", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<User> users;
+	/*@OneToMany(mappedBy="institution", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<User> users;*/
 	
 
 }

@@ -32,8 +32,8 @@ public class Memo implements Serializable{
 	private String phone;
 	private String topOfficialContact;
 	private String topOfficialContactInfo;
-	@OneToMany(mappedBy="institution", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<User> users;
+	/*@OneToMany(mappedBy="institution", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<User> users;*/
 	public String getInstitutionId() {
 		return institutionId;
 	}
@@ -76,12 +76,12 @@ public class Memo implements Serializable{
 	public void setTopOfficialContactInfo(String topOfficialContactInfo) {
 		this.topOfficialContactInfo = topOfficialContactInfo;
 	}
-	public List<User> getUsers() {
+	/*public List<User> getUsers() {
 		return users;
 	}
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

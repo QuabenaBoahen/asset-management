@@ -8,12 +8,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/fonts/**", "/assets/**", "/images/**", "/js2/**");
@@ -24,7 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-      .anyRequest().hasAnyRole("ADMIN")
+            .anyRequest().authenticated()
+      //.anyRequest().hasAnyRole("ADMIN", "INSTITUTION")
                 .and()
             .formLogin()
                 .loginPage("/login")
@@ -50,11 +55,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     	auth
-    	.inMemoryAuthentication()
-    	.withUser("admin")
-    	.password("admin")
-    	.roles("ADMIN");
-			//.authenticationProvider(authenticationProvider);
+    	/*.inMemoryAuthentication()
+		.withUser("admin")
+		.password("admin")
+		.roles("ADMIN");*/
+    	.userDetailsService(userDetailsService);
 
     }
     // @formatter:on

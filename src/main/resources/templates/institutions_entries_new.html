@@ -30,13 +30,14 @@
 				<div class="widget">
 
 					<div class="widget-content padding">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" 
+						th:object="${institutionEntry}" th:action="@{/institutions_entries_new}" th:method="post">
 							<div class="form-group">
 								<label for="input-text" class="col-sm-2 control-label">Type
 									Of Vehicle</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text"
-										placeholder="">
+										placeholder="" th:field="*{typeOfVehicle}">
 								</div>
 							</div>
 							<div class="form-group">
@@ -44,15 +45,7 @@
 									Of Manufacturing</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputPassword" class="col-sm-2 control-label">Cost
-									of Vehicle</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="inputPassword"
-										placeholder="">
+										placeholder="" th:field="*{manufYear}">
 								</div>
 							</div>
 							<div class="form-group">
@@ -60,77 +53,36 @@
 									Number</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+										placeholder="" th:field="*{engineNumber}">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">Chasis
+								<label for="input-text-help" class="col-sm-2 control-label">Chassis
 									Number</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+										placeholder="" th:field="*{chassisNumber}">
 								</div>
-							</div>
+							</div>							
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Import Duty
-									Exception</label>
-								<div class="col-sm-10">
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios1" value="option1" checked> Yes
-										</label>
-									</div>
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios2" value="option2"> No
-										</label>
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">Institution
-									Supplied To</label>
+								<label for="input-text-help" class="col-sm-2 control-label">Company Received From</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+										placeholder="" th:field="*{companyReceivedFrom}">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Date Supplied</label>
+								<label class="col-sm-2 control-label">Date Received</label>
 								<div class="col-sm-3">
-									<input type="text" class="form-control datepicker-input">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Import Duty
-									Exception</label>
-								<div class="col-sm-10">
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios1" value="option1" checked> Yes
-										</label>
-									</div>
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios2" value="option2"> No
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">
-									Import Duty Details</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+									<input type="text" class="form-control datepicker-input" 
+									th:field="*{dateReceived}">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">status</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+										placeholder="" th:field="*{status}">
 								</div>
 							</div>
 							<div class="form-group">
@@ -138,27 +90,9 @@
 									Reason</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+										placeholder="" th:field="*{reasonIfAuctioned}">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">
-									DVLA Registration Details</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-						</form>
-
-						<div class="form-group">
-							<label for="input-text-help" class="col-sm-2 control-label">
-								Payment Details </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="input-text-help"
-									placeholder="Enter Cheque Payment Details">
-							</div>
-						</div>
 						<a th:href='@{attach_docs_inst}'><button
 								class="btn btn-success md-close">Attach Document</button></a>
 

@@ -5,7 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 @Data
@@ -21,5 +26,7 @@ public class Role implements Serializable{
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String roleId;
 	private String roleName;
+	@OneToOne(mappedBy="role")
+	public User user;
 
 }

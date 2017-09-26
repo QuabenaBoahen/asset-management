@@ -1,6 +1,5 @@
 package com.gh.gov.ns.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +17,18 @@ public class InstitutionProfileController {
 	private InstitutionRepository institutionRepository;
 
 	@GetMapping("/institution_profile")
-	public String institutionProfile(Model model) {
+	public String showProfile(Model model) {
 		model.addAttribute("institution", new Institution());
-		List<Institution> institutions = institutionRepository.findAll();
-		model.addAttribute("institutions", institutions);
 		return "institution_profile";
 	}
-
-	@GetMapping("/institution_profile_edit")
-	public String institutionProfileEdit(Model model) {
-		model.addAttribute("institution", new Institution());
-		List<Institution> institutions = institutionRepository.findAll();
-		model.addAttribute("institutions", institutions);
-		return "institution_profile_edit";
+	
+	@PostMapping("/institution_profile")
+	public String saveinstitutionProfile(Model model, Institution institution) {
+		institutionRepository.saveAndFlush(institution);
+		return "redirect:/institutions_entries";
 	}
 
-	@GetMapping("/suppliers_profile")
+/*	@GetMapping("/suppliers_profile")
 	public String suppliers_profile(Model model) {
 		model.addAttribute("institution", new Institution());
 		List<Institution> institutions = institutionRepository.findAll();
@@ -47,12 +42,6 @@ public class InstitutionProfileController {
 		List<Institution> institutions = institutionRepository.findAll();
 		model.addAttribute("institutions", institutions);
 		return "suppliers_profile_edit";
-	}
-
-	/*
-	 * @PostMapping("/institutions") public String allInstitutions(Institution
-	 * institution){ institutionRepository.saveAndFlush(institution); return
-	 * "redirect:/institutions"; }
-	 */
+	}*/
 
 }

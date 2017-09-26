@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gh.gov.ns.model.Institution;
+import com.gh.gov.ns.model.InstitutionEntries;
+import com.gh.gov.ns.repository.InstitutionEntryRepository;
 import com.gh.gov.ns.repository.InstitutionRepository;
 
 @Controller
-public class Entries {
+public class EntriesController {
 	@Autowired
-	private InstitutionRepository institutionRepository;
+	private InstitutionEntryRepository institutionEntryRepository;
 
 	@GetMapping("/suppliers_entries")
 	public String suppliersEntries(Model model) {
@@ -25,14 +27,21 @@ public class Entries {
 
 	@GetMapping("/institutions_entries")
 	public String institutionsEntries(Model model) {
-
+      List<InstitutionEntries> institutionEntries = institutionEntryRepository.findAll();
+      model.addAttribute("institutionEntries", institutionEntries);
 		return "institutions_entries";
 	}
 
 	@GetMapping("/institutions_entries_new")
 	public String institutionsEntriesNew(Model model) {
-
+		model.addAttribute("institutionEntry", new InstitutionEntries());
 		return "institutions_entries_new";
+	}
+	
+	@PostMapping("/institutions_entries_new")
+	public String saveinstitutionsEntriesNew(Model model, InstitutionEntries entries) {
+		institutionEntryRepository.saveAndFlush(entries);
+		return "redirect:/institutions_entries_new";
 	}
 	
 	@GetMapping("/suppliers_entries_new")

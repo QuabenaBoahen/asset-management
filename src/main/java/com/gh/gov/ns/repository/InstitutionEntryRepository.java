@@ -2,9 +2,10 @@ package com.gh.gov.ns.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.gh.gov.ns.model.VehicleDocuments;
+
+import com.gh.gov.ns.model.InstitutionEntries;
 
 @Repository
-public interface VehicleDocumentsRepository extends JpaRepository<VehicleDocuments, String>{
+public interface InstitutionEntryRepository extends JpaRepository<InstitutionEntries, String>{
 
 }
