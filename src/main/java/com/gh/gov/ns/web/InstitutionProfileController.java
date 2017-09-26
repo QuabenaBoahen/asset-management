@@ -21,14 +21,14 @@ public class InstitutionProfileController {
 		model.addAttribute("institution", new Institution());
 		return "institution_profile";
 	}
-	
+
 	@PostMapping("/institution_profile")
 	public String saveinstitutionProfile(Model model, Institution institution) {
 		institutionRepository.saveAndFlush(institution);
 		return "redirect:/institutions_entries";
 	}
 
-/*	@GetMapping("/suppliers_profile")
+	@GetMapping("/suppliers_profile")
 	public String suppliers_profile(Model model) {
 		model.addAttribute("institution", new Institution());
 		List<Institution> institutions = institutionRepository.findAll();
@@ -42,6 +42,6 @@ public class InstitutionProfileController {
 		List<Institution> institutions = institutionRepository.findAll();
 		model.addAttribute("institutions", institutions);
 		return "suppliers_profile_edit";
-	}*/
+	}
 
 }
