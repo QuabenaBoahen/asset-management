@@ -1,7 +1,6 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class InstitutionEntries implements Serializable{/**
+public class SuppliersEntries implements Serializable{/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -26,9 +25,12 @@ public class InstitutionEntries implements Serializable{/**
 	private String engineNumber;
 	private String dateOfEntry;
 	private String manufYear;
-	private String dateReceived;
-	private String companyReceivedFrom;
-	private String status;
-	private String reasonIfAuctioned;
+	private double costOfVehicle;
+	private String dateSupplied;
+	private String institutionSuppliedTo;
+	private int importDutyExemption;
+	private String importDutyDetails;
+	private String paymentCheckDetails;
+	private String dvlaRegistrationDetails;
 
 }
