@@ -9,27 +9,28 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.gh.gov.ns.model.Institution;
-import com.gh.gov.ns.repository.InstitutionRepository;
+import com.gh.gov.ns.model.Letters;
 import com.gh.gov.ns.repository.LettersRepository;
 
 @Controller
-public class Letters {
+public class LettersController {
 	@Autowired
 	private LettersRepository lettersRepository;
 
-	
 	@GetMapping("/inbox_letters")
 	public String inboxLetters(Model model) {
 
 		return "inbox_letters";
 	}
+
 	@GetMapping("/compose_letter")
 	public String composeLetter(Model model) {
-
+		model.addAttribute("letters", new Letters());
+		List<Letters> lettersall = lettersRepository.findAll();
+		model.addAttribute("lettersall", lettersall);
 		return "compose_letter";
 	}
-	
+
 	@PostMapping("/compose_letter")
 	public String composeNewLetter(Letters letters) {
 		lettersRepository.saveAndFlush(letters);
@@ -41,18 +42,19 @@ public class Letters {
 
 		return "draft_letters";
 	}
+
 	@GetMapping("/sent_letters")
 	public String sentLetters(Model model) {
 
 		return "sent_letters";
 	}
-	
+
 	@GetMapping("/selected_letter")
 	public String selectedLetter(Model model) {
 
 		return "selected_letter";
 	}
-	
+
 	@GetMapping("/letter_preview")
 	public String letterPreview(Model model) {
 

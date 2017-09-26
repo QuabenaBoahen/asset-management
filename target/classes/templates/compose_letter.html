@@ -61,7 +61,7 @@
 											<div class="col-sm-10 col-xs-8">
 												<select class="form-control">
 													<option value="">Select Recepients</option>
-													<option th:field="*{recipient}" value="recipient one"> recipient one</option>
+													<option th:field="*{recipients}" value="recipient one"> recipient one</option>
 												</select>
 											</div>
 										</div>
@@ -81,19 +81,9 @@
 												<button type="submit" class="btn btn-success">
 													<i class="icon-paper-plane-1"></i> Send
 												</button>
-												<button type="submit" class="btn btn-danger">Save</button>
-												<a th:href="@{/letter_preview}"><span
+<!-- 												<button type="submit" class="btn btn-danger">Save as Draft</button>
+ -->												<a th:href="@{/letter_preview}"><span
 													class="btn btn-blue-1">Preview</span></a>
-											</div>
-											<div class="col-xs-4">
-												<p class="quick-post message">
-													<a href="javascript" title="Attach Picture"
-														data-toggle="tooltip"><i class="fa fa-picture-o"></i></a>
-													<a href="javascript" title="Attach Video"
-														data-toggle="tooltip"><i class="fa fa-video-camera"></i></a>
-													<a href="javascript" title="Attach Files"
-														data-toggle="tooltip"><i class="fa fa-paperclip"></i></a>
-												</p>
 											</div>
 										</div>
 									</form>
