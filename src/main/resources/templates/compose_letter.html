@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
-<link th:href="@{assets/libs/summernote/summernote.css}" rel="stylesheet"
-	type="text/css" />
+<link th:href="@{assets/libs/summernote/summernote.css}"
+	rel="stylesheet" type="text/css" />
 <body class="fixed-left">
 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
 	<!-- Begin page -->
@@ -54,43 +54,26 @@
 						<div class="col-md-9">
 							<div class="widget">
 								<div class="widget-content padding">
-									<form role="form" class="form-horizontal">
+									<form th:action="@{/compose_letter}" th:object="${letters}"
+										method="post" role="form" class="form-horizontal">
 										<div class="form-group">
 											<label class="control-label col-sm-1 col-xs-1">To:</label>
 											<div class="col-sm-10 col-xs-8">
-												<input type="text" class="form-control input-invis"
-													placeholder="someone@company.com">
-											</div>
-											<div class="col-sm-1 col-xs-3 text-right">
-												<div class="btn-group">
-													<a class="btn btn-default btn-xs" href="javascript:;"
-														onclick="$('.cc-hidden').toggleClass('hidden')">Cc</a> <a
-														class="btn btn-default btn-xs" href="javascript:;"
-														onclick="$('.bcc-hidden').toggleClass('hidden')">Bcc</a>
-												</div>
-											</div>
-										</div>
-										<div class="form-group cc-hidden hidden">
-											<label class="control-label col-sm-1">Cc:</label>
-											<div class="col-sm-11">
-												<input type="text" class="form-control input-invis">
-											</div>
-										</div>
-										<div class="form-group bcc-hidden hidden">
-											<label class="control-label col-sm-1">Bcc:</label>
-											<div class="col-sm-11">
-												<input type="text" class="form-control input-invis">
+												<select class="form-control">
+													<option value="">Select Recepients</option>
+													<option th:field="*{recipient}" value="recipient one"> recipient one</option>
+												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-sm-1">Subject:</label>
 											<div class="col-sm-11">
-												<input type="text" class="form-control input-invis">
+												<input th:field="*{subject}" type="text" class="form-control ">
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-12">
-												<textarea class="summernote-small form-control"></textarea>
+												<textarea th:field="*{content}" class="summernote-small form-control"></textarea>
 											</div>
 										</div>
 										<div class="row">

@@ -6,7 +6,7 @@
 <!-- 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
  --><!-- Begin page -->
 	<div id="wrapper">
-	<div th:include="fragments/body :: institutions_navbar (~{::title})"></div>
+	<div th:include="fragments/body :: admin_navbar (~{::title})"></div>
 		<!-- Start right content -->
 		<div class="content-page">
 			<!-- ============================================================== -->
@@ -15,10 +15,8 @@
 			<div class="content">
 				<!-- Page Heading Start -->
 				<div class="page-heading">
-					<span style="float: right;"> <a th:href='@{/institutions_entries_new}'
-						class="btn btn-success btn-lg">NEW ENTRY</a></span>
 					<h1>
-						<i class='fa fa-file'></i> ENTRIES
+						<i class='fa fa-file'></i> SUPPLIED VEHICLES REPORT
 					</h1>
 				</div>
 				<!-- Page Heading End-->

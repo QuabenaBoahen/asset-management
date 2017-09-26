@@ -3,10 +3,10 @@
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
 <body class="fixed-left">
-<!-- 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
- --><!-- Begin page -->
+	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
+ <!-- Begin page -->
 	<div id="wrapper">
-	<div th:include="fragments/body :: institutions_navbar (~{::title})"></div>
+	<div th:include="fragments/body :: admin_navbar (~{::title})"></div>
 		<!-- Start right content -->
 		<div class="content-page">
 			<!-- ============================================================== -->
@@ -15,10 +15,10 @@
 			<div class="content">
 				<!-- Page Heading Start -->
 				<div class="page-heading">
-					<span style="float: right;"> <a th:href='@{/institutions_entries_new}'
-						class="btn btn-success btn-lg">NEW ENTRY</a></span>
+					<span style="float: right;"> <a th:href='@{add_user}'
+						class="btn btn-success btn-lg">Add a User</a></span>
 					<h1>
-						<i class='fa fa-file'></i> ENTRIES
+						<i class='fa fa-file'></i> USER ACCOUNTS
 					</h1>
 				</div>
 				<!-- Page Heading End-->
@@ -38,35 +38,21 @@
 										width="100%">
 										<thead>
 											<tr>
-												<th>NO.</th>
-												<th>Date of Entry</th>
-												<th>Type Of Vehicle</th>
-												<th>Year Of Manufacturing</th>
-												<th>Chasis Number</th>
-												<th>Engine Number</th>
-												<th>Institution Supplied To</th>
-												<th>Date Supplied</th>
-												<th>Import Duty Exemptions</th>
-												<th>Import Duty Details</th>
-												<th>Attached Documents</th>
+												<th>Name</th>
+												<th>Department</th>
+												<th>Position</th>
+												<th>UserId</th>
+												<th>Password</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<td>1</td>
-												<td>2015-03-09</td>
-												<td>Toyota</td>
-												<td>2014-09-09</td>
-												<td>201125</td>
-												<td>320800</td>
-												<td>Ministry of Education</td>
-												<td>20-02-03</td>
-												<td>yes</td>
-												<td>import duty details</td>
-												<td><a href='<spring:url value="attached_docs" />'>
-												click to view attached docs</a></td>
+												<td>user one</td>
+												<td>user one</td>
+												<td>user one</td>
+												<td>user one</td>
+												<td>user one</td>
 											</tr>
-
 										</tbody>
 									</table>
 									</form>
@@ -76,19 +62,6 @@
 					</div>
 				</div>
 
-				<!--  content Ends here -->
-
-				<div class="row">
-					<div class="col-md-12 portlets"></div>
-				</div>
-
-				<!-- Footer Start -->
-				<footer>
-					Ministry of National Security &copy; 2017
-					<div class="footer-links pull-right"></div>
-				</footer>
-				<!-- Footer End -->
-			</div>
 				<!--  content Ends here -->
 
 				<div class="row">

@@ -16,26 +16,43 @@ import com.gh.gov.ns.repository.InstitutionRepository;
 public class InstitutionProfileController {
 	@Autowired
 	private InstitutionRepository institutionRepository;
-	
+
 	@GetMapping("/institution_profile")
-	public String institutionProfile(Model model){
+	public String institutionProfile(Model model) {
 		model.addAttribute("institution", new Institution());
-		List<Institution> institutions=institutionRepository.findAll();	
+		List<Institution> institutions = institutionRepository.findAll();
 		model.addAttribute("institutions", institutions);
 		return "institution_profile";
 	}
+
 	@GetMapping("/institution_profile_edit")
-	public String institutionProfileEdit(Model model){
+	public String institutionProfileEdit(Model model) {
 		model.addAttribute("institution", new Institution());
-		List<Institution> institutions=institutionRepository.findAll();	
+		List<Institution> institutions = institutionRepository.findAll();
 		model.addAttribute("institutions", institutions);
 		return "institution_profile_edit";
 	}
-	
-/*	@PostMapping("/institutions")
-	public String allInstitutions(Institution institution){
-		institutionRepository.saveAndFlush(institution);
-		return "redirect:/institutions";
-	}*/
+
+	@GetMapping("/suppliers_profile")
+	public String suppliers_profile(Model model) {
+		model.addAttribute("institution", new Institution());
+		List<Institution> institutions = institutionRepository.findAll();
+		model.addAttribute("institutions", institutions);
+		return "suppliers_profile";
+	}
+
+	@GetMapping("/suppliers_profile_edit")
+	public String suppliersProfileEdit(Model model) {
+		model.addAttribute("institution", new Institution());
+		List<Institution> institutions = institutionRepository.findAll();
+		model.addAttribute("institutions", institutions);
+		return "suppliers_profile_edit";
+	}
+
+	/*
+	 * @PostMapping("/institutions") public String allInstitutions(Institution
+	 * institution){ institutionRepository.saveAndFlush(institution); return
+	 * "redirect:/institutions"; }
+	 */
 
 }

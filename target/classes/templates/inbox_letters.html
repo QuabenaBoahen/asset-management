@@ -62,38 +62,6 @@
 							<div class="data-table-toolbar">
 								<div class="row">
 									<div class="col-sm-8">
-										
-										<div class="btn-toolbar" role="toolbar">
-											<div class="btn-group">
-												<div class="rows-check-cont">
-													<input type="checkbox" class="rows-check">
-												</div>
-											</div>
-											<div class="btn-group">
-												<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i> <span class="caret"></span></a>
-											</div>
-											<div class="btn-group hidden-xs">
-												<a data-toggle="tooltip" title="Move to Archive" class="btn btn-primary"><i class="fa fa-inbox"></i></a>
-												<a data-toggle="tooltip" title="Mark spam" class="btn btn-primary"><i class="fa fa-exclamation-circle"></i></a>
-												<a data-toggle="tooltip" title="Move to Trash" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
-											</div>
-											<div class="btn-group hidden-xs">
-												<a data-toggle="tooltip" title="Refresh" class="btn btn-primary"><i class="fa fa-undo"></i></a>
-											</div>
-											<div class="btn-group">
-												<a data-toggle="tooltip" title="Move to folder" class="btn btn-primary"><i class="fa fa-folder"></i> <span class="caret"></span></a>
-											</div>
-											<div class="btn-group">
-												<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></button>
-											 	<ul class="dropdown-menu" role="menu">
-													<li><a href="#fakelink">Mark all as <b>Read</b></a></li>
-													<li><a href="#fakelink">Mark all as <b>Unread</b></a></li>
-													<li><a href="#fakelink">Move all to Archive</a></li>
-													<li class="divider"></li>
-													<li><a href="#fakelink">Move all to Trash</a></li>
-											  	</ul>
-											</div>											
-										</div>
 									</div>
 									<div class="col-sm-4 hidden-xs">
 										<div class="pull-right">
@@ -101,18 +69,6 @@
 											<div class="btn-group">
 											  <a class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
 											  <a class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
-											</div>
-											<div class="btn-group">
-											  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-												<i class="fa fa-cog"></i>
-											  </button>
-											  <ul class="dropdown-menu pull-right" role="menu">
-												<li><a href="#fakelink">Action</a></li>
-												<li><a href="#fakelink">Another action</a></li>
-												<li><a href="#fakelink">Something else here</a></li>
-												<li class="divider"></li>
-												<li><a href="#fakelink">Separated link</a></li>
-											  </ul>
 											</div>
 										</div>
 									</div><!-- End div .col-sm-3 -->
@@ -124,10 +80,19 @@
 							<!-- Message table -->
 							<div class="table-responsive">
 								<table class="table table-hover table-message">
+								<thead>
+								<tr>
+								<th>Select</th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								</tr>
+								</thead>
 									<tbody>
-										<tr class="unread">
+										<tr class="unread">	
 											<td style="width: 20px"><input type="checkbox" class="rows-check"></td>
-											<td style="width: 20px;"><a href="javascript:;"><i class="icon-star-1 warning"></i></a></td>
 											<td><a th:href="@{/selected_letter}">Newsletter</a></td>
 											<td><a th:href="@{/selected_letter}">Veniam marfa mustache skateboard adipisicing</a></td>
 											<td><i class="icon-attach-3" data-toggle="tooltip" title="Business Contract.pdf - 2,238KB"></i></td>

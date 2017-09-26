@@ -174,14 +174,6 @@
 			<!--- Divider -->
 			<div id="sidebar-menu">
 				<ul>
-					<li><a th:href='@{/institution_profile}'><i
-							class=' icon-briefcase-1'></i> <span>Institution Profile</span> <span
-							class="pull-right"> </span> </a></li>
-					<li><a th:href='@{/institutions_entries}'><i
-							class='fa fa-folder-open'></i> <span>Entries</span> <span
-							class="pull-right"> </span> </a></li>
-				</ul>
-				<ul>
 					<li><a th:href='@{/dashboard}'><i class='icon-home-3'></i>
 							<span>Dashboard</span> <span class="pull-right"> </span> </a></li>
 					<li><a th:href='@{/institutions}'><i
@@ -207,7 +199,7 @@
 										Report</span></a></li>
 							<li><a th:href='@{/suppliers_report}'><span>Suppliers
 										Report</span></a></li>
-							<li><a th:href='@{/supplied_veh_report}'><span>Supplied
+							<li><a th:href='@{/supplied_vehicles_report}'><span>Supplied
 										Vehicles Report</span></a></li>
 							<li><a th:href='@{/reconciliation_report}'><span>Reconciliation
 										Report</span></a></li>
@@ -225,7 +217,7 @@
 	<!-- Left Sidebar End -->
 
 </div>
-<div th:fragment="client_navbar (title)">
+<div th:fragment="suppliers_navbar (title)">
 
 	<!-- Top Bar Start -->
 	<div class="topbar">
@@ -270,7 +262,96 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Top Bar End -->
+
+	<!-- Left Sidebar Start -->
+	<div class="left side-menu">
+		<div class="sidebar-inner slimscrollleft">
+			<!-- Search form -->
+			<div class="clearfix"></div>
+			<!--- Profile -->
+			<div class="profile-info">
+				<div class="col-xs-4"></div>
+				<div class="col-xs-8">
+					<div class="profile-text">
+						Welcome <b>User</b>
+					</div>
+					<div class="profile-buttons"></div>
+				</div>
+			</div>
+			<!--- Divider -->
+			<div class="clearfix"></div>
+			<hr class="divider" />
+			<div class="clearfix"></div>
+			<!--- Divider -->
+			<div id="sidebar-menu">
+				<ul>
+					<li><a th:href='@{/suppliers_profile}'><i
+							class=' icon-briefcase-1'></i> <span>Company Profile</span> <span
+							class="pull-right"> </span> </a></li>
+					<li><a th:href='@{/suppliers_entries}'><i
+							class='fa fa-folder-open'></i> <span>Entries</span> <span
+							class="pull-right"> </span> </a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="clearfix"></div>
+			<br> <br> <br>
+		</div>
+
+	</div>
+	<!-- Left Sidebar End -->
+
 </div>
+
+<div th:fragment="institutions_navbar (title)">
+
+	<!-- Top Bar Start -->
+	<div class="topbar">
+		<div class="topbar-left">
+
+			<button class="button-menu-mobile open-left">
+				<i class="fa fa-bars"></i>
+			</button>
+		</div>
+		<!-- Button mobile view to collapse sidebar menu -->
+		<div class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-collapse2">
+					<ul class="nav navbar-nav hidden-xs">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="icon-th"></i></a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right top-navbar">
+						<li class="dropdown iconify hide-phone"><a href="#"
+							onclick="javascript:toggle_fullscreen()"><i
+								class="icon-resize-full-2"></i></a></li>
+						<li class="dropdown topbar-profile"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown"><span
+								class="rounded-image topbar-profile-image"><img
+									src="${resources}images/users/user-35.jpg"></span> User <strong>Doe</strong>
+								<i class="fa fa-caret-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">My Profile</a></li>
+								<li><a href="#">Change Password</a></li>
+								<li><a href="#">Account Setting</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><i class="icon-help-2"></i> Help</a></li>
+								<li><a href="${resources}lockscreen.html"><i
+										class="icon-lock-1"></i> Lock me</a></li>
+								<li><a class="md-trigger" data-modal="logout-modal"><i
+										class="icon-logout-1"></i> Logout</a></li>
+							</ul></li>
+
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
 	<!-- Top Bar End -->
 
 	<!-- Left Sidebar Start -->
@@ -313,6 +394,7 @@
 	<!-- Left Sidebar End -->
 
 </div>
+
 
 
 <div th:fragment="footer (title)">

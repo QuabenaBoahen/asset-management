@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Institution implements Serializable{
+public class Memo implements Serializable{
 	
 	/**
 	 * 

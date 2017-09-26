@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.repository.InstitutionRepository;
+import com.gh.gov.ns.repository.LettersRepository;
 
 @Controller
 public class Letters {
 	@Autowired
-	private InstitutionRepository institutionRepository;
+	private LettersRepository lettersRepository;
 
 	
 	@GetMapping("/inbox_letters")
@@ -27,6 +28,12 @@ public class Letters {
 	public String composeLetter(Model model) {
 
 		return "compose_letter";
+	}
+	
+	@PostMapping("/compose_letter")
+	public String composeNewLetter(Letters letters) {
+		lettersRepository.saveAndFlush(letters);
+		return "redirect:/compose_letter";
 	}
 
 	@GetMapping("/draft_letters")
