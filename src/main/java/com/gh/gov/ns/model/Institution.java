@@ -34,5 +34,9 @@ public class Institution implements Serializable{
 	private String representativeContact;
 	private String representativePosition;
 	private String representativeEmail;
+	
+	
+	
+	
 
 }
