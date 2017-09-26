@@ -13,7 +13,7 @@ import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.repository.InstitutionRepository;
 
 @Controller
-public class Memo {
+public class MemoController {
 	@Autowired
 	private InstitutionRepository institutionRepository;
 

@@ -36,13 +36,11 @@
 									class="btn btn-primary btn-lg btn-block text-left"><i
 									class="icon-left-open-1"></i> Back to Inbox</a>
 							</div>
-							<div class="list-group menu-message">
+								<div class="list-group menu-message">
 								<a th:href="@{/inbox_letters}" class="list-group-item"><i
-									class="icon-inbox"></i> Inbox <span class="badge pull-right">4</span></a>
-								<a th:href="@{/draft_letters}" class="list-group-item"><i
-									class="icon-pencil"></i> Draft <span
-									class="badge bg-green-1 pull-right">1</span></a> <a
-									th:href="@{/sent_letters}" class="list-group-item"><i
+									class="icon-inbox"></i> Inbox </a> <a th:href="@{/draft_letters}"
+									class="list-group-item"><i class="icon-pencil"></i> Draft </a>
+								<a th:href="@{/sent_letters}" class="list-group-item"><i
 									class="icon-export"></i> Sent</a>
 							</div>
 
@@ -81,8 +79,8 @@
 												<button type="submit" class="btn btn-success">
 													<i class="icon-paper-plane-1"></i> Send
 												</button>
-<!-- 												<button type="submit" class="btn btn-danger">Save as Draft</button>
- -->												<a th:href="@{/letter_preview}"><span
+ 												<button type="submit" class="btn btn-danger">Save as Draft</button>
+ 												<a th:href="@{/letter_preview}"><span
 													class="btn btn-blue-1">Preview</span></a>
 											</div>
 										</div>

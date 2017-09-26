@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
+<link th:href="@{/assets/libs/dropzone/css/dropzone.css}" rel="stylesheet"
+	type="text/css" />
 <body class="fixed-left">
 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
 <!-- Begin page -->
@@ -95,7 +97,9 @@
 							</div>
 						<a th:href='@{attach_docs_inst}'><button
 								class="btn btn-success md-close">Attach Document</button></a>
-
+							<div class="fallback">
+									<input name="file" type="file" multiple />
+								</div>
 						<div class="form-group">
 							<div class="col-sm-offset-5 col-sm-5">
 								<button type="submit" class="btn btn-lg btn-default">Submit</button>
@@ -132,6 +136,6 @@
 	<div class="md-overlay"></div>
 	<!-- End of eoverlay modal -->
 		<div th:include="fragments/body :: footer (~{::title})"></div>
-
+<script th:src="@{/assets/libs/dropzone/dropzone.min.js}"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\gh\gov\ns\model\Memo.class
 com\gh\gov\ns\repository\LettersRepository.class
 com\gh\gov\ns\model\Attachment.class
@@ -9,3 +10,32 @@ com\gh\gov\ns\repository\MemoRepository.class
 com\gh\gov\ns\repository\AttachmentRepository.class
 com\gh\gov\ns\web\Letters.class
 com\gh\gov\ns\web\InstitutionProfileController.class
+=======
+com\gh\gov\ns\repository\InstitutionRepository.class
+com\gh\gov\ns\web\MemoController.class
+com\gh\gov\ns\model\Memo.class
+com\gh\gov\ns\model\VehicleInfo.class
+com\gh\gov\ns\config\WebSecurityConfig.class
+com\gh\gov\ns\model\VehicleDocuments.class
+com\gh\gov\ns\model\Role.class
+com\gh\gov\ns\repository\VehicleInfoRepository.class
+com\gh\gov\ns\web\Entries.class
+com\gh\gov\ns\model\Institution.class
+com\gh\gov\ns\repository\MemoRepository.class
+com\gh\gov\ns\repository\AttachmentRepository.class
+com\gh\gov\ns\repository\LettersRepository.class
+com\gh\gov\ns\web\UserController.class
+com\gh\gov\ns\model\User.class
+com\gh\gov\ns\repository\VehicleDocumentsRepository.class
+com\gh\gov\ns\web\IndexController.class
+com\gh\gov\ns\model\Attachment.class
+com\gh\gov\ns\web\LettersController.class
+com\gh\gov\ns\model\Letters.class
+com\gh\gov\ns\Application.class
+com\gh\gov\ns\web\InstitutionController.class
+com\gh\gov\ns\repository\VehicleRepository.class
+com\gh\gov\ns\web\InstitutionProfileController.class
+com\gh\gov\ns\web\VehicleController.class
+com\gh\gov\ns\web\ReportController.class
+com\gh\gov\ns\model\Vehicle.class
+>>>>>>> refs/remotes/origin/themeswitch

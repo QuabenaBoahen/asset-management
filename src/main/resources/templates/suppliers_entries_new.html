@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
+<link th:href="@{/assets/libs/dropzone/css/dropzone.css}" rel="stylesheet"
+	type="text/css" />
 <body class="fixed-left">
-<!-- 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
- --><!-- Begin page -->
+ 		<div th:include="fragments/body :: logout_modal (~{::title})"></div>
+ 
+	<!-- Begin page -->
 	<div id="wrapper">
-	<div th:include="fragments/body :: suppliers_navbar (~{::title})"></div>
+		<div th:include="fragments/body :: suppliers_navbar (~{::title})"></div>
 		<!-- Start right content -->
 		<div class="content-page">
 			<!-- ============================================================== -->
@@ -15,8 +18,8 @@
 			<div class="content">
 				<!-- Page Heading Start -->
 				<div class="page-heading">
-					<span style="float: right;"> <a th:href='@{suppliers_entries}'
-						class="btn btn-danger btn-lg">CANCEL</a></span>
+					<span style="float: right;"> <a
+						th:href='@{suppliers_entries}' class="btn btn-danger btn-lg">CANCEL</a></span>
 					<h1>
 						<i class='fa fa-file'></i> ENTRIES
 					</h1>
@@ -27,151 +30,134 @@
 
 				<div class="row">
 
-				<div class="widget">
+					<div class="widget">
 
-					<div class="widget-content padding">
-						<form class="form-horizontal" role="form">
-							<div class="form-group">
-								<label for="input-text" class="col-sm-2 control-label">Type
-									Of Vehicle</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">Year
-									Of Manufacturing</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputPassword" class="col-sm-2 control-label">Cost
-									of Vehicle</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="inputPassword"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">Engine
-									Number</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">Chasis
-									Number</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Import Duty
-									Exception</label>
-								<div class="col-sm-10">
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios1" value="option1" checked> Yes
-										</label>
-									</div>
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios2" value="option2"> No
-										</label>
+						<div class="widget-content padding">
+							<form class="form-horizontal dropzone"  role="form">
+								<div class="form-group">
+									<label for="input-text" class="col-sm-2 control-label">Type
+										Of Vehicle</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text"
+											placeholder="">
 									</div>
 								</div>
-							</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Year
+										Of Manufacturing</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text-help"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword" class="col-sm-2 control-label">Cost
+										of Vehicle</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputPassword"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Engine
+										Number</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text-help"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Chasis
+										Number</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text-help"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Import Duty
+										Exception</label>
+									<div class="col-sm-10">
+										<div class="radio iradio">
+											<label> <input type="radio" name="optionsRadios"
+												id="optionsRadios1" value="option1" checked> Yes
+											</label>
+										</div>
+										<div class="radio iradio">
+											<label> <input type="radio" name="optionsRadios"
+												id="optionsRadios2" value="option2"> No
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">
+										Import Duty Details</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text-help"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Institution
+										Supplied To</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text-help"
+											placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Date Supplied</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control datepicker-input">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Import Duty
+										Exception</label>
+									<div class="col-sm-10">
+										<div class="radio iradio">
+											<label> <input type="radio" name="optionsRadios"
+												id="optionsRadios1" value="option1" checked> Yes
+											</label>
+										</div>
+										<div class="radio iradio">
+											<label> <input type="radio" name="optionsRadios"
+												id="optionsRadios2" value="option2"> No
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">
+										DVLA Registration Details</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="input-text-help"
+											placeholder="">
+									</div>
+								</div>
 							
 							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">Institution
-									Supplied To</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Date Supplied</label>
-								<div class="col-sm-3">
-									<input type="text" class="form-control datepicker-input">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Import Duty
-									Exception</label>
-								<div class="col-sm-10">
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios1" value="option1" checked> Yes
-										</label>
-									</div>
-									<div class="radio iradio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios2" value="option2"> No
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
 								<label for="input-text-help" class="col-sm-2 control-label">
-									Import Duty Details</label>
+									Payment Details </label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+										placeholder="Enter Cheque Payment Details">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">status</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+								<div class="col-sm-offset-5 col-sm-5">
+									<button type="submit" class="btn btn-lg btn-blue-3">Submit</button>
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">
-									Reason</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
+							<div class="fallback">
+									<input name="file" type="file" multiple />
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">
-									DVLA Registration Details</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="input-text-help"
-										placeholder="">
-								</div>
-							</div>
-						</form>
-
-						<div class="form-group">
-							<label for="input-text-help" class="col-sm-2 control-label">
-								Payment Details </label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="input-text-help"
-									placeholder="Enter Cheque Payment Details">
-							</div>
+					</form>
 						</div>
-						<a th:href='@{attach_docs_suppl}'><button
-								class="btn btn-success md-close">Attach Document</button></a>
-
-						<div class="form-group">
-							<div class="col-sm-offset-5 col-sm-5">
-								<button type="submit" class="btn btn-lg btn-default">Submit</button>
-							</div>
-						</div>
-						</form>
 					</div>
-				</div>
 
-			</div>
+				</div>
 				<!--  content Ends here -->
 
 				<div class="row">
@@ -191,12 +177,13 @@
 
 		</div>
 		<!-- End right content -->
-		</div>
+	</div>
 	<!-- End of page -->
-		<!-- the overlay modal element -->
+	<!-- the overlay modal element -->
 	<div class="md-overlay"></div>
 	<!-- End of eoverlay modal -->
-		<div th:include="fragments/body :: footer (~{::title})"></div>
-
+	<div th:include="fragments/body :: footer (~{::title})"></div>
+		<script th:src="@{/assets/libs/dropzone/dropzone.min.js}"></script>
+	
 </body>
 </html>
