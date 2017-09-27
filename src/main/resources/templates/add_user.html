@@ -37,7 +37,7 @@
 							<div class="form-group">
 								<label for="input-text" class="col-sm-2 control-label">Name</label>
 								<div class="col-sm-10">
-								<input type="hidden" name="role_name" value="NS"/>
+								<input type="hidden" name="role_name" th:value="${nsRoleId}"/>
 									<input type="text" class="form-control" id="input-text"
 										placeholder="" th:field="*{name}">
 								</div>

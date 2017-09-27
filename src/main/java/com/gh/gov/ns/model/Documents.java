@@ -1,14 +1,12 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
@@ -22,8 +20,9 @@ public class Documents implements Serializable{/**
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	private String vehicleDocsId;
-	private String dutyExemValue;
-	private String dutyExemDocument;
+	private String documentId;
+	private String documentLocation;
+	@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
+	private InstitutionEntries institutionEntries;
 
 }

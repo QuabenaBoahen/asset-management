@@ -53,27 +53,31 @@ public class InstitutionController {
 	
 	@GetMapping("/add_institution")
 	public String addInstitutions(Model model){
-		model.addAttribute("user", new User());	
+		model.addAttribute("user", new User());
+		List<Role> roles = roleRepository.findAll();
+		String institutionRoleId="";
+		for(Role role : roles){
+			if(role.getRoleName().equalsIgnoreCase("INSTITUTION")){
+				institutionRoleId=role.getRoleId();
+			}
+		}
+		model.addAttribute("institutionRoleId", institutionRoleId);
 		return "add_institution";
 	}
 	
 	@PostMapping("/add_institution")
 	public String saveInstitutions(Model model, User user, @RequestParam("role_name") String role_name){
-		//Role role= roleService.findRoleByRoleName(role_name);
-		Role role=new Role();
-		role.setRoleId("1");
-		role.setRoleName("INSTITUTION");
-		//if(role!=null){
-		user.setRole(role);	
-		//}
-		userRepository.saveAndFlush(user);
-		
+		Role role = roleRepository.findOne(role_name);
+		if(role!=null){
+			user.setRole(role);
+			userRepository.saveAndFlush(user);
+		}
 		return "redirect:/add_institution";
 	}
 	
 	@GetMapping("/suppliers")
 	public String suppliers(Model model){
-		model.addAttribute("institution", new Institution());
+		model.addAttribute("user", new User());
 		List<User> users=new ArrayList<>();
 		List<User> supplierUsers=userRepository.findAll();
 		for(User user : supplierUsers){
@@ -91,19 +95,24 @@ public class InstitutionController {
 	@GetMapping("/add_suppliers")
 	public String addSuppliers(Model model){
 		model.addAttribute("institution", new Institution());
-		List<Institution> institutions=institutionRepository.findAll();	
-		model.addAttribute("institutions", institutions);
+		List<Role> roles = roleRepository.findAll();
+		String supplierRoleId="";
+		for(Role role : roles){
+			if(role.getRoleName().equalsIgnoreCase("SUPPLIER")){
+				supplierRoleId=role.getRoleId();
+			}
+		}
+		model.addAttribute("supplierRoleId", supplierRoleId);
 		return "add_suppliers";
 	}
 	
 	@PostMapping("/add_suppliers")
 	public String saveSuppliers(Model model, User user, @RequestParam("role_name") String role_name){
-		Role role= roleService.findRoleByRoleName(role_name);
+		Role role = roleRepository.findOne(role_name);
 		if(role!=null){
-		//user.setRoleId(role.getRoleId());	
+			user.setRole(role);
+			userRepository.saveAndFlush(user);
 		}
-		
-		userRepository.saveAndFlush(user);
 		return "redirect:/add_suppliers";
 	}
 

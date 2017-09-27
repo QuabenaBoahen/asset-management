@@ -28,10 +28,6 @@ public class InstitutionProfileController {
 		return "redirect:/institutions_entries";
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/themeswitch
 	@GetMapping("/suppliers_profile")
 	public String suppliers_profile(Model model) {
 		model.addAttribute("institution", new Institution());

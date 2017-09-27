@@ -23,9 +23,6 @@ public class UserController {
 	
 	@Autowired
 	private RoleRepository roleRepository;
-	
-	@Autowired
-	private RoleService roleService;
 
 	@GetMapping("/users")
 	public String users() {
@@ -52,16 +49,24 @@ public class UserController {
 	@GetMapping("/add_user")
 	public String addUser(Model model) {
 		model.addAttribute("user", new User());
+		List<Role> roles = roleRepository.findAll();
+		String nsRoleId="";
+		for(Role role : roles){
+			if(role.getRoleName().equalsIgnoreCase("NS")){
+				nsRoleId=role.getRoleId();
+			}
+		}
+		model.addAttribute("nsRoleId", nsRoleId);
 		return "add_user";
 	}
 	
 	@PostMapping("/add_user")
 	public String saveUser(Model model, User user, @RequestParam("role_name") String role_name) {
-		/*Role role = roleService.findRoleByRoleName(role_name);
+		Role role = roleRepository.findOne(role_name);
 		if(role!=null){
-			user.getRole().setRoleId(role.getRoleId());
-		}*/
-		userRepository.saveAndFlush(user);
+			user.setRole(role);
+			userRepository.saveAndFlush(user);
+		}	
 		return "redirect:/add_user";
 	}
 

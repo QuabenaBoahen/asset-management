@@ -37,7 +37,7 @@
 									<label for="input-text" class="col-sm-2 control-label">Institution
 										Name</label>
 									<div class="col-sm-10">
-									<input type="hidden" name="role_name" value="INSTITUTION"/>
+									<input type="hidden" name="role_name" th:value="${institutionRoleId}"/>
 										<input  required  type="text" class="form-control" 
 										th:field="*{departmentIdentifier}"	placeholder="">
 									</div>
