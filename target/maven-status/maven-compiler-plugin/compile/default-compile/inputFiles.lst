@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-management\src\main\java\com\gh\gov\ns\model\InstitutionEntries.java
 C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-management\src\main\java\com\gh\gov\ns\service\UserService.java
 C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-management\src\main\java\com\gh\gov\ns\model\Attachment.java
@@ -29,3 +30,21 @@ C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-
 C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-management\src\main\java\com\gh\gov\ns\service\RoleService.java
 C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-management\src\main\java\com\gh\gov\ns\web\ReportController.java
 C:\Users\ADM-KJO\Documents\workspace-sts-3.9.0.RELEASE\nsAssetmanagement2\asset-management\src\main\java\com\gh\gov\ns\web\VehicleController.java
+=======
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\model\VehicleInfo.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\web\InstitutionController.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\model\User.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\config\WebSecurityConfig.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\model\Role.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\repository\VehicleRepository.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\model\VehicleDocuments.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\model\Institution.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\web\VehicleController.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\web\IndexController.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\repository\InstitutionRepository.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\Application.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\web\UserController.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\model\Vehicle.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\repository\VehicleInfoRepository.java
+C:\Users\Quabena\GithubProjects\asset-management\src\main\java\com\gh\gov\ns\repository\VehicleDocumentsRepository.java
+>>>>>>> 9859f99f755f405f7312c02c019f7efb000d1781
