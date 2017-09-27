@@ -33,69 +33,7 @@ public class Letters implements Serializable {
 	@OneToMany(mappedBy = "attachment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Attachment> attachments;
 	private LocalDate date;
-	/*
-	 * @OneToMany(mappedBy="userId", fetch=FetchType.LAZY, cascade =
-	 * CascadeType.ALL)
-	 */ private String recipients;
-
-	public String getLetterId() {
-		return letterId;
-	}
-
-	public void setLetterId(String letterId) {
-		this.letterId = letterId;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public List<Attachment> getAttachments() {
-		return attachments;
-	}
-
-	public void setAttachments(List<Attachment> attachments) {
-		this.attachments = attachments;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public String getSender() {
-		return sender;
-	}
-
-	public void setSender(String sender) {
-		this.sender = sender;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	public String getRecipients() {
-		return recipients;
-	}
-
-	public void setRecipients(String recipients) {
-		this.recipients = recipients;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+/*	@OneToMany(mappedBy = "userId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+*/	private String recipients;
 
 }
