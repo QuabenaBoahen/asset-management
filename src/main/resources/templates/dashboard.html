@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org">
+	xmlns:sec="http://www.thymeleaf.org">
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
 <body class="fixed-left">
 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
- <!-- Begin page -->
+	<!-- Begin page -->
 	<div id="wrapper">
-	<div th:include="fragments/body :: admin_navbar (~{::title})"></div>
+		<div th:include="fragments/body :: admin_navbar (~{::title})"></div>
 		<!-- Start right content -->
 		<div class="content-page">
 			<!-- ============================================================== -->
@@ -15,57 +15,67 @@ xmlns:sec="http://www.thymeleaf.org">
 			<!-- ============================================================== -->
 			<div class="content">
 				<!--  content starts here -->
-<div class="content">
-				<!-- Start info box -->
-				<div class="row top-summary">
-					<div class="col-lg-3 col-md-6">
-						<div class="widget green-1 animated fadeInDown">
-							<div class="widget-content padding">
-								<div class="widget-icon">
-									<i class=""></i>
+				<div class="content">
+					<!-- Start info box -->
+					<div class="row top-summary">
+						<div class="col-lg-3 col-md-6">
+							<div class="widget green-1 animated fadeInDown">
+								<div class="widget-content padding">
+									<div class="widget-icon">
+										<i class=""></i>
+									</div>
+									<div class="text-box">
+										<p class="maindata">
+											TOTAL <b>NUMBER OF VEHICLES </b>
+										</p>
+										<h2>
+											<span class="animate-number" data-value="233"
+												data-duration="3000">0</span>
+										</h2>
+										<div class="clearfix"></div>
+									</div>
 								</div>
-								<div class="text-box">
-									<p class="maindata">TOTAL <b>NUMBER OF VEHICLES </b></p>
-									<h2><span class="animate-number" data-value="233" data-duration="3000">0</span></h2>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							<div class="widget-footer">
-								<div class="row">
-									<!-- <div class="col-sm-12">
+								<div class="widget-footer">
+									<div class="row">
+										<!-- <div class="col-sm-12">
 										<i class="fa fa-caret-up rel-change"></i> <b>39%</b> increase in tracking
 									</div> -->
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6">
-						<div class="widget darkblue-2 animated fadeInDown">
-							<div class="widget-content padding">
-								<div class="widget-icon">
-									<i class=""></i>
-								</div>
-								<div class="text-box">
-									<p class="maindata">UNRECONCILED <b>VEHICLES</b></p>
-									<h2><span class="animate-number" data-value="99" data-duration="3000">0</span></h2>
-
+									</div>
 									<div class="clearfix"></div>
 								</div>
 							</div>
-							<div class="widget-footer">
-								<div class="row">
-									<!-- <div class="col-sm-12">
+						</div>
+
+						<div class="col-lg-3 col-md-6">
+							<div class="widget darkblue-2 animated fadeInDown">
+								<div class="widget-content padding">
+									<div class="widget-icon">
+										<i class=""></i>
+									</div>
+									<div class="text-box">
+										<p class="maindata">
+											UNRECONCILED <b>VEHICLES</b>
+										</p>
+										<h2>
+											<span class="animate-number" data-value="99"
+												data-duration="3000">0</span>
+										</h2>
+
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="widget-footer">
+									<div class="row">
+										<!-- <div class="col-sm-12">
 										<i class="fa fa-caret-down rel-change"></i> <b>11% </b> of expected registration 
 									</div> -->
+									</div>
+									<div class="clearfix"></div>
 								</div>
-								<div class="clearfix"></div>
 							</div>
 						</div>
-					</div>
 
-					<!-- <div class="col-lg-3 col-md-6">
+						<!-- <div class="col-lg-3 col-md-6">
 						<div class="widget pink-1 animated fadeInDown">
 							<div class="widget-content padding">
 								<div class="widget-icon">
@@ -88,34 +98,39 @@ xmlns:sec="http://www.thymeleaf.org">
 						</div>
 					</div> -->
 
-					<div class="col-lg-3 col-md-6">
-						<div class="widget pink-1 animated fadeInDown">
-							<div class="widget-content padding">
-								<div class="widget-icon">
-									<i class=""></i>
+						<div class="col-lg-3 col-md-6">
+							<div class="widget pink-1 animated fadeInDown">
+								<div class="widget-content padding">
+									<div class="widget-icon">
+										<i class=""></i>
+									</div>
+									<div class="text-box">
+										<p class="maindata">
+											AUCTIONED <b>VEHICLES</b>
+										</p>
+										<h2>
+											<span class="animate-number" data-value="28"
+												data-duration="3000">0</span>
+										</h2>
+										<div class="clearfix"></div>
+									</div>
 								</div>
-								<div class="text-box">
-									<p class="maindata">AUCTIONED <b>VEHICLES</b></p>
-									<h2><span class="animate-number" data-value="28" data-duration="3000">0</span></h2>
+								<div class="widget-footer">
+									<div class="row">
+										<div class="col-sm-12">
+											<i class="fa fa-caret-up rel-change"></i> <b></b>
+										</div>
+									</div>
 									<div class="clearfix"></div>
 								</div>
 							</div>
-							<div class="widget-footer">
-								<div class="row">
-									<div class="col-sm-12">
-										<i class="fa fa-caret-up rel-change"></i> <b></b>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
 						</div>
+
 					</div>
+					<!-- End of info box -->
 
 				</div>
-				<!-- End of info box -->
 
-				</div>
-				
 
 				<!--  content Ends here -->
 
@@ -136,12 +151,12 @@ xmlns:sec="http://www.thymeleaf.org">
 
 		</div>
 		<!-- End right content -->
-		</div>
+	</div>
 	<!-- End of page -->
-		<!-- the overlay modal element -->
+	<!-- the overlay modal element -->
 	<div class="md-overlay"></div>
 	<!-- End of eoverlay modal -->
-		<div th:include="fragments/body :: footer (~{::title})"></div>
+	<div th:include="fragments/body :: footer (~{::title})"></div>
 
 </body>
 </html>
