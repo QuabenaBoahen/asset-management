@@ -45,11 +45,11 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>GHANA EDUCATION SERVICE</td>
-													<td>MINISTRY OF EDUCATION</td>
-													<td>education1</td>
-													<td>educat1234</td>
+												<tr th:each="supplierUser : ${supplierUsers}">
+													<td th:text="${supplierUser.departmentIdentifier}">GHANA EDUCATION SERVICE</td>
+													<td th:text="${supplierUser.ministryDescription}">MINISTRY OF EDUCATION</td>
+													<td th:text="${supplierUser.username}">education1</td>
+													<td th:text="${supplierUser.password}">educat1234</td>
 												</tr>
 											</tbody>
 										</table>

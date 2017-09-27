@@ -46,12 +46,12 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>user one</td>
-												<td>user one</td>
-												<td>user one</td>
-												<td>user one</td>
-												<td>user one</td>
+											<tr th:each="user : ${users}">
+												<td th:text="${user.name}">user one</td>
+												<td th:text="${user.departmentIdentifier}">user one</td>
+												<td th:text="${user.position}">user one</td>
+												<td th:text="${user.username}">user one</td>
+												<td th:text="${user.password}">user one</td>
 											</tr>
 										</tbody>
 									</table>

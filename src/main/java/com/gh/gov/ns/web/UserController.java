@@ -1,10 +1,31 @@
 package com.gh.gov.ns.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.gh.gov.ns.model.Role;
+import com.gh.gov.ns.model.User;
+import com.gh.gov.ns.repository.RoleRepository;
+import com.gh.gov.ns.repository.UserRepository;
+import com.gh.gov.ns.service.RoleService;
 
 @Controller
 public class UserController {
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private RoleService roleService;
 
 	@GetMapping("/users")
 	public String users() {
@@ -12,13 +33,36 @@ public class UserController {
 	}
 
 	@GetMapping("/useraccount")
-	public String userAccount() {
+	public String userAccount(Model model) {
+		
+		List<User> users=new ArrayList<>();
+		List<User> nationalSecUsers = userRepository.findAll();
+		for(User user : nationalSecUsers){
+			if(!user.getRole().getRoleId().contentEquals("5")){
+				Role role=roleRepository.findOne(user.getRole().getRoleId());
+				if(role.getRoleName().contentEquals("NS")){
+					users.add(user);
+				}
+			}			
+		}
+		model.addAttribute("users", users);
 		return "useraccount";
 	}
 
 	@GetMapping("/add_user")
-	public String addUser() {
+	public String addUser(Model model) {
+		model.addAttribute("user", new User());
 		return "add_user";
+	}
+	
+	@PostMapping("/add_user")
+	public String saveUser(Model model, User user, @RequestParam("role_name") String role_name) {
+		/*Role role = roleService.findRoleByRoleName(role_name);
+		if(role!=null){
+			user.getRole().setRoleId(role.getRoleId());
+		}*/
+		userRepository.saveAndFlush(user);
+		return "redirect:/add_user";
 	}
 
 }

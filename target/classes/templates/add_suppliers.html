@@ -29,12 +29,13 @@
 				<div class="row">
 					<div class="widget">
 						<div class="widget-content padding">
-							<form th:method="post" th:action="@{/institutions}" th:object="${institution}" class="form-horizontal" role="form">
+							<form th:method="post" th:action="@{/add_suppliers}" th:object="${institution}" class="form-horizontal" role="form">
 
 								<div class="form-group">
 									<label for="input-text" class="col-sm-2 control-label">Suppliers 
 										Name</label>
 									<div class="col-sm-10">
+									<input type="hidden" name="role_name" value="SUPPLIER"/>
 										<input  required  type="text" class="form-control" id="name" 
 										th:field="*{name}"	placeholder="">
 									</div>

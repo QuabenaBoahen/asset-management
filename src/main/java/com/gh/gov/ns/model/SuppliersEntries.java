@@ -30,7 +30,7 @@ public class SuppliersEntries implements Serializable{/**
 	private String institutionSuppliedTo;
 	private int importDutyExemption;
 	private String importDutyDetails;
-	private String paymentCheckDetails;
+	private String paymentChequeDetails;
 	private String dvlaRegistrationDetails;
 
 }

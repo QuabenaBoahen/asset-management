@@ -1,14 +1,10 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -34,9 +30,6 @@ public class Institution implements Serializable{
 	private String representativeContact;
 	private String representativePosition;
 	private String representativeEmail;
-	
-	
-	
-	
+		
 
 }

@@ -34,10 +34,12 @@ public class User implements Serializable, UserDetails{
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String userId;
+	private String name;
 	private String username;
 	private String password;
 	private String departmentIdentifier;
 	private String ministryDescription;
+	private String position;
 	private boolean isAccountNonExpired;
 	private boolean isAccountNonLocked;
 	private boolean isCredentialsNonExpired;

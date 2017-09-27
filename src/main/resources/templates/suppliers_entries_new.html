@@ -33,13 +33,15 @@
 					<div class="widget">
 
 						<div class="widget-content padding">
-							<form action="#" class="form-horizontal" role="form">
+							<form action="#" class="form-horizontal" role="form" 
+							th:object="${suppliersEntries}" th:action="@{/suppliers_entries_new}" 
+							th:method="post">
 								<div class="form-group">
 									<label for="input-text" class="col-sm-2 control-label">Type
 										Of Vehicle</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text"
-											placeholder="">
+											placeholder="" th:field="*{typeOfVehicle}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -47,7 +49,7 @@
 										Of Manufacturing</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text-help"
-											placeholder="">
+											placeholder="" th:field="*{manufYear}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -55,7 +57,7 @@
 										of Vehicle</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="inputPassword"
-											placeholder="">
+											placeholder="" th:field="*{costOfVehicle}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -63,7 +65,7 @@
 										Number</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text-help"
-											placeholder="">
+											placeholder="" th:field="*{engineNumber}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -71,31 +73,32 @@
 										Number</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text-help"
-											placeholder="">
+											placeholder="" th:field="*{chassisNumber}">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Import Duty
 										Exception</label>
 									<div class="col-sm-10">
-										<div class="radio iradio">
-											<label> <input type="radio" name="optionsRadios"
-												id="optionsRadios1" value="option1" checked> Yes
+									<input type="hidden" name="dutyExemptionValue" />
+										<div class="radio">
+											<label><input type="radio" name="dutyExemptionRadio"
+												value="1" class="dutyExemptionRadio"> Yes
 											</label>
 										</div>
-										<div class="radio iradio">
-											<label> <input type="radio" name="optionsRadios"
-												id="optionsRadios2" value="option2"> No
+										<div class="radio">
+											<label><input type="radio" name="dutyExemptionRadio"
+												value="0" class="dutyExemptionRadio"> No
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="dutyDetails">
 									<label for="input-text-help" class="col-sm-2 control-label">
 										Import Duty Details</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
-											placeholder="">
+										<input type="text" class="form-control"
+											placeholder="" th:field="*{importDutyDetails}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -103,29 +106,14 @@
 										Supplied To</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text-help"
-											placeholder="">
+											placeholder="" th:field="*{institutionSuppliedTo}">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Date Supplied</label>
 									<div class="col-sm-3">
-										<input type="text" class="form-control datepicker-input">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Import Duty
-										Exception</label>
-									<div class="col-sm-10">
-										<div class="radio iradio">
-											<label> <input type="radio" name="optionsRadios"
-												id="optionsRadios1" value="option1" checked> Yes
-											</label>
-										</div>
-										<div class="radio iradio">
-											<label> <input type="radio" name="optionsRadios"
-												id="optionsRadios2" value="option2"> No
-											</label>
-										</div>
+										<input type="text" class="form-control datepicker-input"
+										th:field="*{dateSupplied}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -133,7 +121,7 @@
 										DVLA Registration Details</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text-help"
-											placeholder="">
+											placeholder="" th:field="*{dvlaRegistrationDetails}">
 									</div>
 								</div>
 
@@ -142,7 +130,7 @@
 										Payment Details </label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="input-text-help"
-											placeholder="Enter Cheque Payment Details">
+											placeholder="Enter Cheque Payment Details" th:field="*{paymentChequeDetails}">
 									</div>
 								</div>
 								<div action="#"  class="form-group dropzone">
@@ -187,6 +175,12 @@
 	<!-- End of eoverlay modal -->
 	<div th:include="fragments/body :: footer (~{::title})"></div>
 	<script th:src="@{/assets/libs/dropzone/dropzone.min.js}"></script>
+	<script>
+	$(document).ready(function(){
+		$("#dutyDetails").hide();
+	
+	});
+	</script>
 
 </body>
 </html>

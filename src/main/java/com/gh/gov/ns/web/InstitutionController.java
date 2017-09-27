@@ -37,16 +37,17 @@ public class InstitutionController {
 	@GetMapping("/institutions")
 	public String institution(Model model){
 		model.addAttribute("institution", new Institution());
-		List<User> users=new ArrayList<User>();
-		List<User> institutionsRegistered = userRepository.findAll();
-		/*for(User user : institutionsRegistered){
-			String institutionRegistered = user.getRole().getRoleId();
-			Role role = roleRepository.findOne(institutionRegistered);
-			if(role.getRoleName().contentEquals("INSTITUTION")){
-				users.add(user);
-			}
-		}*/
-		model.addAttribute("users", institutionsRegistered);
+		List<User> users=new ArrayList<>();
+		List<User> supplierUsers=userRepository.findAll();
+		for(User user : supplierUsers){
+			if(!user.getRole().getRoleId().contentEquals("5")){
+				Role role=roleRepository.findOne(user.getRole().getRoleId());
+				if(role.getRoleName().contentEquals("INSTITUTION")){
+					users.add(user);
+				}
+			}			
+		}
+		model.addAttribute("users", users);
 		return "institutions";
 	}
 	
@@ -73,8 +74,17 @@ public class InstitutionController {
 	@GetMapping("/suppliers")
 	public String suppliers(Model model){
 		model.addAttribute("institution", new Institution());
-		List<Institution> institutions=institutionRepository.findAll();	
-		model.addAttribute("institutions", institutions);
+		List<User> users=new ArrayList<>();
+		List<User> supplierUsers=userRepository.findAll();
+		for(User user : supplierUsers){
+			if(!user.getRole().getRoleId().contentEquals("5")){
+				Role role=roleRepository.findOne(user.getRole().getRoleId());
+				if(role.getRoleName().contentEquals("SUPPLIER")){
+					users.add(user);
+				}
+			}			
+		}
+		model.addAttribute("supplierUsers", users);
 		return "suppliers";
 	}
 	
