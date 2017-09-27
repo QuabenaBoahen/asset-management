@@ -14,11 +14,6 @@ spring:
        
   datasource: 
     #type: com.zaxxer.hikari.HikariDataSource
-<<<<<<< HEAD
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ns_asset_mgt?autoReconnect=true&useSSL=false
-    username: root
-=======
     #driver-class-name: com.mysql.jdbc.Driver
     #url: jdbc:mysql://localhost:1234/ns_asset_mgt?autoReconnect=true&useSSL=false
     #username: root
@@ -26,5 +21,4 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:ns_asset_mgt
     username: sa
->>>>>>> b31e6a524984b1f6e29f2c7b2f1297b72a2ee5b3
     password: 

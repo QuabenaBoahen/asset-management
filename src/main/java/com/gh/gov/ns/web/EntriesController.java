@@ -91,9 +91,35 @@ public class EntriesController {
 	}
 	
 	@PostMapping("/suppliers_entries_new")
-	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers) {
-		suppliersEntryRepository.saveAndFlush(suppliers);
-		//System.out.println("cvjhvjc " + suppliers);
+	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers,
+			@RequestParam("file") MultipartFile file[], RedirectAttributes ra, 
+			@RequestParam(value="dutyExemptionRadio", required=false) String dutyExemptionRadio) {
+     List<Documents> docs= new ArrayList<>();
+		if (file.length==0) {
+            ra.addFlashAttribute("message", "Please select a file to upload");
+        }
+		
+        try {
+        	for(int i=0; i< file.length; i++)
+        	{
+        		byte[] bytes = file[i].getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER + file[i].getOriginalFilename());
+                Files.write(path, bytes);
+                
+                Documents newDoc =new Documents();
+                newDoc.setDocumentLocation(UPLOADED_FOLDER + "/" + file[i].getOriginalFilename());
+                Documents doc = DocumentsRepository.saveAndFlush(newDoc);
+                docs.add(doc);          
+                suppliers.setDocuments(docs);
+              
+        	}
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+        	suppliersEntryRepository.saveAndFlush(suppliers);
+        }
+		
 		return "redirect:/suppliers_entries_new";
 	}
 	

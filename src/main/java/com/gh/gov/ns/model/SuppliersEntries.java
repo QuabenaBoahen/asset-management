@@ -1,9 +1,14 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -32,5 +37,11 @@ public class SuppliersEntries implements Serializable{/**
 	private String importDutyDetails;
 	private String paymentChequeDetails;
 	private String dvlaRegistrationDetails;
+	
+	@OneToMany
+	@JoinTable(name="suppliers_documents", joinColumns = @JoinColumn(name="supplier_id", 
+	referencedColumnName ="entryId"), inverseJoinColumns = 
+	@JoinColumn(name="document_id", referencedColumnName="documentId"))
+	private List<Documents> documents;
 
 }

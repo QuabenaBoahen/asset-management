@@ -24,5 +24,8 @@ public class Documents implements Serializable{/**
 	private String documentLocation;
 	@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
 	private InstitutionEntries institutionEntries;
+	
+	@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
+	private SuppliersEntries suppliersEntries;
 
 }
