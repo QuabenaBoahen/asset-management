@@ -14,7 +14,6 @@ import com.gh.gov.ns.model.Role;
 import com.gh.gov.ns.model.User;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.UserRepository;
-import com.gh.gov.ns.service.RoleService;
 
 @Controller
 public class UserController {
@@ -35,8 +34,8 @@ public class UserController {
 		List<User> users=new ArrayList<>();
 		List<User> nationalSecUsers = userRepository.findAll();
 		for(User user : nationalSecUsers){
-			if(!user.getRole().getRoleId().contentEquals("5")){
-				Role role=roleRepository.findOne(user.getRole().getRoleId());
+			if(!user.getRoleId().contentEquals("5")){
+				Role role=roleRepository.findOne(user.getRoleId());
 				if(role.getRoleName().contentEquals("NS")){
 					users.add(user);
 				}
@@ -64,7 +63,7 @@ public class UserController {
 	public String saveUser(Model model, User user, @RequestParam("role_name") String role_name) {
 		Role role = roleRepository.findOne(role_name);
 		if(role!=null){
-			user.setRole(role);
+			user.setRoleId(role.getRoleId());
 			userRepository.saveAndFlush(user);
 		}	
 		return "redirect:/add_user";

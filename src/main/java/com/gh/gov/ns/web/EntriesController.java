@@ -92,8 +92,8 @@ public class EntriesController {
 	
 	@PostMapping("/suppliers_entries_new")
 	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers) {
-		//suppliersEntryRepository.saveAndFlush(suppliers);
-		System.out.println("cvjhvjc " + suppliers);
+		suppliersEntryRepository.saveAndFlush(suppliers);
+		//System.out.println("cvjhvjc " + suppliers);
 		return "redirect:/suppliers_entries_new";
 	}
 	

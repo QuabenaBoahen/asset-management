@@ -1,25 +1,24 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.gh.gov.ns.repository.RoleRepository;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -45,11 +44,14 @@ public class User implements Serializable, UserDetails{
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 	
-	@OneToOne
+	/*@OneToOne
 	@JoinTable(name="users_role", joinColumns = @JoinColumn(name="user_id", 
 	referencedColumnName ="userId"), inverseJoinColumns = 
 	@JoinColumn(name="role_id", referencedColumnName="roleId"))
-	private Role role;
+	@JsonManagedReference*/
+	/*@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id")*/
+	private String roleId;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -72,6 +74,11 @@ public class User implements Serializable, UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+	
+	@Override
+	public String toString(){
+		return "username: '" + this.username + "', roleId: '" + this.roleId;
 	}
 
 }
