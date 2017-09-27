@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
+
 <link th:href="@{assets/libs/summernote/summernote.css}"
 	rel="stylesheet" type="text/css" />
 <body class="fixed-left">
@@ -18,7 +19,7 @@
 				<!-- Page Heading Start -->
 				<div class="page-heading">
 					<h1>
-						<i class='fa fa-envelope'></i>Compose
+						<i class='fa fa-envelope'></i>Compose Letter
 					</h1>
 				</div>
 				<!-- Page Heading End-->
@@ -26,6 +27,7 @@
 				<!--  content starts here -->
 
 				<!-- Your awesome content goes here -->
+
 				<div class="box-info box-messages animated fadeInDown">
 					<div class="row">
 						<div class="col-md-3">
@@ -36,15 +38,13 @@
 									class="btn btn-primary btn-lg btn-block text-left"><i
 									class="icon-left-open-1"></i> Back to Inbox</a>
 							</div>
-								<div class="list-group menu-message">
+							<div class="list-group menu-message">
 								<a th:href="@{/inbox_letters}" class="list-group-item"><i
 									class="icon-inbox"></i> Inbox </a> <a th:href="@{/draft_letters}"
 									class="list-group-item"><i class="icon-pencil"></i> Draft </a>
 								<a th:href="@{/sent_letters}" class="list-group-item"><i
 									class="icon-export"></i> Sent</a>
 							</div>
-
-
 						</div>
 						<!-- ENd div .col-md-2 -->
 
@@ -52,26 +52,47 @@
 						<div class="col-md-9">
 							<div class="widget">
 								<div class="widget-content padding">
-									<form th:action="@{/compose_letter}" th:object="${letters}"
-										method="post" role="form" class="form-horizontal">
+									<form method="post" role="form" class="form-horizontal">
+										<!-- Modal -->
+										<div id="myModal" class="modal fade" role="dialog">
+											<div class="modal-dialog">
+
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Modal Header</h4>
+													</div>
+													<div class="modal-body">
+														<p>Some text in the modal.</p>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default"
+															data-dismiss="modal">Close</button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<!-- Modal End -->
 										<div class="form-group">
 											<label class="control-label col-sm-1 col-xs-1">To:</label>
 											<div class="col-sm-10 col-xs-8">
-												<select class="form-control">
-													<option value="">Select Recepients</option>
-													<option th:field="*{recipients}" value="recipient one"> recipient one</option>
-												</select>
+												<span data-toggle="modal" data-target="#myModal"
+												 id="myModal" class="btn btn-success"> <i
+													class="fa fa-users"></i> Select Receipts
+												</span>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-sm-1">Subject:</label>
 											<div class="col-sm-11">
-												<input th:field="*{subject}" type="text" class="form-control ">
+												<input type="text" class="form-control ">
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-12">
-												<textarea th:field="*{content}" class="summernote-small form-control"></textarea>
+												<textarea class="summernote-small form-control"></textarea>
 											</div>
 										</div>
 										<div class="row">
@@ -79,8 +100,9 @@
 												<button type="submit" class="btn btn-success">
 													<i class="icon-paper-plane-1"></i> Send
 												</button>
- 												<button type="submit" class="btn btn-danger">Save as Draft</button>
- 												<a th:href="@{/letter_preview}"><span
+												<button type="submit" class="btn btn-danger">Save
+													as Draft</button>
+												<a th:href="@{/letter_preview}"><span
 													class="btn btn-blue-1">Preview</span></a>
 											</div>
 										</div>
@@ -120,6 +142,7 @@
 	<div th:include="fragments/body :: footer (~{::title})"></div>
 	<script th:src="@{assets/libs/summernote/summernote.js}"></script>
 	<script th:src="@{assets/js/pages/new-message.js}"></script>
+
 
 </body>
 </html>

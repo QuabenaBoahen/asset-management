@@ -28,11 +28,7 @@ public class InstitutionProfileController {
 		return "redirect:/institutions_entries";
 	}
 
-<<<<<<< HEAD
-@GetMapping("/suppliers_profile")
-=======
 	@GetMapping("/suppliers_profile")
->>>>>>> a5e344e823e240f9beaba0ea3493006294ca6797
 	public String suppliers_profile(Model model) {
 		model.addAttribute("institution", new Institution());
 		List<Institution> institutions = institutionRepository.findAll();
