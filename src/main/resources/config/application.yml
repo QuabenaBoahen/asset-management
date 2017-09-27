@@ -14,10 +14,13 @@ spring:
        
   datasource: 
     #type: com.zaxxer.hikari.HikariDataSource
+<<<<<<< HEAD
     #driver-class-name: com.mysql.jdbc.Driver
     #url: jdbc:mysql://localhost:1234/ns_asset_mgt?autoReconnect=true&useSSL=false
     #username: root
     #password: fredbo123
+=======
+>>>>>>> e49067b0bd0252a8d163ddb85379dc43b761e429
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:ns_asset_mgt
     username: sa
