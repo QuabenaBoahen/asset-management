@@ -88,7 +88,7 @@
 										</div>
 										<div class="radio">
 											<label><input type="radio" name="dutyExemptionRadio"
-												value="0" class="dutyExemptionRadio"> No
+												value="0" id="dutyExemptionRadio"> No
 											</label>
 										</div>
 									</div>
@@ -178,8 +178,19 @@
 	<script>
 	$(document).ready(function(){
 		$("#dutyDetails").hide();
-	
+		 $(document).mouseover(function (){
+			 var check = document.getElementById('dutyExemptionRadio');
+			 if(check.checked == true){
+				 $("#dutyDetails").hide();
+				 console.log(check.checked);
+			 }else{
+				 $("#dutyDetails").show();
+				 console.log(check.checked);
+			 }
+			
+		 })
 	});
+	
 	</script>
 
 </body>
