@@ -3,7 +3,11 @@
 <title>NS Asset Management - Institutions</title>
 <head th:include="fragments/body :: head (~{::title})"></head>
 <link th:href="@{/assets/libs/dropzone/css/dropzone.css}"
-	rel="stylesheet" type="text/css" />
+	rel="stylesheet" type="text/css" /> 
+	
+<!-- <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+ -->
+	
 <body class="fixed-left">
 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
 
@@ -33,7 +37,7 @@
 					<div class="widget">
 
 						<div class="widget-content padding">
-							<form action="#" class="form-horizontal" role="form" 
+							<form action="#" class="form-horizontal dropzone" role="form" 
 							th:object="${suppliersEntries}" th:action="@{/suppliers_entries_new}" 
 							th:method="post">
 								<div class="form-group">
@@ -88,7 +92,7 @@
 										</div>
 										<div class="radio">
 											<label><input type="radio" name="dutyExemptionRadio"
-												value="0" class="dutyExemptionRadio"> No
+												value="0" id="dutyExemptionRadio"> No
 											</label>
 										</div>
 									</div>
@@ -133,7 +137,7 @@
 											placeholder="Enter Cheque Payment Details" th:field="*{paymentChequeDetails}">
 									</div>
 								</div>
-								<div action="#"  class="form-group dropzone">
+								<div  class="form-group ">
 									<div class="fallback">
 										<input name="file" type="file" multiple />
 									</div>
@@ -174,13 +178,25 @@
 	<div class="md-overlay"></div>
 	<!-- End of eoverlay modal -->
 	<div th:include="fragments/body :: footer (~{::title})"></div>
-	<script th:src="@{/assets/libs/dropzone/dropzone.min.js}"></script>
-	<script>
+<script th:src="@{/assets/libs/dropzone/dropzone.min.js}"></script>
+ 
+<!--  <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+ --> <script>
 	$(document).ready(function(){
 		$("#dutyDetails").hide();
-	
+		 $(document).mouseover(function (){
+			 var check = document.getElementById('dutyExemptionRadio');
+			 if(check.checked == true){
+				 $("#dutyDetails").hide();
+				 console.log(check.checked);
+			 }else{
+				 $("#dutyDetails").show();
+				 console.log(check.checked);
+			 }
+			
+		 })
 	});
+	
 	</script>
-
 </body>
 </html>

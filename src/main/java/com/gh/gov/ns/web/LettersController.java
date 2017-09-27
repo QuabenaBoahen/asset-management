@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gh.gov.ns.model.Letters;
+import com.gh.gov.ns.model.User;
 import com.gh.gov.ns.repository.LettersRepository;
+import com.gh.gov.ns.repository.UserRepository;
 
 @Controller
 public class LettersController {
 	@Autowired
 	private LettersRepository lettersRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping("/inbox_letters")
 	public String inboxLetters(Model model) {
@@ -27,7 +31,9 @@ public class LettersController {
 	public String composeLetter(Model model) {
 		model.addAttribute("letters", new Letters());
 		List<Letters> lettersall = lettersRepository.findAll();
+		List<User> users = userRepository.findAll();
 		model.addAttribute("lettersall", lettersall);
+		model.addAttribute("users", users);
 		return "compose_letter";
 	}
 

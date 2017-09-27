@@ -45,8 +45,9 @@
 									data-modal="new-message"><i class="icon-pencil"></i></a>
 							</div>
 							<div class="list-group menu-message">
-								<a th:href="@{/inbox_letters}" class="list-group-item"><i
-									class="icon-inbox"></i> Inbox </a> <a th:href="@{/draft_letters}"
+								<!-- <a th:href="@{/inbox_letters}" class="list-group-item"><i
+									class="icon-inbox"></i> Inbox </a> -->
+									 <a th:href="@{/draft_letters}"
 									class="list-group-item"><i class="icon-pencil"></i> Draft </a>
 								<a th:href="@{/sent_letters}" class="list-group-item"><i
 									class="icon-export"></i> Sent</a>
@@ -98,17 +99,7 @@
 								<!-- End message table -->
 
 								<!-- Footer message toolbar -->
-								<div class="data-table-toolbar-footer">
-									<div class="pull-right">
-										<span class="paging-status">20 of 250</span>
-										<div class="btn-group">
-											<a class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
-											<a class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
-										</div>
-										<!-- End div .btn-group -->
-									</div>
-									<!-- End div .pull-right -->
-								</div>
+							
 								<!-- End div .data-table-toolbar -->
 								<!-- End Footer message toolbar -->
 							</div>
