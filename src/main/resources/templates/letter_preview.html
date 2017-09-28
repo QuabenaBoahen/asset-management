@@ -32,8 +32,9 @@
 				<div class="widget invoice">
 					<div class="widget-content padding">
 							<div class="row">
-								<div class="col-sm-offset-5">
-									<h2>MINISTRY OF NATIONAL SECURITY</h2>
+					<img th:src="@{images/users/default-user.png}" class="img-responsive not-logged-avatar">		
+								<div>
+									<h2 style="text-align:center">MINISTRY OF NATIONAL SECURITY</h2>
 								</div>
 							</div>
 							<div class="row">
@@ -51,14 +52,12 @@
 									<br>
 									<p th:text=${session.recipient.recipients} ></p>
 									<p th:text=${session.recipient.subject}></p>
-									<p th:text=${session.recipient.content}></p>
 									<p>28-Sept, 2017</p>
 								</div>
 							</div>
 							<br>
 							<div class="table-responsive">
-								<p th:text="${session.recipient}"></p>
-
+							<p th:text=${session.recipient.content}></p>
 							</div>
 						</div>
 					</div>

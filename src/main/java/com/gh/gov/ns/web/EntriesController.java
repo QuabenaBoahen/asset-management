@@ -129,6 +129,17 @@ public class EntriesController {
 		model.addAttribute("suppliersEntries", suppliersEntries);
 		return "suppliers_entries";
 	}
-
+	@GetMapping("/attach_docs_suppl")
+	public String attachDocsSuppl(Model model) {
+      List<InstitutionEntries> institutionEntries = institutionEntryRepository.findAll();
+      model.addAttribute("institutionEntries", institutionEntries);
+		return "attach_docs_suppl";
+	}
+	@GetMapping("/attach_docs_inst")
+	public String attachDocsInst(Model model) {
+      List<InstitutionEntries> institutionEntries = institutionEntryRepository.findAll();
+      model.addAttribute("institutionEntries", institutionEntries);
+		return "attach_docs_inst";
+	}
 	
 }

@@ -45,7 +45,7 @@
 									<label for="input-text" class="col-sm-2 control-label">Type
 										Of Vehicle</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text"
+										<input required type="text" class="form-control" id="input-text"
 											placeholder="" th:field="*{typeOfVehicle}">
 									</div>
 								</div>
@@ -53,7 +53,7 @@
 									<label for="input-text-help" class="col-sm-2 control-label">Year
 										Of Manufacturing</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
+										<input required type="text" class="form-control" id="input-text-help"
 											placeholder="" th:field="*{manufYear}">
 									</div>
 								</div>
@@ -61,7 +61,7 @@
 									<label for="inputPassword" class="col-sm-2 control-label">Cost
 										of Vehicle</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputPassword"
+										<input required type="text" class="form-control" id="inputPassword"
 											placeholder="" th:field="*{costOfVehicle}">
 									</div>
 								</div>
@@ -69,7 +69,7 @@
 									<label for="input-text-help" class="col-sm-2 control-label">Engine
 										Number</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
+										<input required type="text" class="form-control" id="input-text-help"
 											placeholder="" th:field="*{engineNumber}">
 									</div>
 								</div>
@@ -77,7 +77,7 @@
 									<label for="input-text-help" class="col-sm-2 control-label">Chasis
 										Number</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
+										<input required type="text" class="form-control" id="input-text-help"
 											placeholder="" th:field="*{chassisNumber}">
 									</div>
 								</div>
@@ -85,14 +85,14 @@
 									<label class="col-sm-2 control-label">Import Duty
 										Exception</label>
 									<div class="col-sm-10">
-									<input type="hidden" name="dutyExemptionValue" />
+									<input required type="hidden" name="dutyExemptionValue" />
 										<div class="radio">
-											<label><input type="radio" name="dutyExemptionRadio"
+											<label><input required type="radio" name="dutyExemptionRadio"
 												value="1" class="dutyExemptionRadio"> Yes
 											</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="dutyExemptionRadio"
+											<label><input required type="radio" name="dutyExemptionRadio"
 												value="0" id="dutyExemptionRadio"> No
 											</label>
 										</div>
@@ -102,7 +102,7 @@
 									<label for="input-text-help" class="col-sm-2 control-label">
 										Import Duty Details</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control"
+										<input required type="text" class="form-control"
 											placeholder="" th:field="*{importDutyDetails}">
 									</div>
 								</div>
@@ -110,14 +110,14 @@
 									<label for="input-text-help" class="col-sm-2 control-label">Institution
 										Supplied To</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
+										<input required type="text" class="form-control" id="input-text-help"
 											placeholder="" th:field="*{institutionSuppliedTo}">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Date Supplied</label>
 									<div class="col-sm-3">
-										<input type="text" class="form-control datepicker-input"
+										<input required type="text" class="form-control datepicker-input"
 										th:field="*{dateSupplied}">
 									</div>
 								</div>
@@ -125,7 +125,7 @@
 									<label for="input-text-help" class="col-sm-2 control-label">
 										DVLA Registration Details</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
+										<input required type="text" class="form-control" id="input-text-help"
 											placeholder="" th:field="*{dvlaRegistrationDetails}">
 									</div>
 								</div>
@@ -134,17 +134,17 @@
 									<label for="input-text-help" class="col-sm-2 control-label">
 										Payment Details </label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
+										<input required type="text" class="form-control" id="input-text-help"
 											placeholder="Enter Cheque Payment Details" th:field="*{paymentChequeDetails}">
 									</div>
 								</div>
-								<div  class="form-group">
+								<!-- <div  class="form-group">
 								<label for="input-text-help" class="col-sm-2 control-label">
 										Select a file to upload </label>
 									<div class="col-sm-10">
-										<input name="file" type="file" multiple required value="Choose file"/>
+										<input required name="file" type="file" multiple required value="Choose file"/>
 									</div>
-								</div>
+								</div> -->
 								<div  class="form-group">
 									<div class="col-sm-offset-5 col-sm-5">
 										<button type="submit" class="btn btn-lg btn-blue-3">Save</button>

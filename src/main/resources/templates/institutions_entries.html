@@ -44,6 +44,8 @@
 												<th>Engine Number</th>
 												<th>Chassis Number</th>
 												<th>Date Received</th>
+												<th>Status</th>
+												<th>Reason</th>
 												<th>Attached Documents</th>
 											</tr>
 										</thead>
@@ -55,6 +57,8 @@
 												<td th:text="${institutionEntry.engineNumber}">320800</td>
 												<td th:text="${institutionEntry.chassisNumber}">Ministry of Education</td>
 												<td th:text="${institutionEntry.dateReceived}">20-02-03</td>
+												<td th:text="${institutionEntry.status}">20-02-03</td>
+												<td th:text="${institutionEntry.reasonIfAuctioned}">20-02-03</td>
 												<td><a href='<spring:url value="attached_docs" />'>
 												click to view attached docs</a></td>
 											</tr>
