@@ -42,6 +42,7 @@
 													<th>Ministry / Agency</th>
 													<th>User Id</th>
 													<th>Password</th>
+													<th>Edit</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -50,6 +51,7 @@
 													<td th:text="${user.ministryDescription}">MINISTRY OF EDUCATION</td>
 													<td th:text="${user.username}">education1</td>
 													<td th:text="${user.password}">educat1234</td>
+												     <td><a th:href='@{edit_institution(id=${user.username})}' >Select</a></td>
 												</tr>
 											</tbody>
 										</table>

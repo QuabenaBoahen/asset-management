@@ -43,6 +43,7 @@
 												<th>Position</th>
 												<th>UserId</th>
 												<th>Password</th>
+												<th>Edit</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -52,6 +53,7 @@
 												<td th:text="${user.position}">user one</td>
 												<td th:text="${user.username}">user one</td>
 												<td th:text="${user.password}">user one</td>
+												<td><a th:href='@{edit_user(id=${user.username})}' >Select</a></td>
 											</tr>
 										</tbody>
 									</table>

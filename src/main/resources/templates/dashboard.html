@@ -17,116 +17,155 @@
 				<!--  content starts here -->
 				<div class="content">
 					<!-- Start info box -->
-					<div class="row top-summary">
-						<div class="col-lg-3 col-md-6">
-							<div class="widget green-1 animated fadeInDown">
-								<div class="widget-content padding">
-									<div class="widget-icon">
-										<i class=""></i>
-									</div>
-									<div class="text-box">
-										<p class="maindata">
-											TOTAL <b>NUMBER OF VEHICLES </b>
-										</p>
-										<h2>
-											<span class="animate-number" data-value="233"
-												data-duration="3000">0</span>
-										</h2>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-								<div class="widget-footer">
-									<div class="row">
-										<!-- <div class="col-sm-12">
-										<i class="fa fa-caret-up rel-change"></i> <b>39%</b> increase in tracking
-									</div> -->
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-3 col-md-6">
-							<div class="widget darkblue-2 animated fadeInDown">
-								<div class="widget-content padding">
-									<div class="widget-icon">
-										<i class=""></i>
-									</div>
-									<div class="text-box">
-										<p class="maindata">
-											UNRECONCILED <b>VEHICLES</b>
-										</p>
-										<h2>
-											<span class="animate-number" data-value="99"
-												data-duration="3000">0</span>
-										</h2>
-
-										<div class="clearfix"></div>
-									</div>
-								</div>
-								<div class="widget-footer">
-									<div class="row">
-										<!-- <div class="col-sm-12">
-										<i class="fa fa-caret-down rel-change"></i> <b>11% </b> of expected registration 
-									</div> -->
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-
-						<!-- <div class="col-lg-3 col-md-6">
-						<div class="widget pink-1 animated fadeInDown">
-							<div class="widget-content padding">
-								<div class="widget-icon">
-									<i class=""></i>
-								</div>
-								<div class="text-box">
-									<p class="maindata">NUMBER  <b>OF REGISTERED VENDORS</b></p>
-									<h2><span class="animate-number" data-value="89" data-duration="3000">0</span></h2>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							<div class="widget-footer">
-								<div class="row">
-									<div class="col-sm-12">
-										<i class="fa fa-caret-down rel-change"></i> <b></b>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div> -->
-
-						<div class="col-lg-3 col-md-6">
-							<div class="widget pink-1 animated fadeInDown">
-								<div class="widget-content padding">
-									<div class="widget-icon">
-										<i class=""></i>
-									</div>
-									<div class="text-box">
-										<p class="maindata">
-											AUCTIONED <b>VEHICLES</b>
-										</p>
-										<h2>
-											<span class="animate-number" data-value="28"
-												data-duration="3000">0</span>
-										</h2>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-								<div class="widget-footer">
-									<div class="row">
-										<div class="col-sm-12">
-											<i class="fa fa-caret-up rel-change"></i> <b></b>
+					<form>
+						<div class="row top-summary">
+							<div class="col-lg-3 col-md-6">
+								<div class="widget green-1 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												NUMBER OF VEHICLES<b> (INSTITUTIONS)</b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${totalInstitution}"
+													data-duration="3000">0</span>
+											</h2>
+											<div class="clearfix"></div>
 										</div>
 									</div>
-									<div class="clearfix"></div>
 								</div>
 							</div>
-						</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="widget blue-2 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												NUMBER OF VEHICLES <b> (SUPPLIERS)</b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${totalSuppliers}" data-duration="3000">0</span>
+											</h2>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
 
-					</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="widget darkblue-2 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												TOTAL RECONCILED <b>VEHICLES</b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${totalReconciledVehicles}"
+													data-duration="3000">0</span>
+											</h2>
+
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-3 col-md-6">
+								<div class="widget pink-1 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												UNRECONCILED VEHICLES <b>(SUPPLIERS)</b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${unreconciledSuppliersVehicles}"
+													data-duration="3000">0</span>
+											</h2>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="widget lightblue-2 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												UNRECONCILED VEHICLES <b> (INSTITUTIONS) </b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${unreconciledInstitutionVehicles}"
+													data-duration="3000">0</span>
+											</h2>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-3 col-md-6">
+								<div class="widget blue-1 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												TOTAL NUMBER OF UNRECONCILED VEHICLES <b> </b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${totalUnReconciledVehicles}"
+													data-duration="3000">0</span>
+											</h2>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="widget red-1 animated fadeInDown">
+									<div class="widget-content padding">
+										<div class="widget-icon">
+											<i class=""></i>
+										</div>
+										<div class="text-box">
+											<p class="maindata">
+												AUCTIONED <b>VEHICLES</b>
+											</p>
+											<h2>
+												<span class="animate-number"
+													th:attr="data-value=${auctionedvehicles}"
+													data-duration="3000">0</span>
+											</h2>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</form>
 					<!-- End of info box -->
 
 				</div>
