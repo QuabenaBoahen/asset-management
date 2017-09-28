@@ -27,7 +27,9 @@
 					<div class="col-sm-10 col-sm-offset-1 portlets">
 						<div class="widget">
 							<div class="widget-content padding">
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" role="form"
+								th:action="@{/suppliers_profile}" th:object="${institution}"
+									method="post">
 									<div class="form-group">
 										<label for="input-text" class="col-sm-2 control-label">
 											Company Name</label>
@@ -93,13 +95,10 @@
 									</div>
 									<div class="row">
 										<div class="col-sm-offset-1 col-sm-3">
-											<a th:href=@{institution_profile}>
-												<div class="btn btn-blue-3 btn-lg">Save Edited
-													Content</div>
-											</a>
+											<button type="submit" class="btn btn-lg btn-blue-3">Save</button>
 										</div>
 										<div class="col-sm-3">
-											<a th:href=@{institution_profile_edit}>
+											<a th:href=@{suppliers_profile}>
 												<div class="btn btn-danger btn-lg">Cancel</div>
 											</a>
 										</div>

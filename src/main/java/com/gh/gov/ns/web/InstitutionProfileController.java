@@ -29,19 +29,19 @@ public class InstitutionProfileController {
 	}
 
 	@GetMapping("/suppliers_profile")
-	public String suppliers_profile(Model model) {
+	public String showProfileSupplier(Model model) {
 		model.addAttribute("institution", new Institution());
-		List<Institution> institutions = institutionRepository.findAll();
-		model.addAttribute("institutions", institutions);
 		return "suppliers_profile";
 	}
 
-	@GetMapping("/suppliers_profile_edit")
-	public String suppliersProfileEdit(Model model) {
-		model.addAttribute("institution", new Institution());
-		List<Institution> institutions = institutionRepository.findAll();
-		model.addAttribute("institutions", institutions);
-		return "suppliers_profile_edit";
+	@PostMapping("/suppliers_profile")
+	public String saveSuppliersProfile(Model model, Institution institution) {
+		institutionRepository.saveAndFlush(institution);
+		return "redirect:/suppliers_entries";
 	}
+
+	
+
+	
 
 }

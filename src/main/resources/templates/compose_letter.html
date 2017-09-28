@@ -42,14 +42,15 @@
 									class="btn btn-info btn-lg btn-block text-left"><i
 									class=""></i> Sent </a>
 							</div>  -->
-						 <div  class="list-group menu-message ">
+							<div class="list-group menu-message ">
 								<!-- <a th:href="@{/inbox_letters}" class="list-group-item"><i
 									class="icon-inbox"></i> Inbox </a> -->
-									 <a th:href="@{/draft_letters}"
-									class="list-group-item btn-default"><i class="icon-pencil"></i> Draft </a>
-								<a th:href="@{/sent_letters}" class="list-group-item btn-default"><i
-									class="icon-export"></i> Sent</a>
-							</div> 
+								<a th:href="@{/draft_letters}"
+									class="list-group-item btn-default"><i class="icon-pencil"></i>
+									Draft </a> <a th:href="@{/sent_letters}"
+									class="list-group-item btn-default"><i class="icon-export"></i>
+									Sent</a>
+							</div>
 						</div>
 						<!-- ENd div .col-md-2 -->
 
@@ -78,8 +79,8 @@
 															</thead>
 															<tbody>
 																<tr th:each="user : ${users}">
-																	<td><input class="recip" type="checkbox" th:value="${userId}"
-																		name="sender"></td>
+																	<td><input class="recip" type="checkbox"
+																		th:value="${userId}" name="sender"></td>
 																	<td th:text="${user.username}"></td>
 																</tr>
 															</tbody>
@@ -94,7 +95,7 @@
 											</div>
 										</div>
 										<!-- Modal End -->
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<span data-toggle="modal" data-target="#myModal" id="myModal"
 												class="btn btn-success col-sm-2 col-xs-2"> <i
 												class=""></i> Select Receipts
@@ -103,7 +104,18 @@
 												<input id="recipients" th:field="*{recipients}" type="text"
 													class="form-control ">
 											</div>
-										</div>
+										</div> -->
+										<div class="form-group">
+												<label class="col-sm-2 control-label">Select Recipient</label>
+												<div class="col-sm-10">
+													<select th:field="*{recipients}" class="form-control">
+														<option th:each="user : ${users}"
+														th:value="${user.username}"
+														th:text="${user.username}" >1</option>
+														
+													</select>
+												</div>
+											</div>
 										<div class="form-group">
 											<label class="control-label col-sm-1">Subject:</label>
 											<div class="col-sm-11">
@@ -120,12 +132,12 @@
 										<div class="row">
 											<div class="col-xs-8">
 												<button type="submit" class="btn btn-success">
-													<i class="icon-paper-plane-1"></i>Save
+													<i class="icon-paper-plane-1"></i>Preview
 												</button>
 												<!-- <button type="submit" class="btn btn-danger">Save
 													as Draft</button> -->
-												<a th:href="@{/letter_preview}"><span
-													class="btn btn-danger">Print</span></a>
+											<!-- 	<a th:href="@{/letter_preview(id=${recipients})}" target="_blank"><button
+													class="btn btn-danger">Preview</button></a> -->
 											</div>
 										</div>
 									</form>
