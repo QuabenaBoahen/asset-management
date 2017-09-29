@@ -108,7 +108,7 @@
 										<div class="form-group">
 												<label class="col-sm-2 control-label">Select Recipient</label>
 												<div class="col-sm-10">
-													<select th:field="*{recipients}" class="form-control">
+													<select th:field="*{recipient}" class="form-control">
 														<option th:each="user : ${users}"
 														th:value="${user.username}"
 														th:text="${user.username}" >1</option>
@@ -136,7 +136,7 @@
 												</button>
 												<!-- <button type="submit" class="btn btn-danger">Save
 													as Draft</button> -->
-											<!-- 	<a th:href="@{/letter_preview(id=${recipients})}" target="_blank"><button
+											<!-- 	<a th:href="@{/letter_preview(id=${recipient})}" target="_blank"><button
 													class="btn btn-danger">Preview</button></a> -->
 											</div>
 										</div>

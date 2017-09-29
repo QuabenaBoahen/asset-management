@@ -33,11 +33,9 @@
 				<!--  content starts here -->
 
 				<div class="row">
-
 					<div class="widget">
-
 						<div class="widget-content padding">
-							<form action="#" class="form-horizontal" role="form" 
+							<form class="form-horizontal" role="form" 
 							enctype="multipart/form-data"
 							th:object="${suppliersEntries}" th:action="@{/suppliers_entries_new}" 
 							th:method="post">
@@ -102,7 +100,7 @@
 									<label for="input-text-help" class="col-sm-2 control-label">
 										Import Duty Details</label>
 									<div class="col-sm-10">
-										<input required type="text" class="form-control"
+										<input type="text" class="form-control"
 											placeholder="" th:field="*{importDutyDetails}">
 									</div>
 								</div>
