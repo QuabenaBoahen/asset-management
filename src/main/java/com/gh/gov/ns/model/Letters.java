@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,12 +29,12 @@ public class Letters implements Serializable {
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String letterId;
 	private String subject;
+	@Column(columnDefinition = "TEXT")
 	private String content;
 	private String sender;
 	@OneToMany(mappedBy = "attachment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Attachment> attachments;
 	private LocalDate date;
-/*	@OneToMany(mappedBy = "userId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-*/	private String recipients;
+	private String recipient;
 
 }

@@ -88,7 +88,6 @@ public class LettersController {
 
 	@GetMapping("/letter_preview")
 	public String letterPreview(Model model) {
-//	model.addAttribute("content", arg1);
 		return "letter_preview";
 	}
 }
