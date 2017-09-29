@@ -110,8 +110,7 @@ public class EntriesController {
                 newDoc.setDocumentLocation(UPLOADED_FOLDER + "/" + file[i].getOriginalFilename());
                 Documents doc = DocumentsRepository.saveAndFlush(newDoc);
                 docs.add(doc);          
-                suppliers.setDocuments(docs);
-              
+                suppliers.setDocuments(docs);       
         	}
 
         } catch (IOException e) {
