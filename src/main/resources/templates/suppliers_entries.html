@@ -53,14 +53,14 @@
 										<tbody>
 											<tr th:each="supplierEntry : ${suppliersEntries}">
 												<td th:text="${supplierEntry.dateOfEntry}">2015-03-09</td>
-												<td th:text="${supplierEntry.dateOfEntry}">Toyota</td>
-												<td th:text="${supplierEntry.dateOfEntry}">2014-09-09</td>
-												<td th:text="${supplierEntry.dateOfEntry}">201125</td>
-												<td th:text="${supplierEntry.dateOfEntry}">320800</td>
-												<td th:text="${supplierEntry.dateOfEntry}">Ministry of Education</td>
-												<td th:text="${supplierEntry.dateOfEntry}">20-02-03</td>
-												<td th:text="${supplierEntry.dateOfEntry}">yes</td>
-												<td th:text="${supplierEntry.dateOfEntry}">import duty details</td>
+												<td th:text="${supplierEntry.typeOfVehicle}">Toyota</td>
+												<td th:text="${supplierEntry.manufYear}">2014-09-09</td>
+												<td th:text="${supplierEntry.chassisNumber}">201125</td>
+												<td th:text="${supplierEntry.engineNumber}">320800</td>
+												<td th:text="${supplierEntry.institutionSuppliedTo}">Ministry of Education</td>
+												<td th:text="${supplierEntry.dateSupplied}">20-02-03</td>
+												<td th:text="${supplierEntry.importDutyExemption}">yes</td>
+												<td th:text="${supplierEntry.importDutyDetails}">import duty details</td>
 												<td><a href='<spring:url value="attached_docs" />'>
 												click to view attached docs</a></td>
 											</tr>

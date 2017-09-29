@@ -71,7 +71,6 @@ public class EntriesController {
 				Documents doc = DocumentsRepository.saveAndFlush(newDoc);
 				docs.add(doc);
 				entries.setDocuments(docs);
-
 			}
 
 		} catch (IOException e) {
@@ -79,7 +78,6 @@ public class EntriesController {
 		} finally {
 			institutionEntryRepository.saveAndFlush(entries);
 		}
-		System.out.println("entries............."+entries);
 		return "redirect:/institutions_entries_new";
 	}
 

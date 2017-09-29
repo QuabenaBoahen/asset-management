@@ -35,13 +35,13 @@ public class IndexController {
 
 	@GetMapping({ "/", "/dashboard" })
 	public String dashboard(Principal principal, Model model) {
-		Integer totalInstitutionVehicles = institutionEntryRepository.findAll().size();
-		Integer totalSuppliersVehicles = suppliersEntryRepository.findAll().size();
-		Integer totalReconciledVehicles = institutionEntryRepository.reconciledVehicles().size();
+		Integer totalInstitutionVehicles = (int) institutionEntryRepository.count();
+		Integer totalSuppliersVehicles = (int) suppliersEntryRepository.count();
+		Integer totalReconciledVehicles = (int) institutionEntryRepository.reconciledVehicles().size();
 		Integer unreconciledSuppliersVehicles = totalSuppliersVehicles - totalReconciledVehicles;
 		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;
 		Integer totalUnReconciledVehicles = unreconciledSuppliersVehicles + unreconciledInstitutionVehicles;
-		Integer auctionedvehicles = institutionEntryRepository.auctionedVehicles().size();
+		Integer auctionedvehicles = (int) institutionEntryRepository.auctionedVehicles().size();
 
 		model.addAttribute("totalInstitution", totalInstitutionVehicles);
 		model.addAttribute("totalSuppliers", totalSuppliersVehicles);
@@ -51,7 +51,7 @@ public class IndexController {
 		model.addAttribute("unreconciledInstitutionVehicles", unreconciledInstitutionVehicles);
 		model.addAttribute("auctionedvehicles", auctionedvehicles);
 
-		String redirectPage = "";
+		String redirectPage = "login";
 		User user = userRepository.findUserByUsername(principal.getName());
 		if (user != null) {
 			Role role = roleRepository.findOne(user.getRoleId());

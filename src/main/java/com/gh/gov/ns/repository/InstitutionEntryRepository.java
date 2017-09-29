@@ -22,7 +22,7 @@ public interface InstitutionEntryRepository extends JpaRepository<InstitutionEnt
 	List<InstitutionEntries> reconciledVehicles();
 
 
-	@Query(value = "SELECT * FROM institution_entries  " + "where status= 'AUCTIONED	' ", nativeQuery = true)
+	@Query(value = "SELECT * FROM institution_entries  i " + "where i.status= 'AUCTIONED' ", nativeQuery = true)
 	List<InstitutionEntries> auctionedVehicles();
 
 }
