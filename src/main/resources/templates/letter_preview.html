@@ -16,10 +16,9 @@
 			<div class="content">
 				<!-- Page Heading Start -->
 				<div class="page-heading">
-				 <span style="float: right;"> <a
-					th:href="@{compose_letter}" 
-					class="btn btn-danger btn-lg">Back</a></span> 
-					<span onclick="printDiv('printableArea')" style="float: right;">
+					<span style="float: right;"> <a th:href="@{compose_letter}"
+						class="btn btn-danger btn-lg">Back</a></span> <span
+						onclick="printDiv('printableArea')" style="float: right;">
 						<a class="btn btn-success btn-lg">print</a>
 					</span>
 					<h1>
@@ -29,40 +28,46 @@
 				<!-- Page Heading End-->
 				<!-- Your awesome content goes here -->
 				<div id="printableArea">
-				<div class="widget invoice">
-					<div class="widget-content padding">
-							<div>
-							<div style="text-align: justify; color: blue; float:left; font-style: italic" >
-							<p style="width:150px; text-align:justify">In case of reply the
-							number and date of this</p>
-							<p style="text-decoration: underline" >letter should be quoted</p>
-							</div>
-							<h3 style="text-align: center"><strong>CONFIDENTIAL</strong></h3>
-					<img th:src="@{images/users/default-user.png}" class="img-responsive not-logged-avatar">		
-									<h2 style="text-align:center">MINISTRY OF NATIONAL SECURITY</h2>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<br>
-									<p>Ministry of National Security</p>
-									<p>Box 32 Accra</p>
-									<p>Ministries</p>
-									<p>28-Sept, 2017</p>
+					<div class="widget invoice">
+						<div class="widget-content padding">
+							<h3 style="text-align: center; margin-top: -50px;">
+								<strong>CONFIDENTIAL</strong>
+							</h3>
+							<div class="head">
+								<div
+									style="text-align: justify; float: left; color: blue; width: 30%; font-style: italic;">
+									<p style="text-align: justify; color: blue;">In case of reply the</p>
+									<p style="text-align: justify">number and date of this</p>
+									<p style="text-decoration: underline">letter should be
+										quoted</p>
+								</div>
+								<div style="float: left; width: 30%;">
+
+									<img th:src="@{images/users/default-user.png}"
+										class="img-responsive not-logged-avatar">
+								</div>
+								<div style="width: 30%; float: right;">
+									<p>MINISTRY OF NATIONAL SECURITY</p>
+									<p>P. O. BOX 1627</p>
+									<p>CASTLE ANNEX</p>
+									<p>ACCRA</p>
+
 								</div>
 							</div>
-							<br> 
+							<div style="clear:right;" ></div>
+							<div style="clear:left;" ></div>
+							<br>
 							<div class="row">
 								<div class="col-sm-6">
 									<br>
-									<p th:text=${session.recipient.recipient} ></p>
+									<p th:text=${session.recipient.recipient}></p>
 									<p th:text=${session.recipient.subject}></p>
 									<p>28-Sept, 2017</p>
 									<p th:text=${session.recipient}></p>
 								</div>
 							</div>
 							<br>
-							<div class="table-responsive">
-							</div>
+							<div class="table-responsive"></div>
 						</div>
 					</div>
 				</div>
