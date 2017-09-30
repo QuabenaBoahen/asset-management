@@ -118,7 +118,7 @@ public class InstitutionController {
 	@PostMapping("/add_suppliers")
 	public String saveSuppliers(Model model, User user, @RequestParam("role_name") String role_name) {
 		Role role = roleRepository.findOne(role_name);
-		Vehicle newSupplier = new Vehicle();
+		Institution newSupplier = new Institution();
 		if (role != null) {
 		      String username = credentialsGenerator.generateUsername(user.getDepartmentIdentifier().replaceAll("\\s", "").toLowerCase().substring(0, 5));
 			  username = username + "@ns";
@@ -127,7 +127,8 @@ public class InstitutionController {
 		      user.setPassword(password);
 			  user.setRoleId(role.getRoleId());
 			  userRepository.saveAndFlush(user);
-			  //newSupplier.set
+			  newSupplier.setName(user.getDepartmentIdentifier());
+			  institutionRepository.saveAndFlush(newSupplier);
 			}
 		return "redirect:/suppliers";
 	}

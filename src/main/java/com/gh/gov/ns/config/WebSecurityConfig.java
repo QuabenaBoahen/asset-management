@@ -28,7 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/h2_console/**").permitAll()
             .anyRequest().authenticated()
       //.anyRequest().hasAnyRole("ADMIN", "INSTITUTION")
                 .and()
@@ -42,10 +41,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/403_error")
-                /*.and()
+                .and()
                 .sessionManagement()
                 .maximumSessions(1)
                 .expiredUrl("/login")
+                /*
                 .maxSessionsPreventsLogin(true)
                 .sessionRegistry(sessionRegistry())*/;
         //http.csrf().disable();
