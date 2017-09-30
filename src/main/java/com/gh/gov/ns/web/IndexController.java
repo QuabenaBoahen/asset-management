@@ -85,6 +85,10 @@ public class IndexController {
 						redirectPage = "redirect:/suppliers_profile";
 					}		
 				model.addAttribute("supplierDetails", firstLoginOfInstitution);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3490b4836575c54341ace1718c8d5e3a7e694d14
 				}
 			} else if (role.getRoleName().equalsIgnoreCase("NS")) {
 				redirectPage = "dashboard";
