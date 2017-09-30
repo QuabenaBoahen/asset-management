@@ -27,225 +27,154 @@
 
 				<!--  content starts here -->
 
-				<div class="row">
-					<div class="widget">
-						<div class="widget-content padding">
-						<form  id ="jnlnty"  method="POST" action="pages/accounts_controller.php" class='form-inline' role='form'>
-                                <input type="button" value="Add Row" onclick="addRow('dataTable')" />
-                                <input type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
-                                <br><hr>
-                                <table class="table table-striped table-bordered" cellspacing="0" width="100%"  >
-                                    <tr>
-                                        <td>SELECT</td>
-                                        <td>ACCOUNT</td>
-                                        <td>NARRATION</td>
-                                        <td>DEBIT (GHS)</td>
-                                        <td >CREDIT (GHS)</td>
-                                    </tr>
-                                    <tbody id="dataTable">
-                                        <tr>
-                                            <td><input  class="form-control" id="nostyle"   type="checkbox" name="chk[]"/></td>
-                                            <td >
-                                                <SELECT required="true" style="width: 100%" class="form-control" name="accountid[]">
-                                                    <option value="">Select Account</option>
-                                                    <?php gettingAccountsList(); ?>
-                                                </SELECT>
-                                            </td>
-                                            <td><input required="true" style="width: 100%" value="" class="form-control " type="text" name="narration[]"/></td>
-                                            <td><input  placeholder="0.0" class="form-control debit"  name="debit[]"
-                                                        onkeypress="if (isNaN(this.value + String.fromCharCode(event.keyCode)))
-                                                                   return false;"
-                                                        onkeyup="validations();" onblur="validations()"           /> </td>
-                                            <td><input placeholder="0.0" class="form-control credit" name="credit[]" 
-                                                       onkeypress="if (isNaN(this.value + String.fromCharCode(event.keyCode)))
-                                                                   return false;"
-                                                       onkeyup="validations();" onblur="validations()"           /> </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>   
-                                        <tr>
-                                            <td></td>
-                                            <td ></td>
-                                            <td style="text-align: right" ><strong>TOTALS</strong></td>
-                                            <td><input class="form-control" disabled="true" id="debittotal" ></td>
-                                            <td><input class="form-control"  disabled="true" id="credittoal" ></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                                <div>
-                                    <button style="width: 250px;" class=" btn btn-lg btn-success " type="submit" name="submitd"  >Save Transaction</button>
-                                </div>
-                            </form>
-                        </div>
-							<form class="form-horizontal" role="form"
-								enctype="multipart/form-data" th:object="${institutionEntry}"
-								th:action="@{/institutions_entries_new}" th:method="post">
-								<div class="form-group">
-									<label for="input-text" class="col-sm-2 control-label">Type
-										Of Vehicle</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text"
-											placeholder="" th:field="*{typeOfVehicle}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Year
-										Of Manufacturing</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{manufYear}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Engine
-										Number</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{engineNumber}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Chassis
-										Number</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{chassisNumber}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Company
-										Received From</label>
-									<div class="col-sm-10">
-									<select class="form-group" th:field="*{companyReceivedFrom}">
-									<option value="">Select an option</option>
-									<option th:each="supplier : ${suppliers}" th:text="${supplier.name}" 
-									th:value="${supplier.name}">Company name</option>
-									</select>
-								</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Date Received</label>
-									<div class="col-sm-3">
-										<input type="text" class="form-control datepicker-input"
-											th:field="*{dateReceived}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-xs-2 control-label">Status</label>
-									<div class="col-xs-10">
-									<select class="form-group" th:field="*{status}">
-									<option value="">Select an option</option>
-									<option th:value="AUCTIONED">Auctioned</option>
-									</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">
-										Reason</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{reasonIfAuctioned}">
-									</div>
-								</div>
-								<!-- <div class="form-group">
-								<label for="input-text-help" class="col-sm-2 control-label">
-										Select files to upload</label>
-									<div class="col-sm-10">
-										<input name="file" type="file" multiple required value="Choose file"/>
-									</div>
-								</div> -->
-								<div class="form-group">
-									<div class="col-sm-offset-5 col-sm-5">
-										<button type="submit" class="btn btn-lg btn-blue-3">Save</button>
-									</div>
-								</div>
+				<div  class="row">
+					<div  class="widget">
+						<div style= "overflow: scroll" class="widget-content padding">
+							<form enctype="multipart/form-data"
+								th:object="${institutionEntry}"
+								th:action="@{/institutions_entries_new}" th:method="post"
+							role='form'>
+								<input type="button" value="Add Row"
+									onclick="addRow('dataTable')" /> <input type="button"
+									value="Delete Row" onclick="deleteRow('dataTable')" /> <br>
+								<hr>
+								<table class="table table-striped table-bordered"
+									cellspacing="0" width="100%">
+									<tr>
+										<td>Select</td>
+										<td	>TYPE OF VEHICLE</td>
+										<td>YEAR OF MANUFACTURING</td>
+										<td>ENGINE NUMBER</td>
+										<td>CHASIS NUMBER</td>
+										<td>COMPANY RECEIVED FROM</td>
+										<td>DATE RECEIVED</td>
+										<td>STATUS</td>
+										<td>REASON</td>
+									</tr>
+									<tbody id="dataTable">
+										<tr>
+											<td><input class="form-control" id="nostyle"
+												type="checkbox" name="chk[]" /></td>
+											<td><input style="width:200px;" type="text" class="form-control"
+												id="input-text" placeholder="" th:field="*{typeOfVehicle}">
+											</td>
+											<td><input style="width:100px;" type="text" class="form-control"
+												id="input-text-help" placeholder="" th:field="*{manufYear}"></td>
+											<td><input style="width:200px;"  type="text" class="form-control"
+												id="input-text-help" placeholder=""
+												th:field="*{engineNumber}"></td>
+											<td><input style="width:200px;"  type="text" class="form-control"
+												id="input-text-help" placeholder=""
+												th:field="*{chassisNumber}"></td>
+											<td><select style="width:200px;"  class="form-group form-control"
+												th:field="*{companyReceivedFrom}">
+													<option value="">Select an option</option>
+													<option th:each="supplier : ${suppliers}"
+														th:text="${supplier.name}" th:value="${supplier.name}">Company name</option>
+											</select></td>
+											<td><input  type="date" class="form-control datepicker-input"
+										th:field="*{dateReceived}"></td>
+											<td><select class=" form-control" style="width:150px;"  th:field="*{status}">
+										<option value="">Select an option</option>
+										<option th:value="AUCTIONED">Auctioned</option>
+									</select></td>
+									<td><input type="text" class="form-control" style="width:200px;" 
+												id="input-text-help" placeholder=""
+												th:field="*{reasonIfAuctioned}"></td>
 
+										</tr>
+									</tbody>
+								</table>
+								<div>
+									<button style="width: 250px;" class=" btn btn-lg btn-success "
+										type="submit" name="submitd">Save Transaction</button>
+								</div>
 							</form>
 						</div>
 					</div>
-
 				</div>
 
-				<!--  content Ends here -->
-
-				<div class="row">
-					<div class="col-md-12 portlets"></div>
-				</div>
-
-				<!-- Footer Start -->
-				<footer>
-					Ministry of National Security &copy; 2017
-					<div class="footer-links pull-right"></div>
-				</footer>
-				<!-- Footer End -->
 			</div>
-			<!-- ============================================================== -->
-			<!-- End content here -->
-			<!-- ============================================================== -->
 
+			<!--  content Ends here -->
+
+			<div class="row">
+				<div class="col-md-12 portlets"></div>
+			</div>
+
+			<!-- Footer Start -->
+			<footer>
+				Ministry of National Security &copy; 2017
+				<div class="footer-links pull-right"></div>
+			</footer>
+			<!-- Footer End -->
 		</div>
-		<!-- End right content -->
+		<!-- ============================================================== -->
+		<!-- End content here -->
+		<!-- ============================================================== -->
+
+	</div>
+	<!-- End right content -->
 	</div>
 	<!-- End of page -->
 	<!-- the overlay modal element -->
 	<div class="md-overlay"></div>
 	<!-- End of eoverlay modal -->
-	<div th:include="fragments/body :: footer (~{::title})"></div>
+	<div th:include="fragments/body :: Entries_footer (~{::title})"></div>
 	<script th:src="@{/assets/libs/dropzone/dropzone.min.js}"></script>
 	<SCRIPT language="javascript">
-                    function addRow(tableID) {
+		function addRow(tableID) {
 
-                        var table = document.getElementById(tableID);
+			var table = document.getElementById(tableID);
 
-                        var rowCount = table.rows.length;
-                        var row = table.insertRow(rowCount);
+			var rowCount = table.rows.length;
+			var row = table.insertRow(rowCount);
 
-                        var colCount = table.rows[0].cells.length;
+			var colCount = table.rows[0].cells.length;
 
-                        for (var i = 0; i < colCount; i++) {
+			for (var i = 0; i < colCount; i++) {
 
-                            var newcell = row.insertCell(i);
+				var newcell = row.insertCell(i);
 
-                            newcell.innerHTML = table.rows[0].cells[i].innerHTML;
-                            //alert(newcell.childNodes);
-                            switch (newcell.childNodes[0].type) {
-                                case "text":
-                                    newcell.childNodes[0].value = "";
-                                    break;
-                                case "checkbox":
-                                    newcell.childNodes[0].checked = false;
-                                    break;
-                                case "select-one":
-                                    newcell.childNodes[0].selectedIndex = 0;
-                                    break;
-                            }
-                        }
-                    }
+				newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+				//alert(newcell.childNodes);
+				switch (newcell.childNodes[0].type) {
+				case "text":
+					newcell.childNodes[0].value = "";
+					break;
+				case "checkbox":
+					newcell.childNodes[0].checked = false;
+					break;
+				case "select-one":
+					newcell.childNodes[0].selectedIndex = 0;
+					break;
+				}
+			}
+		}
 
-                    function deleteRow(tableID) {
-                        try {
-                            var table = document.getElementById(tableID);
-                            var rowCount = table.rows.length;
-                            for (var i = 0; i < rowCount; i++) {
-                                var row = table.rows[i];
-                                var chkbox = row.cells[0].childNodes[0];
-                                if (null != chkbox && true == chkbox.checked) {
-                                    if (rowCount <= 1) {
-                                        alert("Cannot delete all the rows.");
-                                        break;
-                                    }
-                                    table.deleteRow(i);
-                                    rowCount--;
-                                    i--;
-                                }
+		function deleteRow(tableID) {
+			try {
+				var table = document.getElementById(tableID);
+				var rowCount = table.rows.length;
+				for (var i = 0; i < rowCount; i++) {
+					var row = table.rows[i];
+					var chkbox = row.cells[0].childNodes[0];
+					if (null != chkbox && true == chkbox.checked) {
+						if (rowCount <= 1) {
+							alert("Cannot delete all the rows.");
+							break;
+						}
+						table.deleteRow(i);
+						rowCount--;
+						i--;
+					}
 
+				}
+			} catch (e) {
+				alert(e);
+			}
+		}
+	</SCRIPT>
 
-                            }
-                        } catch (e) {
-                            alert(e);
-                        }
-                    }
-                </SCRIPT>
-                
 </body>
 </html>
