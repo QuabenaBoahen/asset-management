@@ -2,22 +2,24 @@ package com.gh.gov.ns.web;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.model.Role;
+import com.gh.gov.ns.model.SuppliersEntries;
 import com.gh.gov.ns.model.User;
+import com.gh.gov.ns.model.Vehicle;
 import com.gh.gov.ns.repository.InstitutionRepository;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.UserRepository;
-import com.gh.gov.ns.service.RoleService;
+import com.gh.gov.ns.utils.CredentialsGenerator;
 
 @Controller
 public class InstitutionController {
@@ -26,6 +28,12 @@ public class InstitutionController {
 
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	private CredentialsGenerator credentialsGenerator;
+	
+	@Autowired
+	private InstitutionRepository institutionRepository;
 
 	@GetMapping("/institutions")
 	public String institution(Model model) {
@@ -61,9 +69,17 @@ public class InstitutionController {
 	@PostMapping("/add_institution")
 	public String saveInstitutions(Model model, User user, @RequestParam("role_name") String role_name) {
 		Role role = roleRepository.findOne(role_name);
+		Institution newInstitution = new Institution();
 		if (role != null) {
-			user.setRoleId(role.getRoleId());
-			userRepository.saveAndFlush(user);
+      String username = credentialsGenerator.generateUsername(user.getDepartmentIdentifier().replaceAll("\\s", "").toLowerCase().substring(8, 13));
+	  username = username + "@ns";
+      String password = credentialsGenerator.generatePassword(username.substring(0, 4));
+      user.setUsername(username);
+      user.setPassword(password);
+	  user.setRoleId(role.getRoleId());
+	  userRepository.saveAndFlush(user);
+	  newInstitution.setName(user.getDepartmentIdentifier());
+	  institutionRepository.saveAndFlush(newInstitution);
 		}
 		return "redirect:/institutions";
 	}
@@ -102,10 +118,17 @@ public class InstitutionController {
 	@PostMapping("/add_suppliers")
 	public String saveSuppliers(Model model, User user, @RequestParam("role_name") String role_name) {
 		Role role = roleRepository.findOne(role_name);
+		Vehicle newSupplier = new Vehicle();
 		if (role != null) {
-			user.setRoleId(role.getRoleId());
-			userRepository.saveAndFlush(user);
-		}
+		      String username = credentialsGenerator.generateUsername(user.getDepartmentIdentifier().replaceAll("\\s", "").toLowerCase().substring(0, 5));
+			  username = username + "@ns";
+		      String password = credentialsGenerator.generatePassword(username.substring(0, 4));
+		      user.setUsername(username);
+		      user.setPassword(password);
+			  user.setRoleId(role.getRoleId());
+			  userRepository.saveAndFlush(user);
+			  //newSupplier.set
+			}
 		return "redirect:/suppliers";
 	}
 

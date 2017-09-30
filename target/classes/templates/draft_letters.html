@@ -46,11 +46,8 @@
 									data-modal="new-message"><i class="icon-pencil"></i></a>
 							</div>
 							<div class="list-group menu-message">
-								<a th:href="@{/inbox_letters}" class="list-group-item"><i
-									class="icon-inbox"></i> Inbox </a> <a th:href="@{/draft_letters}"
+								 <a th:href="@{/draft_letters}"
 									class="list-group-item"><i class="icon-pencil"></i> Draft </a>
-								<a th:href="@{/sent_letters}" class="list-group-item"><i
-									class="icon-export"></i> Sent</a>
 							</div>
 
 						</div>
@@ -74,18 +71,18 @@
 													width="100%">
 													<thead>
 														<tr>
-															<th>Tittle</th>
+															<th>Title</th>
 															<th>Content</th>
 															<th>Date</th>
 															<th>Edit</th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
-															<td>GHANA EDUCATION SERVICE</td>
-															<td>MINISTRY OF EDUCATION</td>
-															<td>education1</td>
-															<td>educat1234</td>
+														<tr th:each="draft : ${drafts}">
+															<td th:text="${draft.subject}">GHANA EDUCATION SERVICE</td>
+															<td th:text="${draft.content}">MINISTRY OF EDUCATION</td>
+															<td th:text="${draft.date}">education1</td>
+															<td ><a href="#"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 														</tr>
 													</tbody>
 												</table>

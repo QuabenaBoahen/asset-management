@@ -2,19 +2,25 @@ package com.gh.gov.ns.web;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.model.Role;
 import com.gh.gov.ns.model.User;
 import com.gh.gov.ns.repository.InstitutionEntryRepository;
+import com.gh.gov.ns.repository.InstitutionRepository;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.SuppliersEntryRepository;
 import com.gh.gov.ns.repository.UserRepository;
 
 @Controller
+@SessionAttributes({"institutionDetails"})
 public class IndexController {
 	@Autowired
 	private UserRepository userRepository;
@@ -24,6 +30,9 @@ public class IndexController {
 
 	@Autowired
 	private InstitutionEntryRepository institutionEntryRepository;
+	
+	@Autowired
+	private InstitutionRepository institutionRepository;
 
 	@Autowired
 	private SuppliersEntryRepository suppliersEntryRepository;
@@ -56,7 +65,16 @@ public class IndexController {
 		if (user != null) {
 			Role role = roleRepository.findOne(user.getRoleId());
 			if (role.getRoleName().equalsIgnoreCase("INSTITUTION")) {
-				redirectPage = "redirect:/institution_profile";
+				Institution firstLoginOfInstitution = institutionRepository.findInstitutionByName(user.getDepartmentIdentifier());
+				Institution isInstitutionProfileComplete= institutionRepository.isInstitutionProfileComplete(user.getDepartmentIdentifier());
+				if(firstLoginOfInstitution != null) {
+					if(isInstitutionProfileComplete !=null) {
+						redirectPage = "redirect:/institutions_entries";
+					}else {
+						redirectPage = "redirect:/institution_profile";
+					}		
+				model.addAttribute("institutionDetails", firstLoginOfInstitution);
+				}
 			} else if (role.getRoleName().equalsIgnoreCase("SUPPLIER")) {
 				redirectPage = "redirect:/suppliers_profile";
 			} else if (role.getRoleName().equalsIgnoreCase("NS")) {
@@ -64,11 +82,6 @@ public class IndexController {
 			}
 		}
 		return redirectPage;
-	}
-
-	@GetMapping("/logout")
-	public String logout(Principal principal) {
-		return "login";
 	}
 
 }

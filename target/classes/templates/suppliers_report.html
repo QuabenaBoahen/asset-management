@@ -36,7 +36,6 @@
 										width="100%">
 										<thead>
 											<tr>
-												<th>NO.</th>
 												<th>Date of Entry</th>
 												<th>Type Of Vehicle</th>
 												<th>Year Of Manufacturing</th>
@@ -50,17 +49,16 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>2015-03-09</td>
-												<td>Toyota</td>
-												<td>2014-09-09</td>
-												<td>201125</td>
-												<td>320800</td>
-												<td>Ministry of Education</td>
-												<td>20-02-03</td>
-												<td>yes</td>
-												<td>import duty details</td>
+											<tr th:each="supplierEntry : ${suppliersEntriesReport}">
+												<td th:text="${supplierEntry.dateOfEntry}">2015-03-09</td>
+												<td th:text="${supplierEntry.typeOfVehicle}">Toyota</td>
+												<td th:text="${supplierEntry.manufYear}">2014-09-09</td>
+												<td th:text="${supplierEntry.chassisNumber}">201125</td>
+												<td th:text="${supplierEntry.engineNumber}">320800</td>
+												<td th:text="${supplierEntry.institutionSuppliedTo}">Ministry of Education</td>
+												<td th:text="${supplierEntry.dateSupplied}">20-02-03</td>
+												<td th:text="${supplierEntry.importDutyExemption}">yes</td>
+												<td th:text="${supplierEntry.importDutyDetails}">import duty details</td>
 												<td><a href='<spring:url value="attached_docs" />'>
 												click to view attached docs</a></td>
 											</tr>

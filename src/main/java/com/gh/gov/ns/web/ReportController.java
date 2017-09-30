@@ -10,22 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gh.gov.ns.model.InstitutionEntries;
 import com.gh.gov.ns.repository.InstitutionEntryRepository;
-import com.gh.gov.ns.repository.InstitutionRepository;
+import com.gh.gov.ns.repository.SuppliersEntryRepository;
 
 @Controller
 public class ReportController {
 	@Autowired
 	private InstitutionEntryRepository institutionEntryRepository;
+	
+	@Autowired
+	private SuppliersEntryRepository suppliersEntryRepository;
 
 	@GetMapping("/institutions_report")
 	public String institutionsReport(Model model) {
-
+		model.addAttribute("institutionEntries", institutionEntryRepository.findAll());
 		return "institutions_report";
 	}
 
 	@GetMapping("/suppliers_report")
 	public String suppliersReport(Model model) {
-
+   model.addAttribute("suppliersEntriesReport", suppliersEntryRepository.findAll());
 		return "suppliers_report";
 	}
 

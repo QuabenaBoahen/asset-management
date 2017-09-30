@@ -36,31 +36,27 @@
 										width="100%">
 										<thead>
 											<tr>
-												<th>NO.</th>
-												<th>Date of Entry</th>
 												<th>Type Of Vehicle</th>
 												<th>Year Of Manufacturing</th>
-												<th>Chasis Number</th>
+												<th>Company Received From</th>
 												<th>Engine Number</th>
-												<th>Institution Supplied To</th>
-												<th>Date Supplied</th>
-												<th>Import Duty Exemptions</th>
-												<th>Import Duty Details</th>
+												<th>Chassis Number</th>
+												<th>Date Received</th>
+												<th>Status</th>
+												<th>Reason</th>
 												<th>Attached Documents</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>2015-03-09</td>
-												<td>Toyota</td>
-												<td>2014-09-09</td>
-												<td>201125</td>
-												<td>320800</td>
-												<td>Ministry of Education</td>
-												<td>20-02-03</td>
-												<td>yes</td>
-												<td>import duty details</td>
+											<tr th:each="institutionEntry : ${institutionEntries}">
+												<td th:text="${institutionEntry.typeOfVehicle}">Toyota</td>
+												<td th:text="${institutionEntry.manufYear}">2014-09-09</td>
+												<td th:text="${institutionEntry.companyReceivedFrom}">201125</td>
+												<td th:text="${institutionEntry.engineNumber}">320800</td>
+												<td th:text="${institutionEntry.chassisNumber}">Ministry of Education</td>
+												<td th:text="${institutionEntry.dateReceived}">20-02-03</td>
+												<td th:text="${institutionEntry.status}">20-02-03</td>
+												<td th:text="${institutionEntry.reasonIfAuctioned}">20-02-03</td>
 												<td><a href='<spring:url value="attached_docs" />'>
 												click to view attached docs</a></td>
 											</tr>

@@ -31,25 +31,12 @@
 				<div class="box-info box-messages animated fadeInDown">
 					<div class="row">
 						<div class="col-md-3">
-							<!-- Sidebar Message -->
-							<!-- <div class="btn-group new-message-btns stacked">
-								<a th:href="@{/draft_letters}"
-									class="btn btn-pink-1 btn-lg btn-block text-left"><i
-									class=""></i> Draft</a>
-							</div> 
-							<div class="btn-group new-message-btns stacked">
-								<a th:href="@{/sent_letters}"
-									class="btn btn-info btn-lg btn-block text-left"><i
-									class=""></i> Sent </a>
-							</div>  -->
 							<div class="list-group menu-message ">
 								<!-- <a th:href="@{/inbox_letters}" class="list-group-item"><i
 									class="icon-inbox"></i> Inbox </a> -->
 								<a th:href="@{/draft_letters}"
 									class="list-group-item btn-default"><i class="icon-pencil"></i>
-									Draft </a> <a th:href="@{/sent_letters}"
-									class="list-group-item btn-default"><i class="icon-export"></i>
-									Sent</a>
+									Draft </a> 
 							</div>
 						</div>
 						<!-- ENd div .col-md-2 -->
@@ -57,57 +44,11 @@
 						<div class="col-md-9">
 							<div class="widget">
 								<div class="widget-content padding">
-									<form th:action="@{/compose_letter}" th:object="${letters}"
+									<form th:action="@{/compose_letter}" th:object="${letter}"
 										method="post" role="form" class="form-horizontal ">
-
-										<!-- Modal -->
-										<div id="myModal" class="modal fade" role="dialog">
-											<div class="modal-dialog">
-												<!-- Modal content-->
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal">&times;</button>
-														<h4 class="modal-title">Contacts List</h4>
-													</div>
-													<div class="modal-body">
-														<table>
-															<thead>
-																<tr>
-																	<th>Select</th>
-																	<th>Name</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr th:each="user : ${users}">
-																	<td><input class="recip" type="checkbox"
-																		th:value="${userId}" name="sender"></td>
-																	<td th:text="${user.username}"></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-													<div class="modal-footer">
-														<button id="close" type="button" class="btn btn-default"
-															data-dismiss="modal">Close</button>
-													</div>
-												</div>
-												<!-- Modal content-->
-											</div>
-										</div>
-										<!-- Modal End -->
-										<!-- <div class="form-group">
-											<span data-toggle="modal" data-target="#myModal" id="myModal"
-												class="btn btn-success col-sm-2 col-xs-2"> <i
-												class=""></i> Select Receipts
-											</span>
-											<div class="col-sm-10">
-												<input id="recipients" th:field="*{recipients}" type="text"
-													class="form-control ">
-											</div>
-										</div> -->
 										<div class="form-group">
-												<label class="col-sm-2 control-label">Select Recipient</label>
-												<div class="col-sm-10">
+												<label class="col-xs-2 control-label">Select Recipient</label>
+												<div class="col-xs-10">
 													<select th:field="*{recipient}" class="form-control">
 														<option th:each="user : ${users}"
 														th:value="${user.username}"
@@ -118,15 +59,28 @@
 											</div>
 										<div class="form-group">
 											<label class="control-label col-sm-1">Subject:</label>
-											<div class="col-sm-11">
-												<input th:field="*{subject}" type="text"
-													class="form-control ">
+											<div class="col-sm-11" th:if="${savedLetter ne ''}">
+										    <input name="letterId" type="hidden"
+													class="form-control" th:value="${savedLetter.letterId}">
+											</div>
+											<div class="col-sm-11" th:if="${savedLetter eq ''}">
+										    <input name="subject" type="text"
+													class="form-control">
+											</div>
+											<div class="col-sm-11" th:if="${savedLetter ne ''}">
+										    <input name="subject" type="text"
+													class="form-control" th:value="${savedLetter.subject}">
 											</div>
 										</div>
 										<div class="form-group">
-											<div class="col-sm-12">
-												<textarea th:field="*{content}"
+											<div class="col-sm-12" th:if="${savedLetter eq ''}">
+												<textarea name="content"
 													class="summernote-small form-control"></textarea>
+											</div>
+											<div class="col-sm-12" th:if="${savedLetter ne ''}">
+												<textarea name="content"
+													class="summernote-small form-control" 
+													th:text="${savedLetter.content}"></textarea>
 											</div>
 										</div>
 										<div class="row">

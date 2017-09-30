@@ -15,10 +15,8 @@
 			<div class="content">
 				<!-- Page Heading Start -->
 				<div class="page-heading">
-					<span style="float: right;"> <a th:href='@{/institutions_entries_new}'
-						class="btn btn-success btn-lg">NEW ENTRY</a></span>
 					<h1>
-						<i class='fa fa-file'></i> RECONCILIATION REPORT
+						<i class='fa fa-file'></i>RECONCILIATION REPORT
 					</h1>
 				</div>
 				<!-- Page Heading End-->
@@ -35,29 +33,25 @@
 							<div class="table-responsive">
 							<table>
 							<tbody>
-							<tr>
+							<tr class="col-xs-12">
 							<td>
-							<div class="form-group">
-						<label for="input-text" class="col-xs-6 control-label">
-											Select Institution</label>
+						<label for="input-text" class="col-xs-6 control-label">Select Institution</label>
 						<div class="col-xs-6">
-						<form class="form-control" th:action="@{/updateSuppliersEntries}" th:method="get" id="updateSuppliersEntries">
+						<form th:action="@{/updateSuppliersEntries}" th:method="get" id="updateSuppliersEntries">
 						<input type="hidden" name="institution" id="supplier"/>
 						</form>
-						<select id="optInstitution">
+						<select id="optInstitution" class="form-control">
 						<option>Select an option</option>
 						<option>MOH</option>
 						</select>
-						</div>
 							</div>
 							</td>
 							<td>
-							<div class="form-group">
-						<label for="input-text" class="col-xs-6 control-label">
-											Select Supplier</label>
+						<div class="form-group">
+						<label for="input-text" class="col-xs-6 control-label">Select Supplier</label>
 						<div class="col-xs-6">
-						<select>
-						<option></option>
+						<select class="form-control">
+						<option>Select an option</option>
 						<option>Toyota</option>
 						</select>
 						</div>
