@@ -13,5 +13,7 @@ public interface MemoRepository extends JpaRepository<Memo, String>{
 	
 	@Query(value = "SELECT * FROM memo WHERE  ", nativeQuery = true)
 	List<Memo> inboxMemo(String userId);
+	
+	
 
 }
