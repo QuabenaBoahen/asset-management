@@ -122,7 +122,7 @@ public class EntriesController {
 	}
 
 	@PostMapping("/suppliers_entries_new")
-<<<<<<< HEAD
+
 	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers,
 			@RequestParam("file") MultipartFile file[], RedirectAttributes ra, 
 			@RequestParam(value="dutyExemptionRadio", required=false) String dutyExemptionRadio) {
@@ -150,12 +150,12 @@ public class EntriesController {
         }finally{
         	suppliersEntryRepository.saveAndFlush(suppliers);
         }
+        return  "redirect:/suppliers_entries_new";
+	}
 		
-=======
 	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers) {
 		System.out.println("suppliers............."+suppliers);
 		suppliersEntryRepository.saveAndFlush(suppliers);
->>>>>>> 00675a2d0ae8e2ad7cb0d1c703c6e2c4e4f6348c
 		return "redirect:/suppliers_entries_new";
 	}
 

@@ -38,18 +38,19 @@ public class IndexController {
 		Integer totalInstitutionVehicles = institutionEntryRepository.findAll().size();
 		Integer totalSuppliersVehicles = suppliersEntryRepository.findAll().size();
 		Integer totalReconciledVehicles = institutionEntryRepository.reconciledVehicles().size();
-		Integer unreconciledSuppliersVehicles = totalSuppliersVehicles - totalReconciledVehicles;
-		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;
-		Integer totalUnReconciledVehicles = unreconciledSuppliersVehicles + unreconciledInstitutionVehicles;
+		System.out.println(".........."+totalReconciledVehicles);
+		Integer totalUnReconciledVehicles = (totalSuppliersVehicles + totalInstitutionVehicles) -(totalReconciledVehicles);
 		Integer auctionedvehicles = institutionEntryRepository.auctionedVehicles().size();
+		/*Integer unreconciledSuppliersVehicles = totalSuppliersVehicles - totalReconciledVehicles;
+		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;*/
 
 		model.addAttribute("totalInstitution", totalInstitutionVehicles);
 		model.addAttribute("totalSuppliers", totalSuppliersVehicles);
 		model.addAttribute("totalReconciledVehicles", totalReconciledVehicles);
 		model.addAttribute("totalUnReconciledVehicles", totalUnReconciledVehicles);
-		model.addAttribute("unreconciledSuppliersVehicles", unreconciledSuppliersVehicles);
-		model.addAttribute("unreconciledInstitutionVehicles", unreconciledInstitutionVehicles);
 		model.addAttribute("auctionedvehicles", auctionedvehicles);
+		/*model.addAttribute("unreconciledSuppliersVehicles", unreconciledSuppliersVehicles);
+		model.addAttribute("unreconciledInstitutionVehicles", unreconciledInstitutionVehicles);*/
 
 		String redirectPage = "";
 		User user = userRepository.findUserByUsername(principal.getName());

@@ -16,10 +16,15 @@ public interface InstitutionEntryRepository extends JpaRepository<InstitutionEnt
 			+ "where s.institution_supplied_to= ?1", nativeQuery = true)
 	List<InstitutionEntries> reconcilationReport(String institution);
 
-	@Query(value = "SELECT * FROM institution_entries i left join suppliers_entries s on "
+	@Query(value = "SELECT * FROM institution_entries i left join suppliers_entries s on " + 
+			" i.chassis_number = s.chassis_number and i.engine_number=s.engine_number " + 
+			" where (i.company_received_from = s.institution_supplied_to) ", nativeQuery = true)
+	List<InstitutionEntries> reconciledVehicles();
+	
+	/*@Query(value = "SELECT * FROM institution_entries i left join suppliers_entries s on "
 			+ "i.chassis_number = s.chassis_number and i.engine_number=s.engine_number "
 			+ " and i.company_received_from = s.institution_supplied_to ", nativeQuery = true)
-	List<InstitutionEntries> reconciledVehicles();
+	List<InstitutionEntries> reconciledVehiclesInstitution();*/
 
 
 	@Query(value = "SELECT * FROM institution_entries  " + "where status= 'AUCTIONED	' ", nativeQuery = true)
