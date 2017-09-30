@@ -81,6 +81,107 @@
 									<td><input type="text" class="form-control" style="width:200px;" 
 												id="input-text-help" placeholder=""
 												th:field="*{reasonIfAuctioned}"></td>
+=======
+				<div class="row">
+					<div class="widget">
+						<div class="widget-content padding">
+							<form class="form-horizontal" role="form" 
+							enctype="multipart/form-data"
+							th:object="${suppliersEntries}" th:action="@{/suppliers_entries_new}" 
+							th:method="post">
+								<div class="form-group">
+									<label for="input-text" class="col-sm-2 control-label">Type
+										Of Vehicle</label>
+									<div class="col-sm-10">
+										<input required type="text" class="form-control" id="input-text"
+											placeholder="" th:field="*{typeOfVehicle}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Year
+										Of Manufacturing</label>
+									<div class="col-sm-10">
+										<input required type="text" class="form-control" id="input-text-help"
+											placeholder="" th:field="*{manufYear}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword" class="col-sm-2 control-label">Cost
+										of Vehicle</label>
+									<div class="col-sm-10">
+										<input required type="text" class="form-control" id="inputPassword"
+											placeholder="" th:field="*{costOfVehicle}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Engine
+										Number</label>
+									<div class="col-sm-10">
+										<input required type="text" class="form-control" id="input-text-help"
+											placeholder="" th:field="*{engineNumber}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Chasis
+										Number</label>
+									<div class="col-sm-10">
+										<input required type="text" class="form-control" id="input-text-help"
+											placeholder="" th:field="*{chassisNumber}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Import Duty
+										Exception</label>
+									<div class="col-sm-10">
+									<input required type="hidden" name="dutyExemptionValue" />
+										<div class="radio">
+											<label><input required type="radio" name="dutyExemptionRadio"
+												value="1" class="dutyExemptionRadio"> Yes
+											</label>
+										</div>
+										<div class="radio">
+											<label><input required type="radio" name="dutyExemptionRadio"
+												value="0" id="dutyExemptionRadio"> No
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group" id="dutyDetails">
+									<label for="input-text-help" class="col-sm-2 control-label">
+										Import Duty Details</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control"
+											placeholder="" th:field="*{importDutyDetails}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">Institution
+										Supplied To</label>
+									<div class="col-sm-10">
+									<select class="form-control" th:field="*{institutionSuppliedTo}">
+									<option value="">Select an option</option>
+									<option 
+									th:each="institution : ${institutions}" th:text="${institution.name}"
+                                     th:value="${institution.name}"></option>
+									</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Date Supplied</label>
+									<div class="col-sm-3">
+										<input required type="text" class="form-control datepicker-input"
+										th:field="*{dateSupplied}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input-text-help" class="col-sm-2 control-label">
+										DVLA Registration Details</label>
+									<div class="col-sm-10">
+										<input required type="text" class="form-control" id="input-text-help"
+											placeholder="" th:field="*{dvlaRegistrationDetails}">
+									</div>
+								</div>
+>>>>>>> fe6d21720b8c3cc98347a25abcd7ec22ebd11c97
 
 										</tr>
 									</tbody>

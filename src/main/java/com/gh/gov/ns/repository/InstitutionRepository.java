@@ -20,5 +20,9 @@ public interface InstitutionRepository extends JpaRepository<Institution, String
 	@Query(value = "SELECT * FROM institution t inner join user u on t.name = u.department_identifier and u.role_id = '2' ", 
 			nativeQuery = true)
 	List<Institution> getAllSuppliers();
+	
+	@Query(value = "SELECT * FROM institution t inner join user u on t.name = u.department_identifier and u.role_id = '1' ", 
+			nativeQuery = true)
+	List<Institution> getAllInstitutions();
 
 }
