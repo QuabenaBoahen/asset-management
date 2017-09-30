@@ -6,15 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.model.Role;
 import com.gh.gov.ns.model.User;
 import com.gh.gov.ns.repository.InstitutionEntryRepository;
+import com.gh.gov.ns.repository.InstitutionRepository;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.SuppliersEntryRepository;
 import com.gh.gov.ns.repository.UserRepository;
 
 @Controller
+@SessionAttributes({"institutionDetails", "supplierDetails"})
 public class IndexController {
 	@Autowired
 	private UserRepository userRepository;
@@ -24,6 +28,9 @@ public class IndexController {
 
 	@Autowired
 	private InstitutionEntryRepository institutionEntryRepository;
+	
+	@Autowired
+	private InstitutionRepository institutionRepository;
 
 	@Autowired
 	private SuppliersEntryRepository suppliersEntryRepository;
@@ -52,24 +59,39 @@ public class IndexController {
 		/*model.addAttribute("unreconciledSuppliersVehicles", unreconciledSuppliersVehicles);
 		model.addAttribute("unreconciledInstitutionVehicles", unreconciledInstitutionVehicles);*/
 
-		String redirectPage = "";
+		String redirectPage = "login";
 		User user = userRepository.findUserByUsername(principal.getName());
 		if (user != null) {
 			Role role = roleRepository.findOne(user.getRoleId());
+			Institution firstLoginOfInstitution = institutionRepository.findInstitutionByName(user.getDepartmentIdentifier());
+			Institution isInstitutionProfileComplete= institutionRepository.isInstitutionProfileComplete(user.getDepartmentIdentifier());
 			if (role.getRoleName().equalsIgnoreCase("INSTITUTION")) {
-				redirectPage = "redirect:/institution_profile";
+				if(firstLoginOfInstitution != null) {
+					if(isInstitutionProfileComplete !=null) {
+						redirectPage = "redirect:/institutions_entries";
+					}else {
+						redirectPage = "redirect:/institution_profile";
+					}		
+				model.addAttribute("institutionDetails", firstLoginOfInstitution);
+				}
 			} else if (role.getRoleName().equalsIgnoreCase("SUPPLIER")) {
-				redirectPage = "redirect:/suppliers_profile";
+				/*
+				 * fix me later --> change firstLoginOfInstitution to a more meaningful name
+				 */
+				if(firstLoginOfInstitution != null) {
+					if(isInstitutionProfileComplete !=null) {
+						redirectPage = "redirect:/suppliers_entries";
+					}else {
+						redirectPage = "redirect:/suppliers_profile";
+					}		
+				model.addAttribute("supplierDetails", firstLoginOfInstitution);
+
+				}
 			} else if (role.getRoleName().equalsIgnoreCase("NS")) {
 				redirectPage = "dashboard";
 			}
 		}
 		return redirectPage;
-	}
-
-	@GetMapping("/logout")
-	public String logout(Principal principal) {
-		return "login";
 	}
 
 }

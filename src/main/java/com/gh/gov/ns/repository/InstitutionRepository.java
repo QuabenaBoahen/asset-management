@@ -10,5 +10,9 @@ import com.gh.gov.ns.model.Institution;
 public interface InstitutionRepository extends JpaRepository<Institution, String>{
 	@Query(value = "SELECT * FROM institution WHERE name = ?1", nativeQuery = true)
 	Institution findInstitutionByName(String name);
+	
+	@Query(value = "SELECT * FROM institution WHERE name = ?1 and address is not null and phone is not null", 
+			nativeQuery = true)
+	Institution isInstitutionProfileComplete(String name);
 
 }

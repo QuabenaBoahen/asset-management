@@ -1,7 +1,6 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,7 +33,7 @@ public class Letters implements Serializable {
 	private String sender;
 	@OneToMany(mappedBy = "attachment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Attachment> attachments;
-	private LocalDate date;
+	private String date;
 	private String recipient;
 
 }
