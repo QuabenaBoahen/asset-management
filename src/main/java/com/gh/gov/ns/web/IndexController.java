@@ -44,6 +44,7 @@ public class IndexController {
 
 	@GetMapping({ "/", "/dashboard" })
 	public String dashboard(Principal principal, Model model) {
+<<<<<<< HEAD
 		Integer totalInstitutionVehicles = (int) institutionEntryRepository.count();
 		Integer totalSuppliersVehicles = (int) suppliersEntryRepository.count();
 		Integer totalReconciledVehicles = (int) institutionEntryRepository.reconciledVehicles().size();
@@ -51,14 +52,24 @@ public class IndexController {
 		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;
 		Integer totalUnReconciledVehicles = unreconciledSuppliersVehicles + unreconciledInstitutionVehicles;
 		Integer auctionedvehicles = (int) institutionEntryRepository.auctionedVehicles().size();
+=======
+		Integer totalInstitutionVehicles = institutionEntryRepository.findAll().size();
+		Integer totalSuppliersVehicles = suppliersEntryRepository.findAll().size();
+		Integer totalReconciledVehicles = institutionEntryRepository.reconciledVehicles().size();
+		System.out.println(".........."+totalReconciledVehicles);
+		Integer totalUnReconciledVehicles = (totalSuppliersVehicles + totalInstitutionVehicles) -(totalReconciledVehicles);
+		Integer auctionedvehicles = institutionEntryRepository.auctionedVehicles().size();
+		/*Integer unreconciledSuppliersVehicles = totalSuppliersVehicles - totalReconciledVehicles;
+		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;*/
+>>>>>>> 3a4b98ef3c0d72bc91cfcd25cef91e0659ad9306
 
 		model.addAttribute("totalInstitution", totalInstitutionVehicles);
 		model.addAttribute("totalSuppliers", totalSuppliersVehicles);
 		model.addAttribute("totalReconciledVehicles", totalReconciledVehicles);
 		model.addAttribute("totalUnReconciledVehicles", totalUnReconciledVehicles);
-		model.addAttribute("unreconciledSuppliersVehicles", unreconciledSuppliersVehicles);
-		model.addAttribute("unreconciledInstitutionVehicles", unreconciledInstitutionVehicles);
 		model.addAttribute("auctionedvehicles", auctionedvehicles);
+		/*model.addAttribute("unreconciledSuppliersVehicles", unreconciledSuppliersVehicles);
+		model.addAttribute("unreconciledInstitutionVehicles", unreconciledInstitutionVehicles);*/
 
 		String redirectPage = "login";
 		User user = userRepository.findUserByUsername(principal.getName());

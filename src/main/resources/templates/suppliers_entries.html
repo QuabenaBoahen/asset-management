@@ -47,6 +47,8 @@
 												<th>Date Supplied</th>
 												<th>Import Duty Exemptions</th>
 												<th>Import Duty Details</th>
+												<th>Payment Cheque Details</th>
+												<th>DVLA Registration Details</th>
 												<th>Attached Documents</th>
 											</tr>
 										</thead>
@@ -61,6 +63,11 @@
 												<td th:text="${supplierEntry.dateSupplied}">20-02-03</td>
 												<td th:text="${supplierEntry.importDutyExemption}">yes</td>
 												<td th:text="${supplierEntry.importDutyDetails}">import duty details</td>
+<<<<<<< HEAD
+=======
+												<td th:text="${supplierEntry.paymentChequeDetails}">import duty details</td>
+												<td th:text="${supplierEntry.dvlaRegistrationDetails}">import duty details</td>
+>>>>>>> 3a4b98ef3c0d72bc91cfcd25cef91e0659ad9306
 												<td><a href='<spring:url value="attached_docs" />'>
 												click to view attached docs</a></td>
 											</tr>
