@@ -1,12 +1,11 @@
 package com.gh.gov.ns.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.repository.InstitutionRepository;
@@ -23,7 +22,10 @@ public class InstitutionProfileController {
 	}
 
 	@PostMapping("/institution_profile")
-	public String saveinstitutionProfile(Model model, Institution institution) {
+	public String saveinstitutionProfile(Model model, Institution institution,
+			@RequestParam("institutionId") String institutionId, @RequestParam("name") String name) {
+		institution.setInstitutionId(institutionId);
+		institution.setName(name);
 		institutionRepository.saveAndFlush(institution);
 		return "redirect:/institutions_entries";
 	}
@@ -35,7 +37,10 @@ public class InstitutionProfileController {
 	}
 
 	@PostMapping("/suppliers_profile")
-	public String saveSuppliersProfile(Model model, Institution institution) {
+	public String saveSuppliersProfile(Model model, Institution institution,
+			@RequestParam("supplierId") String supplierId, @RequestParam("name") String name) {
+		institution.setInstitutionId(supplierId);
+		institution.setName(name);
 		institutionRepository.saveAndFlush(institution);
 		return "redirect:/suppliers_entries";
 	}

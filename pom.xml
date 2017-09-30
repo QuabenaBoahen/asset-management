@@ -60,17 +60,18 @@
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 		</dependency>
-
-<<<<<<< HEAD
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
-=======
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
-			<optional>true</optional> </dependency> -->
->>>>>>> 3a4b98ef3c0d72bc91cfcd25cef91e0659ad9306
+		
+		<dependency> 
+		<groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-devtools</artifactId> 
+		<optional>true</optional> 
+		</dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>

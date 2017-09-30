@@ -2,8 +2,6 @@ package com.gh.gov.ns.web;
 
 import java.security.Principal;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +18,7 @@ import com.gh.gov.ns.repository.SuppliersEntryRepository;
 import com.gh.gov.ns.repository.UserRepository;
 
 @Controller
-@SessionAttributes({"institutionDetails"})
+@SessionAttributes({"institutionDetails", "supplierDetails"})
 public class IndexController {
 	@Autowired
 	private UserRepository userRepository;
@@ -44,15 +42,6 @@ public class IndexController {
 
 	@GetMapping({ "/", "/dashboard" })
 	public String dashboard(Principal principal, Model model) {
-<<<<<<< HEAD
-		Integer totalInstitutionVehicles = (int) institutionEntryRepository.count();
-		Integer totalSuppliersVehicles = (int) suppliersEntryRepository.count();
-		Integer totalReconciledVehicles = (int) institutionEntryRepository.reconciledVehicles().size();
-		Integer unreconciledSuppliersVehicles = totalSuppliersVehicles - totalReconciledVehicles;
-		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;
-		Integer totalUnReconciledVehicles = unreconciledSuppliersVehicles + unreconciledInstitutionVehicles;
-		Integer auctionedvehicles = (int) institutionEntryRepository.auctionedVehicles().size();
-=======
 		Integer totalInstitutionVehicles = institutionEntryRepository.findAll().size();
 		Integer totalSuppliersVehicles = suppliersEntryRepository.findAll().size();
 		Integer totalReconciledVehicles = institutionEntryRepository.reconciledVehicles().size();
@@ -61,7 +50,6 @@ public class IndexController {
 		Integer auctionedvehicles = institutionEntryRepository.auctionedVehicles().size();
 		/*Integer unreconciledSuppliersVehicles = totalSuppliersVehicles - totalReconciledVehicles;
 		Integer unreconciledInstitutionVehicles = totalInstitutionVehicles - totalReconciledVehicles;*/
->>>>>>> 3a4b98ef3c0d72bc91cfcd25cef91e0659ad9306
 
 		model.addAttribute("totalInstitution", totalInstitutionVehicles);
 		model.addAttribute("totalSuppliers", totalSuppliersVehicles);
@@ -75,9 +63,9 @@ public class IndexController {
 		User user = userRepository.findUserByUsername(principal.getName());
 		if (user != null) {
 			Role role = roleRepository.findOne(user.getRoleId());
+			Institution firstLoginOfInstitution = institutionRepository.findInstitutionByName(user.getDepartmentIdentifier());
+			Institution isInstitutionProfileComplete= institutionRepository.isInstitutionProfileComplete(user.getDepartmentIdentifier());
 			if (role.getRoleName().equalsIgnoreCase("INSTITUTION")) {
-				Institution firstLoginOfInstitution = institutionRepository.findInstitutionByName(user.getDepartmentIdentifier());
-				Institution isInstitutionProfileComplete= institutionRepository.isInstitutionProfileComplete(user.getDepartmentIdentifier());
 				if(firstLoginOfInstitution != null) {
 					if(isInstitutionProfileComplete !=null) {
 						redirectPage = "redirect:/institutions_entries";
@@ -87,7 +75,17 @@ public class IndexController {
 				model.addAttribute("institutionDetails", firstLoginOfInstitution);
 				}
 			} else if (role.getRoleName().equalsIgnoreCase("SUPPLIER")) {
-				redirectPage = "redirect:/suppliers_profile";
+				/*
+				 * fix me later --> change firstLoginOfInstitution to a more meaningful name
+				 */
+				if(firstLoginOfInstitution != null) {
+					if(isInstitutionProfileComplete !=null) {
+						redirectPage = "redirect:/suppliers_entries";
+					}else {
+						redirectPage = "redirect:/suppliers_profile";
+					}		
+				model.addAttribute("supplierDetails", firstLoginOfInstitution);
+				}
 			} else if (role.getRoleName().equalsIgnoreCase("NS")) {
 				redirectPage = "dashboard";
 			}
