@@ -52,7 +52,8 @@
 						<div class="col-md-9">
 							<div class="widget">
 								<div class="widget-content padding">
-									<form method="post" role="form" class="form-horizontal">
+									<form th:action="@{/compose_memo}" th:object="${memo}"
+									 method="post" role="form" class="form-horizontal">
 										<!-- Modal -->
 										<div id="myModal" class="modal fade" role="dialog">
 											<div class="modal-dialog">
@@ -87,12 +88,12 @@
 										<div class="form-group">
 											<label class="control-label col-sm-1">Subject:</label>
 											<div class="col-sm-11">
-												<input type="text" class="form-control ">
+												<input th:field="*{subject}" type="text" class="form-control " >
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-12">
-												<textarea class="summernote-small form-control"></textarea>
+												<textarea th:field="*{subject}"  class="summernote-small form-control"></textarea>
 											</div>
 										</div>
 										<div class="row">

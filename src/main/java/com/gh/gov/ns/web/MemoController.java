@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gh.gov.ns.model.Institution;
+import com.gh.gov.ns.model.Memo;
 import com.gh.gov.ns.repository.InstitutionRepository;
+import com.gh.gov.ns.repository.MemoRepository;
 
 @Controller
 public class MemoController {
 	@Autowired
-	private InstitutionRepository institutionRepository;
-
+	private MemoRepository memoRepository ;
 	
 	@GetMapping("/inbox_memo")
 	public String inboxmemo(Model model) {
@@ -25,8 +26,13 @@ public class MemoController {
 	}
 	@GetMapping("/compose_memo")
 	public String composememo(Model model) {
-
+		model.addAttribute("memo", new Memo());
 		return "compose_memo";
+	}
+	@PostMapping("/compose_memo")
+	public String createMemo(Memo memo) {
+	memoRepository.saveAndFlush(memo);
+	return "redirect:/compose_memo";
 	}
 
 	@GetMapping("/draft_memo")
@@ -36,13 +42,11 @@ public class MemoController {
 	}
 	@GetMapping("/sent_memo")
 	public String sentmemo(Model model) {
-
 		return "sent_memo";
 	}
 	
 	@GetMapping("/selected_memo")
 	public String selectedmemo(Model model) {
-
 		return "selected_memo";
 	}
 	
