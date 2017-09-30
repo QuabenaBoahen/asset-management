@@ -47,8 +47,7 @@
 							</div>
 							<div class="list-group menu-message">
 								<a th:href="@{/inbox_memo}" class="list-group-item"><i
-									class="icon-inbox"></i> Inbox </a> <a th:href="@{/draft_memo}"
-									class="list-group-item"><i class="icon-pencil"></i> Draft </a>
+									class="icon-inbox"></i> Inbox </a> 
 								<a th:href="@{/sent_memo}" class="list-group-item"><i
 									class="icon-export"></i> Sent</a>
 							</div>
@@ -74,17 +73,17 @@
 													width="100%">
 													<thead>
 														<tr>
-															<th>Tittle</th>
+															<th>Title</th>
 															<th>From</th>
-															<th>Content</th>
 															<th>Date</th>
+															<th></th>
 														</tr>
 													</thead>
 													<tbody>
-														<tr th:each="draft : ${drafts}">
-															<td th:text="${draft.subject}">GHANA EDUCATION SERVICE</td>
-															<td th:text="${draft.content}">MINISTRY OF EDUCATION</td>
-															<td th:text="${draft.date}">education1</td>
+														<tr th:each="inboxMemo : ${inbox}">
+															<td th:text="${inboxMemo.subject}">GHANA EDUCATION SERVICE</td>
+															<td th:text="${inboxMemo.sender}">MINISTRY OF EDUCATION</td>
+															<td th:text="${inboxMemo.date}">education1</td>
 															<td ><a href="#"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 														</tr>
 													</tbody>
