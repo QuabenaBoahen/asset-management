@@ -3,13 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gh.gov.ns</groupId>
 	<artifactId>asset-management</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.6.RELEASE</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -60,12 +61,12 @@
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 		</dependency>
-		
-		 <dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
-		</dependency> 
+		</dependency>
 
 
 		<dependency>
@@ -94,26 +95,18 @@
 	</dependencies>
 	<build>
 		<plugins>
-  <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <executions>
-      <execution>
-        <phase>package</phase>
-        <goals>
-          <goal>shade</goal>
-        </goals>
-        <configuration>
-          <transformers>
-            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-              <mainClass>com.gh.gov.ns.Application</mainClass>
-            </transformer>
-          </transformers>
-        </configuration>
-      </execution>
-    </executions>
-  </plugin>
- </plugins>
-		<finalName>asset-management</finalName>
+			<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+	 <finalName>asset-management</finalName> 
 	</build>
 </project>
