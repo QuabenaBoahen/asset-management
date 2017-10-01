@@ -33,9 +33,5 @@ public class Vehicle implements Serializable{
 	private LocalDate dateSupplied;
 	private String ministrySuppliedTo;
 	private String institutionSuppliedTo;
-	@OneToMany(mappedBy="vehicle", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<VehicleInfo> vehicleInfo;
-	@OneToMany(mappedBy="vehicle", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<VehicleDocuments> vehicleDocuments;
 
 }

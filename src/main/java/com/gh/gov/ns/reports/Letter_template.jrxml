@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Letter_template" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
+	<property name="template.type" value="columnar"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="content" class="java.lang.String"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="myRefNo" class="java.lang.String"/>
+	<parameter name="yourRefNo" class="java.lang.String"/>
+	<parameter name="recipient" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement x="210" y="0" width="157" height="40" uuid="c23abf30-9e17-478a-b2e3-2ee9455a81a0"/>
+					<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band height="5"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="2" y="0" width="551" height="40" uuid="f49d68fd-a2c7-44ec-a5fc-9300d10c85a1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Justified">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONFIDENTIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="51" width="120" height="20" forecolor="#3333FF" uuid="f4a05412-176e-4c49-a83e-0db7f90bb092"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[In case of reply the]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="71" width="118" height="20" forecolor="#0000CC" uuid="dd4e85d3-2f1e-4137-9a9a-70179dfac598"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[number and date of this]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="91" width="137" height="20" forecolor="#0000CC" uuid="cdee3629-7f89-4e63-8b2f-aea4fa9376fa"/>
+				<textElement>
+					<font size="12" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[letter should be quoted]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="121" width="180" height="20" forecolor="#0000CC" uuid="755e7e25-466b-41d8-b0ad-64543b8686f8"/>
+				<text><![CDATA[My Ref. No:..................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="143" width="180" height="17" forecolor="#0000CC" uuid="67501d38-db9c-4c3a-80bb-a726485cdd5d"/>
+				<text><![CDATA[Your Ref. No:.............]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="111" width="119" height="30" uuid="7e0c5a9c-6ec6-49a5-a34f-ba8d01708922"/>
+				<text><![CDATA[REPUBLIC OF GHANA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="40" width="163" height="20" isPrintWhenDetailOverflows="true" uuid="c726a5bb-ffa7-4222-a4ef-d57e87566922"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF NATIONAL SECURITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="57" width="163" height="20" isPrintWhenDetailOverflows="true" uuid="7da30eec-9f13-4e32-9c77-47fb12c5ba77"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[P. O. BOX 1627]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="71" width="163" height="20" isPrintWhenDetailOverflows="true" uuid="a396eb7b-7fba-4d95-949b-5e68b9e55828"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CASTLE ANNEX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="80" width="163" height="20" isPrintWhenDetailOverflows="true" uuid="0c1a73ef-08c9-4653-bce8-cdaaf8a9d10c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ACCRA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="392" y="100" width="173" height="21" uuid="72048a31-093f-419b-b05c-1999a5b85fb3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement positionType="FixRelativeToBottom" x="230" y="50" width="130" height="49" uuid="1d4fa472-f127-410b-b74c-5998bbd62f5b"/>
+				<imageExpression><![CDATA["C:/Users/ADM-KJO/Documents/workspace-sts-3.9.0.RELEASE/assetManagement/asset-management/src/main/resources/static/images/users/default-user.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="90" width="551" height="1" uuid="5e41185f-9c90-45ca-839b-e28b308c1430"/>
+			</line>
+			<textField>
+				<reportElement x="70" y="10" width="350" height="70" uuid="971bc6af-3c1d-4cc7-a540-d55f9d2365f1"/>
+				<textFieldExpression><![CDATA[$P{content}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fab082df-3ca0-43ac-900e-4da3f8b5a45d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8" uuid="bfdca178-800d-445c-9a31-bb616a00e8ce"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="2fba0f87-635e-476d-858f-d102b26146fe"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" mode="Transparent" x="433" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="e454d23d-bcfc-4c79-a399-0ef520a3150a"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="14d8de1e-8695-4078-a67f-0e69172574d5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

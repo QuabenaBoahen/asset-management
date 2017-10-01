@@ -1,14 +1,10 @@
 package com.gh.gov.ns.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -30,9 +26,10 @@ public class Institution implements Serializable{
 	private String address;
 	private String email;
 	private String phone;
-	private String topOfficialContact;
-	private String topOfficialContactInfo;
-	@OneToMany(mappedBy="institution", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<User> users;
+	private String representativeName;
+	private String representativeContact;
+	private String representativePosition;
+	private String representativeEmail;
+		
 
 }
