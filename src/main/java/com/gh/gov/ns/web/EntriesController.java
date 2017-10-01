@@ -30,13 +30,15 @@ import com.gh.gov.ns.repository.SuppliersEntryRepository;
 import com.gh.gov.ns.utils.DateFormatter;
 
 @Controller
-@SessionAttributes({"currentInstitutionTrxId"})
+@SessionAttributes({"currentInstitutionTrxId", "currentSupplierTrxId"})
 public class EntriesController {
 
 	@Autowired
 	private DocumentsRepository DocumentsRepository;
 	
 	private int currentInstitutionTrxId;
+	
+	private int currentSupplierTrxId;
 
 	private static String UPLOADED_FOLDER = "C://Users/Quabena/Desktop/uploads/";
 
@@ -101,10 +103,9 @@ public class EntriesController {
 		return "suppliers_entries_new";
 	}
 
-	@PostMapping("/attachment")
+	@PostMapping("/attach_docs_suppl")
 	public String newattAchment(Model model, SuppliersEntries suppliers, @RequestParam("file") MultipartFile file[],
-			RedirectAttributes ra, @RequestParam(value = "dutyExemptionRadio", required = false) String dutyExemptionRadio) {
-		List<Documents> docs = new ArrayList<>();
+			RedirectAttributes ra) {
 		if (file.length == 0) {
 			ra.addFlashAttribute("message", "Please select a file to upload");
 		}
@@ -114,54 +115,44 @@ public class EntriesController {
 				byte[] bytes = file[i].getBytes();
 				Path path = Paths.get(UPLOADED_FOLDER + file[i].getOriginalFilename());
 				Files.write(path, bytes);
-
 				Documents newDoc = new Documents();
 				newDoc.setDocumentLocation(UPLOADED_FOLDER + "/" + file[i].getOriginalFilename());
-				Documents doc = DocumentsRepository.saveAndFlush(newDoc);
-				docs.add(doc);
-				suppliers.setDocuments(docs);
-
+				newDoc.setSuppliersTrxId(currentSupplierTrxId);
+				DocumentsRepository.saveAndFlush(newDoc);
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			suppliersEntryRepository.saveAndFlush(suppliers);
 		}
-
-		return "redirect:/attach_docs_suppl";
+		return "redirect:/suppliers_entries";
 	}
 
 	@PostMapping("/suppliers_entries_new")
-	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers,
-			@RequestParam("file") MultipartFile file[], RedirectAttributes ra, 
-			@RequestParam(value="dutyExemptionRadio", required=false) String dutyExemptionRadio) {
-     List<Documents> docs= new ArrayList<>();
-		if (file.length==0) {
-            ra.addFlashAttribute("message", "Please select a file to upload");
-        }
-		
-        try {
-        	for(int i=0; i< file.length; i++)
-        	{
-        		byte[] bytes = file[i].getBytes();
-                Path path = Paths.get(UPLOADED_FOLDER + file[i].getOriginalFilename());
-                Files.write(path, bytes);
-                
-                Documents newDoc =new Documents();
-                newDoc.setDocumentLocation(UPLOADED_FOLDER + "/" + file[i].getOriginalFilename());
-                Documents doc = DocumentsRepository.saveAndFlush(newDoc);
-                docs.add(doc);          
-                suppliers.setDocuments(docs);       
-        	}
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-          suppliers.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
-        	suppliersEntryRepository.saveAndFlush(suppliers);
-        }
-        return  "redirect:/suppliers_entries_new";
+	public String saveSuppliersEntriesNew(Model model, @RequestParam("typeOfVehicle") String type[],
+			@RequestParam("manufYear") String year[], @RequestParam("engineNumber") String engineNumber[],
+			@RequestParam("chassisNumber") String chassisNumber[], @RequestParam("institutionSuppliedTo") String institutionSuppliedTo[],
+			@RequestParam("dateSupplied") String dateSupplied[], @RequestParam("importDutyExemption") int importDutyExemption[],
+			@RequestParam("importDutyDetails") String importDutyDetails[], @RequestParam("paymentChequeDetails") String paymentChequeDetails[],
+			@RequestParam("dvlaRegistrationDetails") String dvlaRegistrationDetails[]) {
+		Random rand = new Random();
+		int trxId=rand.nextInt(10000000);
+		currentSupplierTrxId = trxId;
+        for(int i=0; i<type.length; i++){
+        	SuppliersEntries entries = new SuppliersEntries();
+            entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
+        entries.setTransactionId(String.valueOf(currentSupplierTrxId));
+        entries.setTypeOfVehicle(type[i]);
+        entries.setManufYear(year[i]);
+        entries.setEngineNumber(engineNumber[i]);
+        entries.setChassisNumber(chassisNumber[i]);
+        entries.setInstitutionSuppliedTo(institutionSuppliedTo[i]);
+        entries.setDateSupplied(dateSupplied[i]);
+        entries.setImportDutyExemption(importDutyExemption[i]);
+        entries.setImportDutyDetails(importDutyDetails[i]);
+        entries.setPaymentChequeDetails(paymentChequeDetails[i]);
+        entries.setDvlaRegistrationDetails(dvlaRegistrationDetails[i]);
+        suppliersEntryRepository.saveAndFlush(entries);
+        }     
+        return  "redirect:/attach_docs_suppl";
 	}
 
 	@GetMapping("/suppliers_entries")

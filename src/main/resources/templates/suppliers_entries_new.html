@@ -8,7 +8,7 @@
 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
 	<!-- Begin page -->
 	<div id="wrapper">
-		<div th:include="fragments/body :: supppliers_navbar (~{::title})"></div>
+		<div th:include="fragments/body :: suppliers_navbar (~{::title})"></div>
 		<!-- Start right content -->
 		<div class="content-page">
 			<!-- ============================================================== -->
@@ -27,13 +27,13 @@
 
 				<!--  content starts here -->
 
-				<div  class="row">
-					<div  class="widget">
-						<div style= "overflow: scroll" class="widget-content padding">
+				<div class="row">
+					<div class="widget">
+						<div style="overflow: scroll" class="widget-content padding">
 							<form enctype="multipart/form-data"
 								th:object="${suppliersEntries}"
 								th:action="@{/suppliers_entries_new}" th:method="post"
-							role='form'>
+								role='form'>
 								<input type="button" value="Add Row"
 									onclick="addRow('dataTable')" /> <input type="button"
 									value="Delete Row" onclick="deleteRow('dataTable')" /> <br>
@@ -42,147 +42,62 @@
 									cellspacing="0" width="100%">
 									<tr>
 										<td>Select</td>
-										<td	>TYPE OF VEHICLE</td>
+										<td>TYPE OF VEHICLE</td>
 										<td>YEAR OF MANUFACTURING</td>
 										<td>ENGINE NUMBER</td>
 										<td>CHASIS NUMBER</td>
-										<td>COMPANY RECEIVED FROM</td>
-										<td>DATE RECEIVED</td>
-										<td>STATUS</td>
-										<td>REASON</td>
+										<td>INSTITUTION SUPPLIED TO</td>
+										<td>DATE SUPPLIED</td>
+										<td>IMPORT DUTY EXEMPTIONS</td>
+										<td>IMPORT DUTY DETAILS</td>
+										<td>PAYMENT CHEQUE DETAILS</td>
+										<td>DVLA REGISTRATION DETAILS</td>
 									</tr>
 									<tbody id="dataTable">
 										<tr>
 											<td><input class="form-control" id="nostyle"
 												type="checkbox" name="chk[]" /></td>
-											<td><input style="width:200px;" type="text" class="form-control"
-												id="input-text" placeholder="" th:field="*{typeOfVehicle}">
-											</td>
-											<td><input style="width:100px;" type="text" class="form-control"
-												id="input-text-help" placeholder="" th:field="*{manufYear}"></td>
-											<td><input style="width:200px;"  type="text" class="form-control"
-												id="input-text-help" placeholder=""
-												th:field="*{engineNumber}"></td>
-											<td><input style="width:200px;"  type="text" class="form-control"
-												id="input-text-help" placeholder=""
-												th:field="*{chassisNumber}"></td>
-											<td><select style="width:200px;"  class="form-group form-control"
-												th:field="*{companyReceivedFrom}">
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text" placeholder=""
+												name="typeOfVehicle"></td>
+											<td><input style="width: 100px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="manufYear"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="engineNumber"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="chassisNumber"></td>
+											<td><select style="width: 200px;"
+												class="form-group form-control"
+												name="institutionSuppliedTo">
 													<option value="">Select an option</option>
-													<option th:each="supplier : ${suppliers}"
-														th:text="${supplier.name}" th:value="${supplier.name}">Company name</option>
+													<option th:each="institution : ${institutions}"
+														th:text="${institution.name}"
+														th:value="${institution.name}">Company name</option>
 											</select></td>
-											<td><input  type="date" class="form-control datepicker-input"
-										th:field="*{dateReceived}"></td>
-											<td><select class=" form-control" style="width:150px;"  th:field="*{status}">
-										<option value="">Select an option</option>
-										<option th:value="AUCTIONED">Auctioned</option>
-									</select></td>
-									<td><input type="text" class="form-control" style="width:200px;" 
-												id="input-text-help" placeholder=""
-												th:field="*{reasonIfAuctioned}"></td>
-=======
-				<div class="row">
-					<div class="widget">
-						<div class="widget-content padding">
-							<form class="form-horizontal" role="form" 
-							enctype="multipart/form-data"
-							th:object="${suppliersEntries}" th:action="@{/suppliers_entries_new}" 
-							th:method="post">
-								<div class="form-group">
-									<label for="input-text" class="col-sm-2 control-label">Type
-										Of Vehicle</label>
-									<div class="col-sm-10">
-										<input required type="text" class="form-control" id="input-text"
-											placeholder="" th:field="*{typeOfVehicle}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Year
-										Of Manufacturing</label>
-									<div class="col-sm-10">
-										<input required type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{manufYear}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="inputPassword" class="col-sm-2 control-label">Cost
-										of Vehicle</label>
-									<div class="col-sm-10">
-										<input required type="text" class="form-control" id="inputPassword"
-											placeholder="" th:field="*{costOfVehicle}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Engine
-										Number</label>
-									<div class="col-sm-10">
-										<input required type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{engineNumber}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Chasis
-										Number</label>
-									<div class="col-sm-10">
-										<input required type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{chassisNumber}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Import Duty
-										Exception</label>
-									<div class="col-sm-10">
-									<input required type="hidden" name="dutyExemptionValue" />
-										<div class="radio">
-											<label><input required type="radio" name="dutyExemptionRadio"
-												value="1" class="dutyExemptionRadio"> Yes
-											</label>
-										</div>
-										<div class="radio">
-											<label><input required type="radio" name="dutyExemptionRadio"
-												value="0" id="dutyExemptionRadio"> No
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group" id="dutyDetails">
-									<label for="input-text-help" class="col-sm-2 control-label">
-										Import Duty Details</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control"
-											placeholder="" th:field="*{importDutyDetails}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">Institution
-										Supplied To</label>
-									<div class="col-sm-10">
-									<select class="form-control" th:field="*{institutionSuppliedTo}">
-									<option value="">Select an option</option>
-									<option 
-									th:each="institution : ${institutions}" th:text="${institution.name}"
-                                     th:value="${institution.name}"></option>
-									</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Date Supplied</label>
-									<div class="col-sm-3">
-										<input required type="text" class="form-control datepicker-input"
-										th:field="*{dateSupplied}">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-text-help" class="col-sm-2 control-label">
-										DVLA Registration Details</label>
-									<div class="col-sm-10">
-										<input required type="text" class="form-control" id="input-text-help"
-											placeholder="" th:field="*{dvlaRegistrationDetails}">
-									</div>
-								</div>
->>>>>>> fe6d21720b8c3cc98347a25abcd7ec22ebd11c97
-
+											<td><input type="date"
+												class="form-control datepicker-input"
+												name="dateSupplied"></td>
+											<td>
+											<select style="width: 200px;"
+												class="form-group form-control"
+												name="importDutyExemption">
+													<option value="0">Select an option</option>
+													<option th:text="Yes" th:value="1">Option</option>
+											         <option th:text="No" th:value="0">Option</option>
+											</select>
+									        </td>
+											<td><input style="width: 100px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="importDutyDetails"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="paymentChequeDetails"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="dvlaRegistrationDetails"></td>
 										</tr>
 									</tbody>
 								</table>

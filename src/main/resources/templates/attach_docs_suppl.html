@@ -30,15 +30,14 @@
 					<div class="col-md-12 portlets">
 						<!-- Your awesome content goes here -->
 						<div class="widget">
-							<form action="upload.php" class="dropzone" id="dropzone">
+							<form th:action="@{/attach_docs_suppl}" class="dropzone" id="dropzone" method="post">
 								<div class="fallback">
 									<input name="file" type="file" multiple />
 								</div>
 							</form>
 						</div>
-						<a th:href="@{suppliers_entries}"><button
-								class="btn btn-danger md-close">Cancel</button></a>
-						<button class="btn btn-success md-close">Save</button>
+						<a th:href="@{/suppliers_entries}"><button
+								class="btn btn-primary md-close">Done uploading documents</button></a>
 					</div>
 				</div>
 
