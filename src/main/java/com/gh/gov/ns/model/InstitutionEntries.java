@@ -26,6 +26,7 @@ public class InstitutionEntries implements Serializable{/**
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String entryId;
+	private String transactionId;
 	private String typeOfVehicle;
 	private String chassisNumber;
 	private String engineNumber;

@@ -59,6 +59,7 @@
 												type="checkbox" name="chk[]" /></td>
 											<td><input style="width: 200px;" type="text"
 												class="form-control" id="input-text" placeholder=""
+<<<<<<< HEAD
 												th:field="*{typeOfVehicle}"></td>
 											<td><input style="width: 100px;" type="text"
 												class="form-control" id="input-text-help" placeholder=""
@@ -72,6 +73,21 @@
 											<td><select style="width: 200px;"
 												class="form-group form-control"
 												th:field="*{institutionSuppliedTo}">
+=======
+												name="typeOfVehicle"></td>
+											<td><input style="width: 100px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="manufYear"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="engineNumber"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="chassisNumber"></td>
+											<td><select style="width: 200px;"
+												class="form-group form-control"
+												name="institutionSuppliedTo">
+>>>>>>> b31ab86648211d9999c0fdcd65d0d230b43146ec
 													<option value="">Select an option</option>
 													<option th:each="institution : ${institutions}"
 														th:text="${institution.name}"
@@ -79,6 +95,7 @@
 											</select></td>
 											<td><input type="date"
 												class="form-control datepicker-input"
+<<<<<<< HEAD
 												th:field="*{dateSupplied}"></td>
 											<td><input style="width: 200px;" type="text"
 												class="form-control" id="input-text" placeholder=""
@@ -92,6 +109,27 @@
 											<td><input style="width: 200px;" type="text"
 												class="form-control" id="input-text-help" placeholder=""
 												th:field="*{dvlaRegistrationDetails}"></td>
+=======
+												name="dateSupplied"></td>
+											<td>
+											<select style="width: 200px;"
+												class="form-group form-control"
+												name="importDutyExemption">
+													<option value="0">Select an option</option>
+													<option th:text="Yes" th:value="1">Option</option>
+											         <option th:text="No" th:value="0">Option</option>
+											</select>
+									        </td>
+											<td><input style="width: 100px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="importDutyDetails"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="paymentChequeDetails"></td>
+											<td><input style="width: 200px;" type="text"
+												class="form-control" id="input-text-help" placeholder=""
+												name="dvlaRegistrationDetails"></td>
+>>>>>>> b31ab86648211d9999c0fdcd65d0d230b43146ec
 										</tr>
 									</tbody>
 								</table>

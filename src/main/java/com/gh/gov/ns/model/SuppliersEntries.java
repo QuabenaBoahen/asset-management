@@ -26,6 +26,7 @@ public class SuppliersEntries implements Serializable{/**
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String entryId;
 	private String typeOfVehicle;
+	private String transactionId;
 	private String chassisNumber;
 	private String engineNumber;
 	private String dateOfEntry;
