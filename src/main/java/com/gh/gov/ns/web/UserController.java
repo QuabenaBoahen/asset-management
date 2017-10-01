@@ -14,6 +14,7 @@ import com.gh.gov.ns.model.Role;
 import com.gh.gov.ns.model.User;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.UserRepository;
+import com.gh.gov.ns.utils.CredentialsGenerator;
 
 @Controller
 public class UserController {
@@ -22,6 +23,9 @@ public class UserController {
 
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	private CredentialsGenerator credentialsGenerator;
 
 	@GetMapping("/users")
 	public String users() {
@@ -63,8 +67,14 @@ public class UserController {
 	public String saveUser(Model model, User user, @RequestParam("role_name") String role_name) {
 		Role role = roleRepository.findOne(role_name);
 		if (role != null) {
-			user.setRoleId(role.getRoleId());
-			userRepository.saveAndFlush(user);
+			String usernameKey=user.getName() + user.getDepartmentIdentifier() + user.getPosition();
+			String username = credentialsGenerator.generateUsername(usernameKey.replaceAll("\\s", "").toLowerCase().substring(0, 5));
+			  username = username + "@ns";
+		      String password = credentialsGenerator.generatePassword(username.substring(0, 4));
+		      user.setUsername(username);
+		      user.setPassword(password);
+			  user.setRoleId(role.getRoleId());
+			  userRepository.saveAndFlush(user);
 		}
 		return "redirect:/useraccount";
 	}

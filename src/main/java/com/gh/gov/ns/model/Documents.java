@@ -22,10 +22,10 @@ public class Documents implements Serializable{/**
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String documentId;
 	private String documentLocation;
-	@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
-	private InstitutionEntries institutionEntries;
+	//@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
+	private int institutionTrxId;
 	
-	@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
-	private SuppliersEntries suppliersEntries;
+	//@ManyToOne(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
+	private int suppliersTrxId;
 
 }

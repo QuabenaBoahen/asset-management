@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,10 +30,13 @@ import com.gh.gov.ns.repository.SuppliersEntryRepository;
 import com.gh.gov.ns.utils.DateFormatter;
 
 @Controller
+@SessionAttributes({"currentInstitutionTrxId"})
 public class EntriesController {
 
 	@Autowired
 	private DocumentsRepository DocumentsRepository;
+	
+	private int currentInstitutionTrxId;
 
 	private static String UPLOADED_FOLDER = "C://Users/Quabena/Desktop/uploads/";
 
@@ -63,10 +68,30 @@ public class EntriesController {
 	}
 
 	@PostMapping("/institutions_entries_new")
-	public String saveinstitutionsEntriesNew(Model model, InstitutionEntries entries) {
-            entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
-			institutionEntryRepository.saveAndFlush(entries);
-		return "redirect:/institutions_entries_new";
+	public String saveinstitutionsEntriesNew(Model model,@RequestParam("typeOfVehicle") String type[],
+			@RequestParam("manufYear") String year[], @RequestParam("engineNumber") String engineNumber[],
+			@RequestParam("chassisNumber") String chassisNumber[], @RequestParam("companyReceivedFrom") String companyReceivedFrom[],
+			@RequestParam("dateReceived") String dateReceived[], @RequestParam("status") String status[],
+			@RequestParam("reasonIfAuctioned") String reasonIfAuctioned[]) {
+		    
+            Random rand = new Random();
+    		int trxId=rand.nextInt(10000000);
+    		currentInstitutionTrxId = trxId;
+            for(int i=0; i<type.length; i++){
+            	InstitutionEntries entries = new InstitutionEntries();
+                entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
+            entries.setTransactionId(String.valueOf(currentInstitutionTrxId));
+            entries.setTypeOfVehicle(type[i]);
+            entries.setManufYear(year[i]);
+            entries.setEngineNumber(engineNumber[i]);
+            entries.setChassisNumber(chassisNumber[i]);
+            entries.setCompanyReceivedFrom(companyReceivedFrom[i]);
+            entries.setDateReceived(dateReceived[i]);
+            entries.setStatus(status[i]);
+            entries.setReasonIfAuctioned(reasonIfAuctioned[i]);
+            institutionEntryRepository.saveAndFlush(entries);
+            }
+		return "redirect:/attach_docs_inst";
 	}
 
 	@GetMapping("/suppliers_entries_new")
@@ -163,7 +188,6 @@ public class EntriesController {
 	@PostMapping("/attach_docs_inst")
 	public String saveInstitutionDocuments(Model model, @RequestParam("file") MultipartFile file[], 
 			RedirectAttributes ra) {
-		List<Documents> docs = new ArrayList<>();
 		if (file.length == 0) {
 			ra.addFlashAttribute("message", "Please select a file to upload");
 		}
@@ -175,16 +199,13 @@ public class EntriesController {
 				Files.write(path, bytes);
 				Documents newDoc = new Documents();
 				newDoc.setDocumentLocation(UPLOADED_FOLDER + "/" + file[i].getOriginalFilename());
-				Documents doc = DocumentsRepository.saveAndFlush(newDoc);
-				docs.add(doc);
-				//suppliers.setDocuments(docs);
+				newDoc.setInstitutionTrxId(currentInstitutionTrxId);
+				DocumentsRepository.saveAndFlush(newDoc);
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			//suppliersEntryRepository.saveAndFlush(suppliers);
-		}
+		} 
 		return "redirect:/institutions_entries";
 	}
 
