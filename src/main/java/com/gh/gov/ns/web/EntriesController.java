@@ -98,8 +98,9 @@ public class EntriesController {
 
 	@GetMapping("/suppliers_entries_new")
 	public String suppliersEntriesNew(Model model) {
+		List<Institution> institutions = institutionRepository.getAllInstitutions();
+		model.addAttribute("institutions", institutions);
 		model.addAttribute("suppliersEntries", new SuppliersEntries());
-		model.addAttribute("institutions", institutionRepository.getAllInstitutions());
 		return "suppliers_entries_new";
 	}
 
@@ -127,6 +128,38 @@ public class EntriesController {
 	}
 
 	@PostMapping("/suppliers_entries_new")
+<<<<<<< HEAD
+
+	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers,
+			@RequestParam("file") MultipartFile file[], RedirectAttributes ra, 
+			@RequestParam(value="dutyExemptionRadio", required=false) String dutyExemptionRadio) {
+     List<Documents> docs= new ArrayList<>();
+		if (file.length==0) {
+            ra.addFlashAttribute("message", "Please select a file to upload");
+        }
+		
+        try {
+        	for(int i=0; i< file.length; i++)
+        	{
+        		byte[] bytes = file[i].getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER + file[i].getOriginalFilename());
+                Files.write(path, bytes);
+                
+                Documents newDoc =new Documents();
+                newDoc.setDocumentLocation(UPLOADED_FOLDER + "/" + file[i].getOriginalFilename());
+                Documents doc = DocumentsRepository.saveAndFlush(newDoc);
+                docs.add(doc);          
+                suppliers.setDocuments(docs);       
+        	}
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+          suppliers.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
+        	suppliersEntryRepository.saveAndFlush(suppliers);
+        }
+        return  "redirect:/suppliers_entries_new";
+=======
 	public String saveSuppliersEntriesNew(Model model, @RequestParam("typeOfVehicle") String type[],
 			@RequestParam("manufYear") String year[], @RequestParam("engineNumber") String engineNumber[],
 			@RequestParam("chassisNumber") String chassisNumber[], @RequestParam("institutionSuppliedTo") String institutionSuppliedTo[],
@@ -153,6 +186,13 @@ public class EntriesController {
         suppliersEntryRepository.saveAndFlush(entries);
         }     
         return  "redirect:/attach_docs_suppl";
+>>>>>>> b31ab86648211d9999c0fdcd65d0d230b43146ec
+	}
+		
+	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers) {
+		System.out.println("suppliers............."+suppliers);
+		suppliersEntryRepository.saveAndFlush(suppliers);
+		return "redirect:/suppliers_entries_new";
 	}
 
 	@GetMapping("/suppliers_entries")
