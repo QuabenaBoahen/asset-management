@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Institutions_report_2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d9759e1-a59f-4431-8b6b-420a6d2963ac">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="typeOfVehicle" class="java.lang.String"/>
+	<field name="chassisNumber" class="java.lang.String"/>
+	<field name="engineNumber" class="java.lang.String"/>
+	<field name="dateOfEntry" class="java.lang.String"/>
+	<field name="manufYear" class="java.lang.String"/>
+	<field name="dateReceived" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="companyReceivedFrom" class="java.lang.String"/>
+	<field name="reasonIfAuctioned" class="java.lang.String"/>
+	<field name="Institution_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="220" y="0" width="412" height="62" uuid="98708579-d441-4df7-9a64-ff808f50ad27"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[INSTITUTIONS REPORT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="0" width="139" height="80" uuid="c4dc45a1-6b78-4a44-8a83-b410e77cad2f"/>
+				<imageExpression><![CDATA["C:/Users/ADM-KJO/Documents/workspace-sts-3.9.0.RELEASE/assetManagement/asset-management/src/main/resources/static/images/users/default-user.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="420" y="62" width="160" height="30" uuid="e5a0fab4-0fcb-482f-beeb-9f19a398f50e"/>
+				<textFieldExpression><![CDATA[$F{Institution_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="30" uuid="58248c79-bd29-4b58-aefb-4c23cb4ab057"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="0" width="100" height="30" uuid="f76d0c3f-d2a7-473c-b725-eee91c714fc5"/>
+				<text><![CDATA[TYPE OF VEHICLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="100" height="30" uuid="fc348068-cb95-47a5-b1fb-ee97338aca24"/>
+				<text><![CDATA[YEAR OF MANUFACTURE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="0" width="100" height="30" uuid="2f3752dc-db1d-4791-88d4-149de6714125"/>
+				<text><![CDATA[COMPANY RECEIVED FROM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="30" uuid="d02d424f-0905-461b-8d7e-dde48fdf3e9d"/>
+				<text><![CDATA[CHASIS NUMBER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="100" height="30" uuid="2df06dc2-2fbe-4dc9-b569-16fea0e560cf"/>
+				<text><![CDATA[ENGINE NUMBER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="648" y="0" width="82" height="30" uuid="30c0384a-0daa-4da2-915b-915b3357ce1e"/>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="555" y="3" width="95" height="30" uuid="5fcb42eb-8006-4dd2-9264-8c9ba7120fbe"/>
+				<text><![CDATA[DATE RECEIVED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="730" y="0" width="70" height="30" uuid="889b1bb6-daf2-4d3a-8caa-ba8e9c92f3c1"/>
+				<text><![CDATA[REASON]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="58" y="-2" width="100" height="30" uuid="2f5c6ad6-9119-4327-9f55-b0abfba3bca7"/>
+				<textFieldExpression><![CDATA[$F{typeOfVehicle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="-2" width="95" height="30" uuid="54b4ce96-104b-4786-b9db-8be786c17fc4"/>
+				<textFieldExpression><![CDATA[$F{manufYear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="0" width="100" height="30" uuid="1f170a3f-f5fb-4f82-8fd0-3f82b3c96614"/>
+				<textFieldExpression><![CDATA[$F{companyReceivedFrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="100" height="30" uuid="83ad8665-b1db-40fb-aeca-9756f81e999f"/>
+				<textFieldExpression><![CDATA[$F{engineNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="30" uuid="dc84c859-3f33-4eb3-85ee-b99c13da61b9"/>
+				<textFieldExpression><![CDATA[$F{chassisNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="555" y="0" width="93" height="30" uuid="8827062d-0c06-479e-8e93-7cd51e27d8f3"/>
+				<textFieldExpression><![CDATA[$F{dateReceived}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="648" y="0" width="82" height="30" uuid="0150df5a-7599-43e2-accc-acdc0ccb1ae3"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="730" y="0" width="70" height="30" uuid="082c7d98-907d-4baa-aaf3-530fe3aeab20"/>
+				<textFieldExpression><![CDATA[$F{reasonIfAuctioned}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
