@@ -1,12 +1,17 @@
 package com.gh.gov.ns.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 
 import com.gh.gov.ns.model.InstitutionEntries;
 import com.gh.gov.ns.repository.InstitutionEntryRepository;
@@ -14,6 +19,9 @@ import com.gh.gov.ns.repository.SuppliersEntryRepository;
 
 @Controller
 public class ReportController {
+	@Autowired
+	private ApplicationContext applicationContext;
+	
 	@Autowired
 	private InstitutionEntryRepository institutionEntryRepository;
 	
@@ -48,9 +56,18 @@ List<InstitutionEntries>  reconciliationReport= institutionEntryRepository.recon
 	
 	@GetMapping("/supplied_vehicles_report")
 	public String suppliedVehiclesReport(Model model) {
-
 		return "supplied_vehicles_report";
 	}
+	
+	@GetMapping("/test_report")
+    public ModelAndView report() {
+        JasperReportsPdfView view = new JasperReportsPdfView();
+        view.setUrl("classpath:Institutions_report.jrxml");
+        view.setApplicationContext(applicationContext);
+        Map<String, Object> params = new HashMap<>();
+        params.put("datasource", institutionEntryRepository.findAll());
+        return new ModelAndView(view, params);
+    }
 	
 	
 }
