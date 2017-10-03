@@ -99,9 +99,8 @@ public class EntriesController {
 
 	@GetMapping("/suppliers_entries_new")
 	public String suppliersEntriesNew(Model model) {
-		List<Institution> institutions = institutionRepository.getAllInstitutions();
-		model.addAttribute("institutions", institutions);
 		model.addAttribute("suppliersEntries", new SuppliersEntries());
+		model.addAttribute("institutions", institutionRepository.getAllInstitutions());
 		return "suppliers_entries_new";
 	}
 
@@ -129,6 +128,7 @@ public class EntriesController {
 	}
 
 	@PostMapping("/suppliers_entries_new")
+<<<<<<< HEAD
 
 	public String saveSuppliersEntriesNew(Model model, SuppliersEntries suppliers,
 			@RequestParam("file") MultipartFile file[], RedirectAttributes ra,
@@ -160,6 +160,8 @@ public class EntriesController {
 		return "redirect:/suppliers_entries_new";
 	}
 
+=======
+>>>>>>> 89a6c8ddf238627b18797b56f0b5908f69b33b4e
 	public String saveSuppliersEntriesNew(Model model, @RequestParam("typeOfVehicle") String type[],
 			@RequestParam("manufYear") String year[], @RequestParam("engineNumber") String engineNumber[],
 			@RequestParam("chassisNumber") String chassisNumber[],
@@ -172,6 +174,7 @@ public class EntriesController {
 		Random rand = new Random();
 		int trxId = rand.nextInt(10000000);
 		currentSupplierTrxId = trxId;
+<<<<<<< HEAD
 		for (int i = 0; i < type.length; i++) {
 			SuppliersEntries entries = new SuppliersEntries();
 			entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
@@ -195,6 +198,25 @@ public class EntriesController {
 		System.out.println("suppliers............." + suppliers);
 		suppliersEntryRepository.saveAndFlush(suppliers);
 		return "redirect:/suppliers_entries_new";
+=======
+        for(int i=0; i<type.length; i++){
+        	SuppliersEntries entries = new SuppliersEntries();
+            entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
+        entries.setTransactionId(String.valueOf(currentSupplierTrxId));
+        entries.setTypeOfVehicle(type[i]);
+        entries.setManufYear(year[i]);
+        entries.setEngineNumber(engineNumber[i]);
+        entries.setChassisNumber(chassisNumber[i]);
+        entries.setInstitutionSuppliedTo(institutionSuppliedTo[i]);
+        entries.setDateSupplied(dateSupplied[i]);
+        entries.setImportDutyExemption(importDutyExemption[i]);
+        entries.setImportDutyDetails(importDutyDetails[i]);
+        entries.setPaymentChequeDetails(paymentChequeDetails[i]);
+        entries.setDvlaRegistrationDetails(dvlaRegistrationDetails[i]);
+        suppliersEntryRepository.saveAndFlush(entries);
+        }     
+        return  "redirect:/attach_docs_suppl";
+>>>>>>> 89a6c8ddf238627b18797b56f0b5908f69b33b4e
 	}
 
 	@GetMapping("/suppliers_entries")
