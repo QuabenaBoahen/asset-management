@@ -25,7 +25,11 @@
 				<!-- Page Heading End-->
 
 				<!--  content starts here -->
-
+                <div th:if="${flash != null}" 
+					th:classappend="${#strings.toLowerCase(flash.status)}" class="alert flash" >
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span th:text="${flash.message}"></span>
+                 </div>
 				<!-- Your awesome content goes here -->
 
 				<div class="box-info box-messages animated fadeInDown">

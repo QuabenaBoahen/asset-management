@@ -9,12 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gh.gov.ns.model.Role;
 import com.gh.gov.ns.model.User;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.UserRepository;
 import com.gh.gov.ns.utils.CredentialsGenerator;
+import com.gh.gov.ns.utils.FlashMessages;
 
 @Controller
 public class UserController {
@@ -64,7 +66,8 @@ public class UserController {
 	}
 
 	@PostMapping("/add_user")
-	public String saveUser(Model model, User user, @RequestParam("role_name") String role_name) {
+	public String saveUser(Model model, User user, @RequestParam("role_name") String role_name,
+			RedirectAttributes ra) {
 		Role role = roleRepository.findOne(role_name);
 		if (role != null) {
 			String usernameKey=user.getName() + user.getDepartmentIdentifier() + user.getPosition();
@@ -75,13 +78,17 @@ public class UserController {
 		      user.setPassword(password);
 			  user.setRoleId(role.getRoleId());
 			  userRepository.saveAndFlush(user);
+			  ra.addFlashAttribute("flash", new FlashMessages("User " + username +
+						" has been created successfully", FlashMessages.Status.SUCCESS));
 		}
 		return "redirect:/useraccount";
 	}
 
 	@PostMapping("/edit_user")
-	public String editUser(Model model, User user) {
+	public String editUser(Model model, User user, RedirectAttributes ra) {
 		userRepository.saveAndFlush(user);
+		ra.addFlashAttribute("flash", new FlashMessages("Details for user " + user.getUsername() +
+				" has been updated successfully", FlashMessages.Status.SUCCESS));
 		return "redirect:/useraccount";
 	}
 

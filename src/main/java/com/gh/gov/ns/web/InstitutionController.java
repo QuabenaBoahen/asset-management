@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gh.gov.ns.model.Institution;
 import com.gh.gov.ns.model.Role;
@@ -20,6 +21,7 @@ import com.gh.gov.ns.repository.InstitutionRepository;
 import com.gh.gov.ns.repository.RoleRepository;
 import com.gh.gov.ns.repository.UserRepository;
 import com.gh.gov.ns.utils.CredentialsGenerator;
+import com.gh.gov.ns.utils.FlashMessages;
 
 @Controller
 public class InstitutionController {
@@ -67,7 +69,8 @@ public class InstitutionController {
 	}
 
 	@PostMapping("/add_institution")
-	public String saveInstitutions(Model model, User user, @RequestParam("role_name") String role_name) {
+	public String saveInstitutions(Model model, User user, @RequestParam("role_name") String role_name,
+			RedirectAttributes ra) {
 		Role role = roleRepository.findOne(role_name);
 		Institution newInstitution = new Institution();
 		if (role != null) {
@@ -80,6 +83,8 @@ public class InstitutionController {
 	  userRepository.saveAndFlush(user);
 	  newInstitution.setName(user.getDepartmentIdentifier());
 	  institutionRepository.saveAndFlush(newInstitution);
+	  ra.addFlashAttribute("flash", new FlashMessages("Account for institution " + user.getDepartmentIdentifier() +
+				" has been created successfully", FlashMessages.Status.SUCCESS));
 		}
 		return "redirect:/institutions";
 	}
@@ -116,7 +121,8 @@ public class InstitutionController {
 	}
 
 	@PostMapping("/add_suppliers")
-	public String saveSuppliers(Model model, User user, @RequestParam("role_name") String role_name) {
+	public String saveSuppliers(Model model, User user, @RequestParam("role_name") String role_name,
+			RedirectAttributes ra) {
 		Role role = roleRepository.findOne(role_name);
 		Institution newSupplier = new Institution();
 		if (role != null) {
@@ -129,6 +135,8 @@ public class InstitutionController {
 			  userRepository.saveAndFlush(user);
 			  newSupplier.setName(user.getDepartmentIdentifier());
 			  institutionRepository.saveAndFlush(newSupplier);
+			  ra.addFlashAttribute("flash", new FlashMessages("Account for supplier " + user.getDepartmentIdentifier() +
+						" has been created successfully", FlashMessages.Status.SUCCESS));
 			}
 		return "redirect:/suppliers";
 	}
@@ -142,10 +150,12 @@ public class InstitutionController {
 	}
 
 	@PostMapping("/edit_supplier")
-	public String editSuppliers(Model model, User user) {
+	public String editSuppliers(Model model, User user, RedirectAttributes ra) {
 		try {
 			System.out.println("........" + user);
 			userRepository.saveAndFlush(user);
+			ra.addFlashAttribute("flash", new FlashMessages("Account for supplier " + user.getDepartmentIdentifier() +
+					" has been updated successfully", FlashMessages.Status.SUCCESS));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -160,10 +170,12 @@ public class InstitutionController {
 	}
 
 	@PostMapping("/edit_institution")
-	public String editInstitution(Model model, User user) {
+	public String editInstitution(Model model, User user, RedirectAttributes ra) {
 		try {
 			System.out.println("........" + user);
 			userRepository.saveAndFlush(user);
+			ra.addFlashAttribute("flash", new FlashMessages("Account for institution " + user.getDepartmentIdentifier() +
+					" has been updated successfully", FlashMessages.Status.SUCCESS));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

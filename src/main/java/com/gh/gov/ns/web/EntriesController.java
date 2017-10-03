@@ -28,6 +28,7 @@ import com.gh.gov.ns.repository.InstitutionEntryRepository;
 import com.gh.gov.ns.repository.InstitutionRepository;
 import com.gh.gov.ns.repository.SuppliersEntryRepository;
 import com.gh.gov.ns.utils.DateFormatter;
+import com.gh.gov.ns.utils.FlashMessages;
 
 @Controller
 @SessionAttributes({"currentInstitutionTrxId", "currentSupplierTrxId"})
@@ -74,12 +75,12 @@ public class EntriesController {
 			@RequestParam("manufYear") String year[], @RequestParam("engineNumber") String engineNumber[],
 			@RequestParam("chassisNumber") String chassisNumber[], @RequestParam("companyReceivedFrom") String companyReceivedFrom[],
 			@RequestParam("dateReceived") String dateReceived[], @RequestParam("status") String status[],
-			@RequestParam("reasonIfAuctioned") String reasonIfAuctioned[]) {
+			@RequestParam("reasonIfAuctioned") String reasonIfAuctioned[],RedirectAttributes ra) {
 		    
             Random rand = new Random();
     		int trxId=rand.nextInt(10000000);
     		currentInstitutionTrxId = trxId;
-            for(int i=0; i<type.length; i++){
+            for(int i=1; i<type.length; i++){
             	InstitutionEntries entries = new InstitutionEntries();
                 entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
             entries.setTransactionId(String.valueOf(currentInstitutionTrxId));
@@ -93,6 +94,8 @@ public class EntriesController {
             entries.setReasonIfAuctioned(reasonIfAuctioned[i]);
             institutionEntryRepository.saveAndFlush(entries);
             }
+         ra.addFlashAttribute("flash", new FlashMessages("Entries for institution " +
+    				" have been saved successfully", FlashMessages.Status.SUCCESS));
 		return "redirect:/attach_docs_inst";
 	}
 
@@ -111,7 +114,7 @@ public class EntriesController {
 		}
 
 		try {
-			for (int i = 0; i < file.length; i++) {
+			for (int i = 1; i < file.length; i++) {
 				byte[] bytes = file[i].getBytes();
 				Path path = Paths.get(UPLOADED_FOLDER + file[i].getOriginalFilename());
 				Files.write(path, bytes);
@@ -132,11 +135,12 @@ public class EntriesController {
 			@RequestParam("chassisNumber") String chassisNumber[], @RequestParam("institutionSuppliedTo") String institutionSuppliedTo[],
 			@RequestParam("dateSupplied") String dateSupplied[], @RequestParam("importDutyExemption") int importDutyExemption[],
 			@RequestParam("importDutyDetails") String importDutyDetails[], @RequestParam("paymentChequeDetails") String paymentChequeDetails[],
-			@RequestParam("dvlaRegistrationDetails") String dvlaRegistrationDetails[]) {
+			@RequestParam("dvlaRegistrationDetails") String dvlaRegistrationDetails[],
+			RedirectAttributes ra) {
 		Random rand = new Random();
 		int trxId=rand.nextInt(10000000);
 		currentSupplierTrxId = trxId;
-        for(int i=0; i<type.length; i++){
+        for(int i=1; i<type.length; i++){
         	SuppliersEntries entries = new SuppliersEntries();
             entries.setDateOfEntry(dateFormatter.currentDateFormmater(LocalDate.now()));
         entries.setTransactionId(String.valueOf(currentSupplierTrxId));
@@ -151,7 +155,9 @@ public class EntriesController {
         entries.setPaymentChequeDetails(paymentChequeDetails[i]);
         entries.setDvlaRegistrationDetails(dvlaRegistrationDetails[i]);
         suppliersEntryRepository.saveAndFlush(entries);
-        }     
+        }
+        ra.addFlashAttribute("flash", new FlashMessages("Entries for supplier " +
+				" have been saved successfully", FlashMessages.Status.SUCCESS));
         return  "redirect:/attach_docs_suppl";
 	}
 
@@ -184,7 +190,7 @@ public class EntriesController {
 		}
 
 		try {
-			for (int i = 0; i < file.length; i++) {
+			for (int i = 1; i < file.length; i++) {
 				byte[] bytes = file[i].getBytes();
 				Path path = Paths.get(UPLOADED_FOLDER + file[i].getOriginalFilename());
 				Files.write(path, bytes);
