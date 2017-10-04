@@ -8,9 +8,9 @@
 	<div th:include="fragments/body :: logout_modal (~{::title})"></div>
 	<!-- Begin page -->
 	<div id="wrapper">
-		<div th:include="fragments/body :: suppliers_navbar (~{::title})"></div>
-		<!-- Start right content -->
-		<div class="content-page">
+<!-- 		<div th:include="fragments/body :: suppliers_navbar (~{::title})"></div>
+ -->		<!-- Start right content -->
+ <div style="padding: 0px 10px 5px 30px;">
 			<!-- ============================================================== -->
 			<!-- Start Content here -->
 			<!-- ============================================================== -->
@@ -59,8 +59,7 @@
 												type="checkbox" name="chk[]" /></td>
 											<td><input style="width: 200px;" type="text"
 												class="form-control" id="input-text" placeholder=""
-<<<<<<< HEAD
-												th:field="*{typeOfVehicle}"></td>
+												th:field="*{typeOfVehicle}" /></td>
 											<td><input style="width: 100px;" type="text"
 												class="form-control" id="input-text-help" placeholder=""
 												th:field="*{manufYear}"></td>
@@ -70,21 +69,8 @@
 											<td><input style="width: 200px;" type="text"
 												class="form-control" id="input-text-help" placeholder=""
 												th:field="*{chassisNumber}"></td>
-=======
-												name="typeOfVehicle"></td>
->>>>>>> 89a6c8ddf238627b18797b56f0b5908f69b33b4e
-											<td><input style="width: 100px;" type="text"
-												class="form-control" id="input-text-help" placeholder=""
-												name="manufYear"></td>
-											<td><input style="width: 200px;" type="text"
-												class="form-control" id="input-text-help" placeholder=""
-												name="engineNumber"></td>
-											<td><input style="width: 200px;" type="text"
-												class="form-control" id="input-text-help" placeholder=""
-												name="chassisNumber"></td>
 											<td><select style="width: 200px;"
-												class="form-group form-control"
-												name="institutionSuppliedTo">
+												class="form-group form-control" name="institutionSuppliedTo">
 													<option value="">Select an option</option>
 													<option th:each="institution : ${institutions}"
 														th:text="${institution.name}"
@@ -92,33 +78,14 @@
 											</select></td>
 											<td><input type="date"
 												class="form-control datepicker-input"
-<<<<<<< HEAD
 												th:field="*{dateSupplied}"></td>
-											<td><input style="width: 200px;" type="text"
-												class="form-control" id="input-text" placeholder=""
-												th:field="*{importDutyExemption}"></td>
-											<td><input style="width: 100px;" type="text"
-												class="form-control" id="input-text-help" placeholder=""
-												th:field="*{importDutyDetails}"></td>
-											<td><input style="width: 200px;" type="text"
-												class="form-control" id="input-text-help" placeholder=""
-												th:field="*{paymentChequeDetails}"></td>
-											<td><input style="width: 200px;" type="text"
-												class="form-control" id="input-text-help" placeholder=""
-												th:field="*{dvlaRegistrationDetails}"></td>
-=======
-												name="dateSupplied"></td>
->>>>>>> 89a6c8ddf238627b18797b56f0b5908f69b33b4e
-											<td>
-											<select style="width: 200px;"
-												class="form-group form-control"
-												name="importDutyExemption">
+											<td><select style="width: 200px;"
+												class="form-group form-control" name="importDutyExemption">
 													<option value="0">Select an option</option>
 													<option th:text="Yes" th:value="1">Option</option>
-											         <option th:text="No" th:value="0">Option</option>
-											</select>
-									        </td>
-											<td><input style="width: 100px;" type="text"
+													<option th:text="No" th:value="0">Option</option>
+											</select></td>
+											<td><input style="width: 100px; margin-top: 50px;" type="text"
 												class="form-control" id="input-text-help" placeholder=""
 												name="importDutyDetails"></td>
 											<td><input style="width: 200px;" type="text"
@@ -131,7 +98,7 @@
 									</tbody>
 								</table>
 								<div>
-									<button style="width: 250px;" class=" btn btn-lg btn-success "
+									<button style="width: 250px; margin-top: 50px; " class=" btn btn-lg btn-success "
 										type="submit" name="submitd">Save Transaction</button>
 								</div>
 							</form>
