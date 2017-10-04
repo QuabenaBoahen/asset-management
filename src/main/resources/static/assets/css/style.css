@@ -9,6 +9,27 @@
   background-color: #ffffff;
   color: #fff;
 }
+
+.flash {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+.flash.success {
+    color: #33b86c;
+  background-color: #ccedda;
+  border-color: #7ad19f;
+}
+
+.flash.failure {
+    background-color: #ac4343;
+    color: #f2e2e2;
+    border-color:#dca7a7;
+}
+
 .btn-white-1:hover {
   background-color: #f2f2f2 !important;
   color: #fff;

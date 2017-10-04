@@ -25,7 +25,11 @@
 				<!-- Page Heading End-->
 
 				<!--  content starts here -->
-
+                <div th:if="${flash != null}" 
+					th:classappend="${#strings.toLowerCase(flash.status)}" class="alert flash" >
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span th:text="${flash.message}"></span>
+                 </div>
 				<div class="row">
 					<div class="col-md-12 portlets">
 						<!-- Your awesome content goes here -->
